@@ -23,27 +23,17 @@
   <body class="text-center">
     <main class="form-signin">
       <br />
-      <form action="/login" method="post">
+      <form>
         <br />
-        <h1 class="h2 mb-3 fw-normal">Sign in</h1>
+        <h1 class="h2 mb-3 fw-normal">Log in</h1>
 
         <div class="form-floating center">
-          <input
-            type="email"
-            class="form-control"
-            name="email"
-            placeholder="Email"
-          />
+          <input type="email" class="form-control" placeholder="Email" />
           <label for="floatingInput">Email</label> <br />
         </div>
 
         <div class="form-floating">
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Password"
-            name="password"
-          />
+          <input type="password" class="form-control" placeholder="Password" />
           <label for="floatingPassword">Password</label>
         </div>
 
@@ -53,9 +43,12 @@
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-warning" type="submit">
-          Sign in
+          Log in
         </button>
+        <br />
       </form>
+      <br />
+      <p>Dont have an account? <a href="register.html">Sign up.</a></p>
     </main>
   </body>
 </html>
