@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,13 +17,13 @@
     />
 
     <!-- Custom styles  -->
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
   </head>
 
   <body class="text-center">
     <main class="form-signin">
       <br />
-      <form action="/login" method="post">
+      <form action="/dashboard" method="post">
         <br />
         <h1 class="h2 mb-3 fw-normal">Sign in</h1>
 
