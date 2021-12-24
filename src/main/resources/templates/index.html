@@ -17,12 +17,13 @@
     />
 
     <!-- Custom styles  -->
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
   </head>
 
   <body class="text-center">
     <main class="form-signin">
       <br />
+      <form action="/dashboard" method="post">
       <form>
         <img class="mb-4" src="logo.jpg" alt="" width="100" height="120" />
         <h1 class="h2 mb-3 fw-normal">
