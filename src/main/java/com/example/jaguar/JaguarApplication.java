@@ -16,39 +16,11 @@ public class JaguarApplication {
     private final static String validPassword = "milav";
     private boolean isUserLoggedIn = false;
 
-    private final static String validUsername = "me@milav.com";
-    private final static String validPassword = "milav";
-    private boolean isUserLoggedIn = false;
-
     public static void main(String[] args) {
         SpringApplication.run(JaguarApplication.class, args);
     }
 
-    @PostMapping("/dashboard")
-    public String authenticate(@RequestParam(name = "email") String username,
-            @RequestParam(name = "password") String password, Model model) {
-        System.out.println(username);
-        System.out.println(password);
-
-        if ((username.equalsIgnoreCase(validUsername)) && (password.equals(validPassword))) {
-            isUserLoggedIn = true;
-            model.addAttribute("name", "Welcome to Jaguar Dashboard, " + username);
-            return "dashboard";
-        } else {
-            return "index";
-        }
-    }
-
-    @GetMapping("/dashboard")
-    public String validateUser(@RequestParam(name = "email") String username,
-            @RequestParam(name = "password") String password, Model model) {
-        if (isUserLoggedIn)
-            return "dashboard";
-        else
-            return "index";
-    }
-
-<<<<<<< HEAD
+    
     @PostMapping("/dashboard")
     public String authenticate(@RequestParam(name = "email") String username,
             @RequestParam(name = "password") String password, Model model) {
@@ -74,10 +46,7 @@ public class JaguarApplication {
         }
     }
 
-    @GetMapping(value = {"/", "/index"})
-=======
     @GetMapping(value = { "/", "/index" })
->>>>>>> 3a62a4c45991be623065bc2ca9efed62c8f1f3d3
     public String index(Model model) {
         model.addAttribute("title", "Login Page");
         return "index";
