@@ -29,12 +29,14 @@ public class JaguarApplication {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return String.format("Hello %s!", name);
     }
-    
+
     @PostMapping("/login")
-    public String authenticate(@RequestParam(name = "email") String username, @RequestParam(name = "password") String password, Model model) {
+    public String authenticate(@RequestParam(name = "email") String username,
+            @RequestParam(name = "password") String password, Model model) {
         System.out.println(username);
         System.out.println(password);
         model.addAttribute("name", username);
         return "dashboard";
     }
+
 }
