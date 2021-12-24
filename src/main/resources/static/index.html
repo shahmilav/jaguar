@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Sign in</title>
+    <title>Log in</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -24,8 +24,12 @@
     <main class="form-signin">
       <br />
       <form>
+        <img class="mb-4" src="logo.jpg" alt="" width="100" height="120" />
+        <h1 class="h2 mb-3 fw-normal">
+          Welcome to <strong><i>JAGUAR</i></strong
+          >.
+        </h1>
         <br />
-        <h1 class="h2 mb-3 fw-normal">Log in</h1>
 
         <div class="form-floating center">
           <input type="email" class="form-control" placeholder="Email" />
@@ -48,7 +52,7 @@
         <br />
       </form>
       <br />
-      <p>Dont have an account? <a href="register.html">Sign up.</a></p>
+      <p>Dont have an account? <a href="register.html">Sign up now.</a></p>
     </main>
   </body>
 </html>
