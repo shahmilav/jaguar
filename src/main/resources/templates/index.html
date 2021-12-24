@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Sign in</title>
+    <title>Log in</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -23,27 +23,25 @@
   <body class="text-center">
     <main class="form-signin">
       <br />
+<<<<<<< HEAD:src/main/resources/templates/index.html
       <form action="/dashboard" method="post">
+=======
+      <form>
+        <img class="mb-4" src="logo.jpg" alt="" width="100" height="120" />
+        <h1 class="h2 mb-3 fw-normal">
+          Welcome to <strong><i>JAGUAR</i></strong
+          >.
+        </h1>
+>>>>>>> 2098a70332473d5438cfbaac321f86605b3e8af2:src/main/resources/static/index.html
         <br />
-        <h1 class="h2 mb-3 fw-normal">Sign in</h1>
 
         <div class="form-floating center">
-          <input
-            type="email"
-            class="form-control"
-            name="email"
-            placeholder="Email"
-          />
+          <input type="email" class="form-control" placeholder="Email" />
           <label for="floatingInput">Email</label> <br />
         </div>
 
         <div class="form-floating">
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Password"
-            name="password"
-          />
+          <input type="password" class="form-control" placeholder="Password" />
           <label for="floatingPassword">Password</label>
         </div>
 
@@ -53,9 +51,12 @@
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-warning" type="submit">
-          Sign in
+          Log in
         </button>
+        <br />
       </form>
+      <br />
+      <p>Dont have an account? <a href="register.html">Sign up now.</a></p>
     </main>
   </body>
 </html>
