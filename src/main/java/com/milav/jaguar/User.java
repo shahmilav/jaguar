@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.example.jaguar;
+package com.milav.jaguar;
 
 /**
  *
@@ -23,7 +19,7 @@ public class User {
         this.email = email;
         this.password = password;
     }
-    
+
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
@@ -37,6 +33,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String email) {
+        this.email = password;
     }
 
     public String getFirstName() {
@@ -54,7 +58,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
     @Override
     public String toString() {
