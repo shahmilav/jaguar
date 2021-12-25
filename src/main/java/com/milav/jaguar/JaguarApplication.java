@@ -1,4 +1,4 @@
-package com.example.jaguar;
+package com.milav.jaguar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +16,7 @@ public class JaguarApplication {
     private final static String validUsername = "me@milav.com";
     private final static String validPassword = "milav";
     private boolean isUserLoggedIn = false;
+
     @Autowired
     private static UserRepository repository;
 
@@ -52,7 +53,7 @@ public class JaguarApplication {
         }
     }
 
-    @GetMapping(value = {"/", "/index"})
+    @GetMapping(value = { "/", "/index" })
     public String index(Model model) {
         model.addAttribute("title", "Login Page");
         return "index";
