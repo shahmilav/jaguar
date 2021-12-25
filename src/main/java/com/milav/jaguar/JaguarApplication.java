@@ -21,7 +21,7 @@ public class JaguarApplication {
     private static UserRepository repository;
 
     public static void main(String[] args) {
-        createUser();
+        // createUser();
         SpringApplication.run(JaguarApplication.class, args);
     }
 
