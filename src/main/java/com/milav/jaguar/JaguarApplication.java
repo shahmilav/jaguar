@@ -28,7 +28,7 @@ public class JaguarApplication {
 
     public static void main(String[] args) throws DBException {
         JaguarApplication app = new JaguarApplication();
-        app.createUserInDB();
+        //app.createUserInDB();
         
         //app.createUser();
         SpringApplication.run(JaguarApplication.class, args);
