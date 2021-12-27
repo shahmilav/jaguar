@@ -1,5 +1,11 @@
 package com.milav.jaguar;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Date;
+import java.util.HashMap;
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,15 +24,43 @@ public class JaguarApplication {
     private boolean isUserLoggedIn = false;
 
     @Autowired
-    private static UserRepository repository;
+    private UserRepository repository;
 
-    public static void main(String[] args) {
-        // createUser();
+    public static void main(String[] args) throws DBException {
+        JaguarApplication app = new JaguarApplication();
+        app.createUserInDB();
+        
+        //app.createUser();
         SpringApplication.run(JaguarApplication.class, args);
     }
 
-    private static void createUser() {
+    private void createUser() {
         repository.save(new User("me@milav.com", "my-secret-password"));
+    }
+
+    private void createUserInDB() throws DBException {
+
+        MongoDatabase db = DBManager.getMongoDB();
+
+        if (db.getCollection("USER_PROFILE") == null) {
+            db.createCollection("USER_PROFILE");
+        }
+
+        MongoCollection coll = db.getCollection("USER_PROFILE");
+
+        Document doc = new Document();
+        doc.put("firstName", "Milav");
+        doc.put("lastName", "Shah");
+        doc.put("email", "me@milav.com");
+        doc.put("password", "mysecretpassword");
+
+        Date date = new Date();
+        doc.put("createDateTime", date);
+        doc.put("updateDateTime", date);
+        doc.put("lastLoginDateTime", date);
+
+        coll.insertOne(doc);
+        coll.createIndex(new BasicDBObject("email", 1));
     }
 
     @PostMapping("/login")
@@ -53,7 +87,7 @@ public class JaguarApplication {
         }
     }
 
-    @GetMapping(value = { "/", "/index" })
+    @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
         model.addAttribute("title", "Login Page");
         return "index";
