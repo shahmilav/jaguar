@@ -58,9 +58,14 @@ public class JaguarApplication {
         model.addAttribute("title", "Login Page");
         return "index";
     }
+    
+    @GetMapping("/sign-up")
+    public String signup(Model model) {
+        return "register";
+    }
 
     @PostMapping("/register")
-    public String signUp(
+    public String register(
             @RequestParam(name = "fname") String firstName,
             @RequestParam(name = "lname") String lastName,
             @RequestParam(name = "email") String username,
@@ -71,8 +76,10 @@ public class JaguarApplication {
         System.out.println(lastName);
         System.out.println(username);
         System.out.println(password);
+        
+        isUserLoggedIn = true;
 
-        return "redirect:/login";
+        return "redirect:/dashboard";
 
     }
 }
