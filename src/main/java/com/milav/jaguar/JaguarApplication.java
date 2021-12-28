@@ -22,6 +22,10 @@ public class JaguarApplication {
     @Autowired
     public static void main(String[] args) throws DBException {
 
+        JaguarApplication app = new JaguarApplication();
+        // app.createUserInDB();
+
+        // app.createUser();
         SpringApplication.run(JaguarApplication.class, args);
     }
 
