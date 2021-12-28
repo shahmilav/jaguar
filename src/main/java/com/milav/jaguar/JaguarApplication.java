@@ -1,5 +1,7 @@
 package com.milav.jaguar;
 
+import com.mongodb.client.FindIterable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class JaguarApplication {
 
-    // @Autowired
-    // private CreateUser createUser;
+    @Autowired
+    private CreateUser createUser;
     private final static String validUsername = "me@milav.com";
     private final static String validPassword = "milav";
     private boolean isUserLoggedIn = false;
@@ -22,10 +24,6 @@ public class JaguarApplication {
     @Autowired
     public static void main(String[] args) throws DBException {
 
-        JaguarApplication app = new JaguarApplication();
-        // app.createUserInDB();
-
-        // app.createUser();
         SpringApplication.run(JaguarApplication.class, args);
     }
 
@@ -58,7 +56,7 @@ public class JaguarApplication {
         model.addAttribute("title", "Login Page");
         return "index";
     }
-    
+
     @GetMapping("/sign-up")
     public String signup(Model model) {
         return "register";
@@ -70,13 +68,16 @@ public class JaguarApplication {
             @RequestParam(name = "lname") String lastName,
             @RequestParam(name = "email") String username,
             @RequestParam(name = "password") String password,
-            Model model) {
+            Model model) throws DBException {
 
         System.out.println(firstName);
         System.out.println(lastName);
         System.out.println(username);
         System.out.println(password);
-        
+
+        createUser.createUserInDB(firstName, lastName, username, password);
+
+
         isUserLoggedIn = true;
 
         return "redirect:/dashboard";

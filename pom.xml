@@ -66,6 +66,7 @@
             <artifactId>spring-data-commons</artifactId>
             <type>jar</type>
         </dependency>
+
     </dependencies>
 
     <build>
