@@ -1,4 +1,4 @@
-package com.milav.jaguar;
+    package com.milav.jaguar;
 
 /**
  *
@@ -14,6 +14,9 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+
+    public User() {
+    }
 
     public User(String email, String password) {
         this.email = email;
@@ -39,8 +42,8 @@ public class User {
         return password;
     }
 
-    public void setPassword(String email) {
-        this.email = password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -62,7 +65,7 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "Customer[email=%s, firstName='%s', lastName='%s']",
+                "User[email=%s, firstName='%s', lastName='%s']",
                 email, firstName, lastName);
     }
 }

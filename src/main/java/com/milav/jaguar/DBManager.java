@@ -53,6 +53,7 @@ public class DBManager {
          
         MongoClient mongoClient = MongoClients.create(uri);
         mongoDB = mongoClient.getDatabase("jaguar");
+        
     }
     
     public static void main(String args[]) throws DBException {
