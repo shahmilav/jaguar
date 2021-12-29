@@ -29,6 +29,8 @@
           Sign up for <strong><i>JAGUAR</i></strong
           >.
         </h1>
+        <p class="error" th:text="${error}">
+        </p>
         <br />
         <div class="form-floating center">
           <input
@@ -37,7 +39,7 @@
             name="fname"
             placeholder="First Name"
           />
-          <label for="floatingInput">First Name</label> <br />
+          <label for="floatingInput">First Name</label>
         </div>
 
         <div class="form-floating">
@@ -58,7 +60,7 @@
             name="email"
             placeholder="Email"
           />
-          <label for="floatingInput">Email</label> <br />
+          <label for="floatingInput">Email</label>
         </div>
 
         <div class="form-floating">
