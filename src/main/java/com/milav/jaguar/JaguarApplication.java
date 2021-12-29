@@ -1,7 +1,5 @@
 package com.milav.jaguar;
 
-import com.mongodb.client.FindIterable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class JaguarApplication {
 
     @Autowired
-    private CreateUser createUser;
+    private UserController userController;
+    User user = null;
     private final static String validUsername = "me@milav.com";
-    private final static String validPassword = "milav";
     private boolean isUserLoggedIn = false;
 
     @Autowired
@@ -28,33 +26,43 @@ public class JaguarApplication {
     }
 
     @PostMapping("/login")
-    public String authenticate(@RequestParam(name = "email") String username,
-            @RequestParam(name = "password") String password, Model model) {
-        System.out.println(username);
-        System.out.println(password);
+    public String authenticate(
+            @RequestParam(name = "email") String email,
+            @RequestParam(name = "password") String password,
+            Model model) throws DBException {
 
-        if ((username.equalsIgnoreCase(validUsername)) && (password.equals(validPassword))) {
+        User user = userController.findUser(email);
+
+        if (user == null) {
+            model.addAttribute("error", "This account does not exist. Please sign up.");
+            return null;
+        }
+
+        if (user.getPassword().equals(password)) {
             isUserLoggedIn = true;
             return "redirect:/dashboard";
         } else {
-            return "index";
+            model.addAttribute("error", "Incorrect password, please try again.");
+            // return "redirect:/index";
+            return null;
         }
     }
 
     @GetMapping("/dashboard")
     public String validateUser(Model model) {
         if (isUserLoggedIn) {
-            model.addAttribute("name", "Welcome to Jaguar Dashboard, " + validUsername);
+            model.addAttribute("name", user.getFirstName());
             return "dashboard";
         } else {
-            return "redirect:/index";
+            return "redirect:/login";
         }
     }
 
-    @GetMapping(value = { "/", "/index" })
+    @GetMapping(value = { "/", "/index", "/login" })
     public String index(Model model) {
         model.addAttribute("title", "Login Page");
-        return "index";
+        model.addAttribute("error", "");
+        return "login";
     }
 
     @GetMapping("/sign-up")
@@ -66,21 +74,19 @@ public class JaguarApplication {
     public String register(
             @RequestParam(name = "fname") String firstName,
             @RequestParam(name = "lname") String lastName,
-            @RequestParam(name = "email") String username,
+            @RequestParam(name = "email") String email,
             @RequestParam(name = "password") String password,
             Model model) throws DBException {
 
-        System.out.println(firstName);
-        System.out.println(lastName);
-        System.out.println(username);
-        System.out.println(password);
+        if (userController.doesUserExist(email)) {
+            model.addAttribute("error", "We already have an account for that email. Please login.");
+            return null;
+        } else {
+            userController.createUserInDB(firstName, lastName, email, password);
+            isUserLoggedIn = true;
+            return "redirect:/dashboard";
 
-        createUser.createUserInDB(firstName, lastName, username, password);
-
-
-        isUserLoggedIn = true;
-
-        return "redirect:/dashboard";
+        }
 
     }
 }

@@ -3,7 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        
         <title>Log in</title>
 
         <!-- Bootstrap CSS -->
@@ -30,6 +33,7 @@
           Welcome to <strong><i>JAGUAR</i></strong
           >.
         </h1>
+        <p th:text=${error} class="error"></p>
         <br />
         <div class="form-floating center">
           <input

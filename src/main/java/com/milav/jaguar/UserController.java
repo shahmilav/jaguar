@@ -10,9 +10,19 @@ import org.bson.Document;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateUser {
+public class UserController {
 
-    public void createUserInDB(String firstName, String lastName, String username, String password)
+    /**
+     * The method creates an entry in the database with the given information.
+     * 
+     * @param firstName
+     * @param lastName
+     * @param username  (aka email)
+     * @param password
+     * @return void
+     * @throws DBException
+     */
+    public void createUserInDB(String firstName, String lastName, String email, String password)
             throws DBException {
 
         MongoDatabase db = DBManager.getMongoDB();
@@ -20,7 +30,6 @@ public class CreateUser {
         if (db.getCollection("USER_PROFILE") == null) {
             db.createCollection("USER_PROFILE");
         }
-        String email = username.toLowerCase();
 
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
 
@@ -28,11 +37,11 @@ public class CreateUser {
 
         document.put("firstName", firstName);
         document.put("lastName", lastName);
-        document.put("email", email);
+        document.put("email", email.toLowerCase());
         document.put("password", password);
 
         Date date = new Date();
-        document.put("createDateTimfx`e", date);
+        document.put("createDateTime", date);
         document.put("updateDateTime", date);
         document.put("lastLoginDateTime", date);
 
@@ -73,6 +82,8 @@ public class CreateUser {
      */
     public User findUser(String email) throws DBException {
 
+        User user = null;
+
         MongoDatabase db = DBManager.getMongoDB();
         Document document = new Document();
         document.put("email", email.toLowerCase());
@@ -80,22 +91,15 @@ public class CreateUser {
         FindIterable<Document> findIterable = collection.find(document);
 
         Document result = findIterable.first();
-        User user = new User();
-        user.setEmail(result.getString("email"));
-        user.setFirstName(result.getString("firstName"));
-        user.setLastName(result.getString("lastName"));
-        user.setPassword(result.getString("password"));
+        if (result != null) {
+            user = new User();
+            user.setEmail(result.getString("email"));
+            user.setFirstName(result.getString("firstName"));
+            user.setLastName(result.getString("lastName"));
+            user.setPassword(result.getString("password"));
+        }
 
         return user;
     }
 
-    public static void main(String[] args) throws DBException {
-
-        CreateUser cu = new CreateUser();
-
-        System.out.println("=====> " + cu.doesUserExist("me@riana.com"));
-
-        User user = cu.findUser("me@riana.com");
-        System.out.println("=====> " + user.toString());
-    }
 }
