@@ -1,5 +1,7 @@
 package com.milav.jaguar;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class SignupController {
             @RequestParam(name = "lname") String lastName,
             @RequestParam(name = "email") String email,
             @RequestParam(name = "password") String password,
-            Model model) throws DBException {
+            Model model, HttpSession session) throws DBException {
 
         if (userController.doesUserExist(email)) {
             model.addAttribute("error", "We already have an account for that email. Please login.");
@@ -36,7 +38,9 @@ public class SignupController {
             return null;
         } else {
             userController.createUserInDB(firstName, lastName, email, password);
+            User user = userController.findUser(email);
             isUserLoggedIn = true;
+            session.setAttribute("user", user);
             return "redirect:/dashboard";
 
         }

@@ -1,6 +1,9 @@
 package com.milav.jaguar;
 
 import org.springframework.stereotype.Controller;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +15,14 @@ public class LoginController {
 
     @Autowired
     private UserController userController;
-    private User user = null;
+    private User user;
     private boolean isUserLoggedIn = false;
 
     @PostMapping("/login")
     public String authenticate(
             @RequestParam(name = "email") String email,
             @RequestParam(name = "password") String password,
-            Model model) throws DBException {
+            Model model, HttpSession session) throws DBException {
 
         user = userController.findUser(email);
 
@@ -30,12 +33,13 @@ public class LoginController {
         }
 
         if (email.isBlank() || password.isBlank()) {
-            model.addAttribute("error", "Please fill out all fields."); 
+            model.addAttribute("error", "Please fill out all fields.");
             return null;
         }
 
         if (user.getPassword().equals(password)) {
             isUserLoggedIn = true;
+            session.setAttribute("user", user);
             return "redirect:/dashboard";
 
         } else {
@@ -43,6 +47,7 @@ public class LoginController {
             isUserLoggedIn = false;
             return null;
         }
+
     }
 
     @GetMapping("/dashboard")
@@ -50,7 +55,7 @@ public class LoginController {
         if (isUserLoggedIn) {
             if (user != null) {
 
-                model.addAttribute("name", user.getFirstName());
+                model.addAttribute("name", ("Welcome to Jaguar Dashboard, " + user.getFirstName() + "."));
                 return "dashboard";
             } else {
                 System.out.println("User = Null");
