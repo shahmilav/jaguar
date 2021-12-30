@@ -4,7 +4,6 @@
  */
 package com.milav.jaguar;
 
-
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
@@ -25,11 +24,6 @@ public class DBManager {
         init();
     }
 
-//    private void init() throws UnknownHostException {
-//        mongo = new MongoClient("localhost");
-//        db = mongo.getDB("mydb");
-//    }
-
     public static MongoDatabase getMongoDB() throws DBException {
         if (dbManager == null) {
             try {
@@ -45,19 +39,11 @@ public class DBManager {
     }
 
     private void init() throws UnknownHostException {
-        // uri = new MongoClientURI("mongodb://shahjigar:Curi0usGe0rge@alex.mongohq.com:10005/Q6Nkd2HydZkZHxQndvGIiA");
-        //uri = new MongoClientURI("mongodb://pebblenotes:Curi0usGe0rge@ds053136.mlab.com:53136/pebblenotes");
-        //uri = new MongoClientURI("mongodb://pebblenotes:Curi0usGe0rge@pebblenotes-shard-00-00.l364q.mongodb.net:27017,pebblenotes-shard-00-01.l364q.mongodb.net:27017,pebblenotes-shard-00-02.l364q.mongodb.net:27017/pebblenotes?replicaSet=atlas-mwhtpx-shard-0&authSource=admin&retryWrites=true&w=majority", MongoClientOptions.builder().sslEnabled(false).sslInvalidHostNameAllowed(true));
 
         String uri = "mongodb+srv://milav:pulsar66@cluster0.jnvid.mongodb.net/jaguar?retryWrites=true&w=majority";
-         
+
         MongoClient mongoClient = MongoClients.create(uri);
         mongoDB = mongoClient.getDatabase("jaguar");
-        
-    }
-    
-    public static void main(String args[]) throws DBException {
-        System.out.println(DBManager.getMongoDB().getName());
-        System.out.println(DBManager.getMongoDB().getCollection("USER_PROFILE").countDocuments());
+
     }
 }

@@ -18,6 +18,25 @@ public class LoginController {
     private User user;
     private boolean isUserLoggedIn = false;
 
+    /**
+     * 
+     * The method decides what to do when the login form is submitted.
+     * If the method returns null, the page does not change.
+     * 
+     * If the user does not exist, it sends an error message and returns null.
+     * If any fields are blank, it sends an error message and returns null.
+     * If the user enters the right password, the method redirects the user to their
+     * dashboard and starts their session.
+     * If the user enters the wrong password, an error message is shown and the
+     * method returns null.
+     * 
+     * @param email
+     * @param password
+     * @param model
+     * @param session
+     * @return String
+     * @throws DBException
+     */
     @PostMapping("/login")
     public String authenticate(
             @RequestParam(name = "email") String email,
@@ -50,6 +69,15 @@ public class LoginController {
 
     }
 
+    /**
+     * The method validates the user that is logging in. If the user is not logged
+     * in, the method redirects them to the login page. Otherwise, we ensure the
+     * user exists. If they exist, we show a welcome message on the
+     * dashboard. If they are null, we redirect them to the login page.
+     * 
+     * @param model
+     * @return String
+     */
     @GetMapping("/dashboard")
     public String validateUser(Model model) {
         if (isUserLoggedIn) {
