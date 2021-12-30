@@ -17,7 +17,7 @@ public class UserController {
      * 
      * @param firstName
      * @param lastName
-     * @param username  (aka email)
+     * @param email
      * @param password
      * @return void
      * @throws DBException

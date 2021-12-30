@@ -1,4 +1,4 @@
-    package com.milav.jaguar;
+package com.milav.jaguar;
 
 /**
  *
@@ -30,38 +30,83 @@ public class User {
         this.lastName = lastName;
     }
 
+    /**
+     * The method returns the user's email.
+     * 
+     * @return String
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * The method sets the user's email.
+     * 
+     * @return void
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * The method returns the user's password.
+     * 
+     * @return String
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * The method sets the user's password.
+     * 
+     * @return void
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * The method returns the user's first name.
+     * 
+     * @return String
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * The method sets the user's first name.
+     * 
+     * @return void
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * The method returns the user's last name.
+     * 
+     * @return String
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * The method sets the user's last name.
+     * 
+     * @return void
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * The method prints the user's data.
+     * 
+     * @return String
+     */
     @Override
     public String toString() {
         return String.format(
