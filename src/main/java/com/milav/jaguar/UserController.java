@@ -60,21 +60,21 @@ public class UserController {
      */
     public boolean doesUserExist(String email) throws DBException {
 
-        boolean result = false;
-
         MongoDatabase db = DBManager.getMongoDB();
         Document document = new Document();
         document.put("email", email.toLowerCase());
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
-        if (collection.find(document).first() != null)
-            result = true;
 
-        return result;
+        if (collection.find(document).first() != null)
+            return true;
+        else
+            return false;
     }
 
     /**
      * The method finds a user given an email address. It returns a User object with
-     * prefilled data retrieved from the database.
+     * prefilled data retrieved from the database. The user can be null if the user
+     * does not exist in the database.
      * 
      * @param email
      * @return User
