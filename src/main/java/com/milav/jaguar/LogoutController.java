@@ -18,7 +18,7 @@ public class LogoutController {
      */
     @GetMapping("/logout")
     public String logoutUser(Model model, HttpSession session) {
-        System.out.println("User is logged out");
+        System.out.println("\n=========> User logged out.");
 
         session.removeAttribute("user");
         session.invalidate();
