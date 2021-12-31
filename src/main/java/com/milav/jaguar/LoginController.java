@@ -45,14 +45,14 @@ public class LoginController {
 
         user = userController.findUser(email);
 
-        if (user == null) {
-            model.addAttribute("error", "This account does not exist. Please sign up.");
-            isUserLoggedIn = false;
+        if (email.isBlank() || password.isBlank()) {
+            model.addAttribute("error", "Please fill out all fields.");
             return null;
         }
 
-        if (email.isBlank() || password.isBlank()) {
-            model.addAttribute("error", "Please fill out all fields.");
+        if (user == null) {
+            model.addAttribute("error", "This account does not exist. Please sign up.");
+            isUserLoggedIn = false;
             return null;
         }
 
