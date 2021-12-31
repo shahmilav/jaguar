@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>User Profile</title>
+    <title>Edit Profile</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -43,20 +43,32 @@
         </ul>
       </div>
     </nav>
+
     <div class="col-lg-8 mx-auto p-3 py-md-5">
       <main class="form-signin">
-        <h1>Your Profile</h1>
-        <br />
-        <h3>Name:</h3>
-        <i><h4 th:text="${name}"></h4></i>
-        <br />
-        <h3>Email:</h3>
-        <i><h4 th:text="${email}"></h4></i>
-        <br />
-
-        <form action="/editprofile">
-          <button class="btn w-25 btn-warning">
-            Edit Profile
+        <form action="/savechanges">
+          <h1>Your Profile</h1>
+          <br />
+          <h4>First Name:</h4>
+          <input th:placeholder="${firstname}" />
+          <br />
+          <h4>Last Name:</h4>
+          <input th:placeholder="${lastname}" />
+          <br />
+          <br />
+          <h5>Enter current password to change the following fields:</h5>
+          <input type="password" />
+          <br />
+          <br />
+          <h4>Email:</h4>
+          <input type="email" th:placeholder="${email}" />
+          <br />
+          <h4>Password:</h4>
+          <i><input type="password" /></i>
+          <br />
+          <br />
+          <button type="submit" class="btn w-25 btn-warning">
+            Save changes
           </button>
         </form>
       </main>

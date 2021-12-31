@@ -53,19 +53,30 @@ public class SignupController {
             @RequestParam(name = "password") String password,
             Model model, HttpSession session) throws DBException {
 
+        System.out.println("\n=========> User wants to sign up -->");
+        User user = (User) session.getAttribute("user");
+
+        if (session.getAttribute("user") != null) {
+            System.out.println("\n=========> " + user.getEmail() + " did not log out, go to dashboard.");
+            return "redirect:/dashboard";
+        }
+
         if (userController.doesUserExist(email)) {
             model.addAttribute("error", "We already have an account for that email. Please login.");
+            System.out.println("\n=========> " + email + " tried to sign up but account exists.");
             return null;
 
         } else if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
+            System.out.println("\n=========> " + email + " left fields blank on sign up.");
             model.addAttribute("error", "Please fill out all fields.");
             return null;
 
         } else {
             userController.createUserInDB(firstName, lastName, email, password);
-            User user = userController.findUser(email);
+            user = userController.findUser(email);
 
             session.setAttribute("user", user);
+            System.out.println(firstName + " " + lastName + " has made an account");
             return "redirect:/dashboard";
 
         }
