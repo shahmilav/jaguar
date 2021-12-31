@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class JaguarController {
 
     /**
-     * The method gets any mapping for either "/", "/index" or "/login"
+     * The method gets any mapping for either {@code"/"}, {@code"/index"} or
+     * {@code"/login"}
      * and shows the login page.
      *
      * @return String
