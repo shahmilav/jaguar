@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class JaguarController {
 
-    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * The method gets any mapping for either {@code"/"}, {@code"/index"} or
@@ -27,7 +26,6 @@ public class JaguarController {
 
         User user = (User) session.getAttribute("user");
         if (session.getAttribute("user") != null) {
-            LOGGER.info("\n" + user.getEmail() + " is logged in. Redirect to dashboard.");
             return "redirect:/dashboard";
         } else {
             return "login";

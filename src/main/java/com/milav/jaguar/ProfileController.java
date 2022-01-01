@@ -1,6 +1,9 @@
 package com.milav.jaguar;
 
 import javax.servlet.http.HttpSession;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,10 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProfileController {
 
+    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+
     /**
-     * The method gets the current user from the session. If the user is null (has
-     * not signed in), we redirect them to the login page. Otherwise, we fill in
-     * their information on the page.
+     * <h3>The method gets the current user from the session.</h3>
+     * <p>
+     * If the user is null (has not signed in), we redirect them to the login page.
+     * Otherwise, we fill in their information on the page.
+     * </p>
      * 
      * @param model
      * @param session
@@ -22,18 +29,18 @@ public class ProfileController {
     public String fillUpProfile(
             Model model, HttpSession session) throws DBException {
 
-        System.out.println("\n=========> User wants to see profile. -->");
+        LOGGER.info("\n User wants to see profile.");
+
         User user = (User) session.getAttribute("user");
         if (user != null) {
             String fullName = user.getFirstName() + " " + user.getLastName();
             model.addAttribute("name", fullName);
             model.addAttribute("email", user.getEmail());
-            System.out.println("\n=========> Profile shown.");
+            LOGGER.info("\n" + user.getEmail() + "'s profile is shown");
             return null;
 
         } else {
-
-            System.out.println("\n=========> User not logged in, back to login.");
+            LOGGER.info("\n User is not logged in -> redirect to login.");
             return "redirect:/login";
         }
     }
@@ -42,19 +49,19 @@ public class ProfileController {
     public String goToEditProfile(
             Model model, HttpSession session) throws DBException {
 
-        System.out.println("\n=========> User wants to edit profile. -->");
+        LOGGER.info("\nUser wants to edit profile.");
         User user = (User) session.getAttribute("user");
 
         if (user != null) {
             model.addAttribute("firstname", user.getFirstName());
             model.addAttribute("lastname", user.getLastName());
             model.addAttribute("email", user.getEmail());
-            System.out.println("\n=========> Profile saved");
-
+            LOGGER.info("\nProfile saved");
             return null;
+
         } else {
 
-            System.out.println("\n=========> User not logged in, back to login.");
+            LOGGER.info("\nUser not logged in, back to login.");
             return "redirect:/login";
         }
     }

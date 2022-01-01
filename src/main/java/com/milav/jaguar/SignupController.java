@@ -2,6 +2,8 @@ package com.milav.jaguar;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ public class SignupController {
 
     @Autowired
     private UserController userController;
+    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * The method shows the register page on the mapping "/sign-up".
@@ -27,14 +30,18 @@ public class SignupController {
     }
 
     /**
-     * The method creates an account for the user.
+     * <h3>The method creates an account for the user.</h3>
      * 
-     * If the user already has an account, we display an error message and return
-     * null.
-     * If the user did not fill out all fields, we display an error message
-     * and return null.
-     * Otherwise, we create an account for the user, add them to the database, start
-     * their session, and redierct them to the dashboard.
+     * <ol>
+     * <li>If the user already has an account, we display an error message and
+     * return
+     * null.</li>
+     * <li>If the user did not fill out all fields, we display an error message
+     * and return null.</li>
+     * <li>Otherwise, we create an account for the user, add them to the database,
+     * start
+     * their session, and redierct them to the dashboard.</li>
+     * </ol>
      * 
      * @param firstName
      * @param lastName
@@ -53,21 +60,21 @@ public class SignupController {
             @RequestParam(name = "password") String password,
             Model model, HttpSession session) throws DBException {
 
-        System.out.println("\n=========> User wants to sign up -->");
         User user = (User) session.getAttribute("user");
+        LOGGER.info("\n Someone wants to sign up.");
 
         if (session.getAttribute("user") != null) {
-            System.out.println("\n=========> " + user.getEmail() + " did not log out, go to dashboard.");
+            LOGGER.info("\n" + user.getEmail() + " did not log out, go to dashboard.");
             return "redirect:/dashboard";
         }
 
         if (userController.doesUserExist(email)) {
             model.addAttribute("error", "We already have an account for that email. Please login.");
-            System.out.println("\n=========> " + email + " tried to sign up but account exists.");
+            LOGGER.info("\nf" + email + " tried to sign up but account exists.");
             return null;
 
         } else if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
-            System.out.println("\n=========> " + email + " left fields blank on sign up.");
+            LOGGER.info("\n" + email + " left fields blank on sign up.");
             model.addAttribute("error", "Please fill out all fields.");
             return null;
 
@@ -76,7 +83,7 @@ public class SignupController {
             user = userController.findUser(email);
 
             session.setAttribute("user", user);
-            System.out.println(firstName + " " + lastName + " has made an account");
+            LOGGER.info(firstName + " " + lastName + " has made an account");
             return "redirect:/dashboard";
 
         }
