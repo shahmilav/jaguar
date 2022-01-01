@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 public class UserController {
 
     /**
-     * The method creates an entry in the database with the given information.
+     * <h3>The method creates an entry in the database with the given
+     * information.</h3>
      * 
      * @param firstName
      * @param lastName
@@ -50,9 +51,12 @@ public class UserController {
     }
 
     /**
-     * The method finds a user given an email. It is assumed that each user has a
-     * unique email address. You cannot have multiple users with the same email
+     * <h3>The method finds a user given an email.</h3>
+     * <p>
+     * It is assumed that each user has a unique email address. You cannot have
+     * multiple users with the same email
      * address.
+     * </p>
      * 
      * @param email
      * @return boolean
@@ -72,9 +76,12 @@ public class UserController {
     }
 
     /**
-     * The method finds a user given an email address. It returns a User object with
+     * <h3>The method finds a user given an email address.</h3>
+     * <p>
+     * It returns a User object with
      * prefilled data retrieved from the database. The user can be null if the user
      * does not exist in the database.
+     * </p>
      * 
      * @param email
      * @return User
