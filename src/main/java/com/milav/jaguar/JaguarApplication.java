@@ -18,7 +18,7 @@ public class JaguarApplication {
     public static void main(String[] args) throws DBException {
 
         SpringApplication.run(JaguarController.class, args);
-        LOGGER.warn("\nApp started.");
+        LOGGER.info("App started.");
 
     }
 
