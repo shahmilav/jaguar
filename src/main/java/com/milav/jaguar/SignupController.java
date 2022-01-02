@@ -61,20 +61,17 @@ public class SignupController {
             Model model, HttpSession session) throws DBException {
 
         User user = (User) session.getAttribute("user");
-        LOGGER.info("\n Someone wants to sign up.");
+        LOGGER.info("Entering register method: " + user.getEmail());
 
         if (session.getAttribute("user") != null) {
-            LOGGER.info("\n" + user.getEmail() + " did not log out, go to dashboard.");
             return "redirect:/dashboard";
         }
 
         if (userController.doesUserExist(email)) {
             model.addAttribute("error", "We already have an account for that email. Please login.");
-            LOGGER.info("\nf" + email + " tried to sign up but account exists.");
             return null;
 
         } else if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
-            LOGGER.info("\n" + email + " left fields blank on sign up.");
             model.addAttribute("error", "Please fill out all fields.");
             return null;
 
@@ -83,11 +80,8 @@ public class SignupController {
             user = userController.findUser(email);
 
             session.setAttribute("user", user);
-            LOGGER.info(firstName + " " + lastName + " has made an account");
             return "redirect:/dashboard";
 
         }
-
     }
-
 }

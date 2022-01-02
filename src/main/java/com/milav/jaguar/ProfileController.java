@@ -49,7 +49,7 @@ public class ProfileController {
     public String goToEditProfile(
             Model model, HttpSession session) throws DBException {
 
-        LOGGER.info("\nUser wants to edit profile.");
+        LOGGER.info("Entering goToEditProfile");
         User user = (User) session.getAttribute("user");
 
         if (user != null) {
@@ -69,7 +69,7 @@ public class ProfileController {
     @GetMapping("/savechanges")
     public String saveChanges(
             Model model, HttpSession session) throws DBException {
-        System.out.println("\n=========> User wants to save changes.");
+        LOGGER.info("Entering saveChanges");
         return "redirect:/profile";
 
     }
