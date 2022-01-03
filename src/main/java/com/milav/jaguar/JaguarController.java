@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class JaguarController {
 
+    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+
     /**
      * The method gets any mapping for either {@code"/"}, {@code"/index"} or
      * {@code"/login"} and shows the login page.
@@ -21,14 +23,13 @@ public class JaguarController {
      * @return String
      */
     @GetMapping(value = { "/", "/index", "/login" })
-    public String index(HttpSession session) {
+    public String index(HttpSession session) { 
 
-        User user = (User) session.getAttribute("user");
-        if (session.getAttribute("user") != null) {
+        LOGGER.info("Entering index");
+
+        if (session.getAttribute("user") != null)
             return "redirect:/dashboard";
-        } else {
+        else
             return "login";
-        }
     }
-
 }
