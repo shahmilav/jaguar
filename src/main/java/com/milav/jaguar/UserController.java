@@ -9,8 +9,13 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.springframework.stereotype.Service;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 @Service
 public class UserController {
+
+    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * <h3>The method creates an entry in the database with the given
@@ -26,6 +31,7 @@ public class UserController {
     public void createUserInDB(String firstName, String lastName, String email, String password)
             throws DBException {
 
+        LOGGER.info("Entering createUserInDB: " + email);
         MongoDatabase db = DBManager.getMongoDB();
 
         if (db.getCollection("USER_PROFILE") == null) {
@@ -48,6 +54,7 @@ public class UserController {
 
         collection.insertOne(document);
         collection.createIndex(new BasicDBObject("email", 1));
+        LOGGER.info("User created in DB: " + email);
     }
 
     /**
@@ -105,8 +112,6 @@ public class UserController {
             user.setLastName(result.getString("lastName"));
             user.setPassword(result.getString("password"));
         }
-
         return user;
     }
-
 }
