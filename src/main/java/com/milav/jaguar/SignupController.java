@@ -19,7 +19,7 @@ public class SignupController {
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
-     * The method shows the register page on the mapping "/sign-up".
+     * <h3>The method shows the register page on the mapping {@code"/sign-up"}.</h3>
      * 
      * @param model
      * @return String
@@ -34,13 +34,11 @@ public class SignupController {
      * 
      * <ol>
      * <li>If the user already has an account, we display an error message and
-     * return
-     * null.</li>
+     * return null.</li>
      * <li>If the user did not fill out all fields, we display an error message
      * and return null.</li>
      * <li>Otherwise, we create an account for the user, add them to the database,
-     * start
-     * their session, and redierct them to the dashboard.</li>
+     * start their session, and redierct them to the dashboard.</li>
      * </ol>
      * 
      * @param firstName
@@ -63,11 +61,10 @@ public class SignupController {
         User user = (User) session.getAttribute("user");
         LOGGER.info("Entering register method: " + user.getEmail());
 
-        if (session.getAttribute("user") != null) {
+        if (session.getAttribute("user") != null)
             return "redirect:/dashboard";
-        }
 
-        if (userController.doesUserExist(email)) {
+        else if (userController.doesUserExist(email)) {
             model.addAttribute("error", "We already have an account for that email. Please login.");
             return null;
 
