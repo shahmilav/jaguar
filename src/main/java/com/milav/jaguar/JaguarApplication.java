@@ -21,5 +21,4 @@ public class JaguarApplication {
         LOGGER.info("App started.");
 
     }
-
 }

@@ -26,6 +26,7 @@ public class SignupController {
      */
     @GetMapping("/sign-up")
     public String signup(Model model) {
+        LOGGER.info("Entering signup method");
         return "register";
     }
 
