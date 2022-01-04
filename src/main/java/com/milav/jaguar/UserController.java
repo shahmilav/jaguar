@@ -31,7 +31,7 @@ public class UserController {
     public void createUserInDB(String firstName, String lastName, String email, String password)
             throws DBException {
 
-        LOGGER.info("Entering createUserInDB: " + email);
+        LOGGER.info("Entering createUserInDB method: " + email);
         MongoDatabase db = DBManager.getMongoDB();
 
         if (db.getCollection("USER_PROFILE") == null) {

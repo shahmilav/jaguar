@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ public class LoginController {
     @Autowired
     private UserController userController;
     private User user;
+    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * 
@@ -46,6 +49,7 @@ public class LoginController {
             Model model, HttpSession session, HttpServletRequest request) throws DBException {
 
         user = userController.findUser(email);
+        LOGGER.info("Entering authenticate method: " + email);
 
         if (email.isBlank() || password.isBlank()) {
             model.addAttribute("error", "Please fill out all fields.");
@@ -80,9 +84,11 @@ public class LoginController {
      */
     @GetMapping("/dashboard")
     public String validateUser(Model model, HttpSession session) {
-        
+
+        LOGGER.info("Entering validateUser method");
+
         if (session != null) {
-        
+
             User user = (User) session.getAttribute("user");
 
             model.addAttribute("name", ("Welcome to Jaguar Dashboard, " + user.getFirstName() + "."));

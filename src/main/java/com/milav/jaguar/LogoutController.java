@@ -1,5 +1,7 @@
 package com.milav.jaguar;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LogoutController {
+
+    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * The method logs out the user. The method invalidates the user's session and
@@ -18,7 +22,7 @@ public class LogoutController {
      */
     @GetMapping("/logout")
     public String logoutUser(Model model, HttpSession session) {
-        System.out.println("\n=========> User logged out.");
+        LOGGER.info("Entering logoutUser method: user logged out");
 
         session.removeAttribute("user");
         session.invalidate();

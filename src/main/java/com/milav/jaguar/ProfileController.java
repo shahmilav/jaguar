@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,18 +30,19 @@ public class ProfileController {
     public String fillUpProfile(
             Model model, HttpSession session) throws DBException {
 
-        LOGGER.info("\n User wants to see profile.");
-
+        LOGGER.info("Entering fillUpProfile method");
+        LOGGER.info("User wants to see profile.");
         User user = (User) session.getAttribute("user");
         if (user != null) {
+
             String fullName = user.getFirstName() + " " + user.getLastName();
             model.addAttribute("name", fullName);
             model.addAttribute("email", user.getEmail());
-            LOGGER.info("\n" + user.getEmail() + "'s profile is shown");
+            LOGGER.info(user.getEmail() + "'s profile is shown");
             return null;
 
         } else {
-            LOGGER.info("\n User is not logged in -> redirect to login.");
+            LOGGER.info("User is not logged in -> redirect to login.");
             return "redirect:/login";
         }
     }
@@ -49,14 +51,14 @@ public class ProfileController {
     public String goToEditProfile(
             Model model, HttpSession session) throws DBException {
 
-        LOGGER.info("Entering goToEditProfile");
+        LOGGER.info("Entering goToEditProfile method");
         User user = (User) session.getAttribute("user");
 
         if (user != null) {
             model.addAttribute("firstname", user.getFirstName());
             model.addAttribute("lastname", user.getLastName());
             model.addAttribute("email", user.getEmail());
-            LOGGER.info("\nProfile saved");
+            LOGGER.info("Profile saved.");
             return null;
 
         } else {
@@ -69,7 +71,13 @@ public class ProfileController {
     @GetMapping("/savechanges")
     public String saveChanges(
             Model model, HttpSession session) throws DBException {
-        LOGGER.info("Entering saveChanges");
+        LOGGER.info("Entering saveChanges method");
+
+        /**
+         * TODO:
+         * Have user save changes, update changes in db.
+         * Also confirm password if email and/or password are changed.
+         */
         return "redirect:/profile";
 
     }
