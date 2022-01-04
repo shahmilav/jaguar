@@ -1,0 +1,72 @@
+2022-01-04 17:08:35 INFO  Starting JaguarApplication using Java 17.0.1 on Milavs-Air.verizon.net with PID 94769 (/Users/milavshah/dev/jaguarLogin/target/classes started by milavshah in /Users/milavshah/dev/jaguarLogin)
+2022-01-04 17:08:35 INFO  No active profile set, falling back to default profiles: default
+2022-01-04 17:08:35 INFO  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-04 17:08:35 INFO  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-04 17:08:35 INFO  Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2022-01-04 17:08:35 INFO  Finished Spring Data repository scanning in 3 ms. Found 0 MongoDB repository interfaces.
+2022-01-04 17:08:35 INFO  Tomcat initialized with port(s): 8080 (http)
+2022-01-04 17:08:35 INFO  Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-04 17:08:35 INFO  Starting service [Tomcat]
+2022-01-04 17:08:35 INFO  Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-01-04 17:08:35 INFO  Initializing Spring embedded WebApplicationContext
+2022-01-04 17:08:35 INFO  Root WebApplicationContext: initialization completed in 606 ms
+2022-01-04 17:08:35 INFO  Autowired annotation is not supported on static methods: public static void com.milav.jaguar.JaguarApplication.main(java.lang.String[]) throws com.milav.jaguar.DBException
+2022-01-04 17:08:35 INFO  Cluster created with settings {hosts=[127.0.0.1:27017], srvHost=cluster0.jnvid.mongodb.net, mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', requiredReplicaSetName='atlas-gsryts-shard-0'}
+2022-01-04 17:08:35 INFO  Adding discovered server cluster0-shard-00-00.jnvid.mongodb.net:27017 to client view of cluster
+2022-01-04 17:08:35 INFO  Adding discovered server cluster0-shard-00-01.jnvid.mongodb.net:27017 to client view of cluster
+2022-01-04 17:08:35 INFO  Adding discovered server cluster0-shard-00-02.jnvid.mongodb.net:27017 to client view of cluster
+2022-01-04 17:08:36 INFO  LiveReload server is running on port 35729
+2022-01-04 17:08:36 INFO  Starting ProtocolHandler ["http-nio-8080"]
+2022-01-04 17:08:36 INFO  Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-04 17:08:36 INFO  Started JaguarApplication in 1.221 seconds (JVM running for 1.655)
+2022-01-04 17:08:36 INFO  App Started.
+2022-01-04 17:08:36 INFO  Opened connection [connectionId{localValue:1, serverValue:43887}] to cluster0-shard-00-00.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Opened connection [connectionId{localValue:6, serverValue:43887}] to cluster0-shard-00-00.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Opened connection [connectionId{localValue:3, serverValue:1068405}] to cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Opened connection [connectionId{localValue:2, serverValue:1046675}] to cluster0-shard-00-02.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Opened connection [connectionId{localValue:5, serverValue:1046675}] to cluster0-shard-00-02.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Opened connection [connectionId{localValue:4, serverValue:1068405}] to cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.jnvid.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=125427542, setName='atlas-gsryts-shard-0', canonicalAddress=cluster0-shard-00-01.jnvid.mongodb.net:27017, hosts=[cluster0-shard-00-00.jnvid.mongodb.net:27017, cluster0-shard-00-01.jnvid.mongodb.net:27017, cluster0-shard-00-02.jnvid.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-01.jnvid.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='US_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff000000000000007c, setVersion=10, topologyVersion=TopologyVersion{processId=61b399004853e8333edb391c, counter=6}, lastWriteDate=Tue Jan 04 17:08:35 EST 2022, lastUpdateTimeNanos=121382957080375}
+2022-01-04 17:08:36 INFO  Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.jnvid.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=125402083, setName='atlas-gsryts-shard-0', canonicalAddress=cluster0-shard-00-00.jnvid.mongodb.net:27017, hosts=[cluster0-shard-00-00.jnvid.mongodb.net:27017, cluster0-shard-00-01.jnvid.mongodb.net:27017, cluster0-shard-00-02.jnvid.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-01.jnvid.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='US_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=10, topologyVersion=TopologyVersion{processId=61d31f43ff6e9a046e04f02b, counter=3}, lastWriteDate=Tue Jan 04 17:08:35 EST 2022, lastUpdateTimeNanos=121382957065750}
+2022-01-04 17:08:36 INFO  Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.jnvid.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=122220333, setName='atlas-gsryts-shard-0', canonicalAddress=cluster0-shard-00-02.jnvid.mongodb.net:27017, hosts=[cluster0-shard-00-00.jnvid.mongodb.net:27017, cluster0-shard-00-01.jnvid.mongodb.net:27017, cluster0-shard-00-02.jnvid.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-01.jnvid.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='US_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=10, topologyVersion=TopologyVersion{processId=61b399ec6960fb5ff7e9e8e5, counter=3}, lastWriteDate=Tue Jan 04 17:08:35 EST 2022, lastUpdateTimeNanos=121382957065750}
+2022-01-04 17:08:36 INFO  Setting max election id to 7fffffff000000000000007c from replica set primary cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Setting max set version to 10 from replica set primary cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:36 INFO  Discovered replica set primary cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:40 INFO  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-04 17:08:40 INFO  Initializing Servlet 'dispatcherServlet'
+2022-01-04 17:08:40 INFO  Completed initialization in 1 ms
+2022-01-04 17:08:40 INFO  Entering index method
+2022-01-04 17:08:46 INFO  Cluster created with settings {hosts=[127.0.0.1:27017], srvHost=cluster0.jnvid.mongodb.net, mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', requiredReplicaSetName='atlas-gsryts-shard-0'}
+2022-01-04 17:08:46 INFO  Cluster description not yet available. Waiting for 30000 ms before timing out
+2022-01-04 17:08:46 INFO  Adding discovered server cluster0-shard-00-00.jnvid.mongodb.net:27017 to client view of cluster
+2022-01-04 17:08:46 INFO  Adding discovered server cluster0-shard-00-01.jnvid.mongodb.net:27017 to client view of cluster
+2022-01-04 17:08:46 INFO  Adding discovered server cluster0-shard-00-02.jnvid.mongodb.net:27017 to client view of cluster
+2022-01-04 17:08:46 INFO  No server chosen by com.mongodb.client.internal.MongoClientDelegate$1@5b57438c from cluster description ClusterDescription{type=REPLICA_SET, connectionMode=MULTIPLE, serverDescriptions=[ServerDescription{address=cluster0-shard-00-02.jnvid.mongodb.net:27017, type=UNKNOWN, state=CONNECTING}, ServerDescription{address=cluster0-shard-00-01.jnvid.mongodb.net:27017, type=UNKNOWN, state=CONNECTING}, ServerDescription{address=cluster0-shard-00-00.jnvid.mongodb.net:27017, type=UNKNOWN, state=CONNECTING}]}. Waiting for 30000 ms before timing out
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:8, serverValue:43899}] to cluster0-shard-00-00.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:12, serverValue:1046683}] to cluster0-shard-00-02.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:10, serverValue:1068413}] to cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:7, serverValue:43899}] to cluster0-shard-00-00.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-00.jnvid.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=68240667, setName='atlas-gsryts-shard-0', canonicalAddress=cluster0-shard-00-00.jnvid.mongodb.net:27017, hosts=[cluster0-shard-00-00.jnvid.mongodb.net:27017, cluster0-shard-00-01.jnvid.mongodb.net:27017, cluster0-shard-00-02.jnvid.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-01.jnvid.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='US_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=10, topologyVersion=TopologyVersion{processId=61d31f43ff6e9a046e04f02b, counter=3}, lastWriteDate=Tue Jan 04 17:08:46 EST 2022, lastUpdateTimeNanos=121393135714500}
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:11, serverValue:1046683}] to cluster0-shard-00-02.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:9, serverValue:1068413}] to cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-02.jnvid.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=68984584, setName='atlas-gsryts-shard-0', canonicalAddress=cluster0-shard-00-02.jnvid.mongodb.net:27017, hosts=[cluster0-shard-00-00.jnvid.mongodb.net:27017, cluster0-shard-00-01.jnvid.mongodb.net:27017, cluster0-shard-00-02.jnvid.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-01.jnvid.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='US_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=10, topologyVersion=TopologyVersion{processId=61b399ec6960fb5ff7e9e8e5, counter=3}, lastWriteDate=Tue Jan 04 17:08:46 EST 2022, lastUpdateTimeNanos=121393136465333}
+2022-01-04 17:08:46 INFO  Monitor thread successfully connected to server with description ServerDescription{address=cluster0-shard-00-01.jnvid.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=68884459, setName='atlas-gsryts-shard-0', canonicalAddress=cluster0-shard-00-01.jnvid.mongodb.net:27017, hosts=[cluster0-shard-00-00.jnvid.mongodb.net:27017, cluster0-shard-00-01.jnvid.mongodb.net:27017, cluster0-shard-00-02.jnvid.mongodb.net:27017], passives=[], arbiters=[], primary='cluster0-shard-00-01.jnvid.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='US_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff000000000000007c, setVersion=10, topologyVersion=TopologyVersion{processId=61b399004853e8333edb391c, counter=6}, lastWriteDate=Tue Jan 04 17:08:46 EST 2022, lastUpdateTimeNanos=121393136543541}
+2022-01-04 17:08:46 INFO  Setting max election id to 7fffffff000000000000007c from replica set primary cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Setting max set version to 10 from replica set primary cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Discovered replica set primary cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Opened connection [connectionId{localValue:13, serverValue:1068418}] to cluster0-shard-00-01.jnvid.mongodb.net:27017
+2022-01-04 17:08:46 INFO  Entering authenticate method: cottonsheep@jellycat.com
+2022-01-04 17:08:46 INFO  Entering validateUser method
+2022-01-04 17:08:51 INFO  Entering fillUpProfile method
+2022-01-04 17:08:51 INFO  User wants to see profile.
+2022-01-04 17:08:51 INFO  cottonsheep@jellycat.com's profile is shown
+2022-01-04 17:08:54 INFO  Entering goToEditProfile method
+2022-01-04 17:08:54 INFO  Profile saved.
+2022-01-04 17:08:59 INFO  Entering saveChanges method
+2022-01-04 17:08:59 INFO  Entering fillUpProfile method
+2022-01-04 17:08:59 INFO  User wants to see profile.
+2022-01-04 17:08:59 INFO  cottonsheep@jellycat.com's profile is shown
+2022-01-04 17:09:09 INFO  Entering index method
+2022-01-04 17:09:09 INFO  Entering validateUser method
+2022-01-04 17:09:12 INFO  Entering logoutUser method: user logged out
+2022-01-04 17:09:12 INFO  Entering index method
