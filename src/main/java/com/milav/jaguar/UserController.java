@@ -53,7 +53,7 @@ public class UserController {
         document.put("createDateTime", date);
         document.put("updateDateTime", date);
         document.put("lastLoginDateTime", date);
-
+ 
         collection.insertOne(document);
         collection.createIndex(new BasicDBObject("email", 1));
         LOGGER.info("User created in DB: " + email);
