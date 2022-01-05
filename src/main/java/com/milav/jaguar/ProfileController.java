@@ -48,7 +48,9 @@ public class ProfileController {
     }
 
     /**
-     * <p>Takes you to the edit profile page.</p>
+     * <p>
+     * Takes you to the edit profile page.
+     * </p>
      * 
      * @param model
      * @param session
@@ -74,7 +76,9 @@ public class ProfileController {
     }
 
     /**
-     * <p>The method saves changes entered in the edit profile page.</p>
+     * <p>
+     * The method saves changes entered in the edit profile page.
+     * </p>
      * 
      * @param model
      * @param session
