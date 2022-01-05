@@ -47,6 +47,14 @@ public class ProfileController {
         }
     }
 
+    /**
+     * <p>Takes you to the edit profile page.</p>
+     * 
+     * @param model
+     * @param session
+     * @return
+     * @throws DBException
+     */
     @GetMapping("/editprofile")
     public String goToEditProfile(
             Model model, HttpSession session) throws DBException {
@@ -58,27 +66,32 @@ public class ProfileController {
             model.addAttribute("firstname", user.getFirstName());
             model.addAttribute("lastname", user.getLastName());
             model.addAttribute("email", user.getEmail());
-            LOGGER.info("Profile saved.");
             return null;
-
         } else {
-
             LOGGER.info("\nUser not logged in, back to login.");
             return "redirect:/login";
         }
     }
 
+    /**
+     * <p>The method saves changes entered in the edit profile page.</p>
+     * 
+     * @param model
+     * @param session
+     * @return
+     * @throws DBException
+     */
     @GetMapping("/savechanges")
     public String saveChanges(
             Model model, HttpSession session) throws DBException {
         LOGGER.info("Entering saveChanges method");
-
         /**
          * TODO:
          * Have user save changes, update changes in db.
          * Also confirm password if email and/or password are changed.
          */
-        return "redirect:/profile";
 
+        // LOGGER.info("Profile saved.");
+        return "redirect:/profile";
     }
 }

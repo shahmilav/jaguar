@@ -18,8 +18,10 @@ public class UserController {
     private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
-     * <h3>The method creates an entry in the database with the given
-     * information.</h3>
+     * <p>
+     * The method creates an entry in the database with the given
+     * information.
+     * </p>
      * 
      * @param firstName
      * @param lastName
@@ -113,5 +115,20 @@ public class UserController {
             user.setPassword(result.getString("password"));
         }
         return user;
+    }
+
+    /**
+     * <p>
+     * The method finds a user in the database and edits the entry.
+     * </p>
+     * 
+     * @param email
+     * @throws DBException
+     */
+    public User editUser(String email) throws DBException {
+        User user = findUser(email);
+
+        return user;
+
     }
 }
