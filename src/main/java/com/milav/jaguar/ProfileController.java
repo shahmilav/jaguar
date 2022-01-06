@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProfileController {
 
-    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
     @Autowired
     private UserController userController;
     @Autowired
     private JaguarUtils jaguarUtils;
+    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * <h3>The method gets the current user from the session.</h3>
@@ -81,6 +81,11 @@ public class ProfileController {
     }
 
     /**
+     * <h3>
+     * Saves the changes the user made to their profile.</h3>
+     * <p>
+     * Pretty much the most complicated method.
+     * </p>
      * 
      * @param firstname
      * @param lastname
@@ -112,11 +117,6 @@ public class ProfileController {
 
             session.removeAttribute("user");
             session.setAttribute("user", user);
-            /**
-             * TODO:
-             * Have user save changes, update changes in db.
-             * Also confirm password if email and/or password are changed.
-             */
 
             LOGGER.info("Profile saved: NEW INFO ==> Name: " + user.getFirstName() + " " + user.getLastName()
                     + ", New email: "
@@ -127,9 +127,15 @@ public class ProfileController {
         } else if (currentPassword.isEmpty()) {
             LOGGER.info("User did not fill out current password.");
             model.addAttribute("error", "Please fill out current password.");
+            model.addAttribute("firstname", oldInfo.getFirstName());
+            model.addAttribute("lastname", oldInfo.getLastName());
+            model.addAttribute("email", oldInfo.getEmail());
             return null;
         } else {
             model.addAttribute("error", "Please enter correct password.");
+            model.addAttribute("firstname", oldInfo.getFirstName());
+            model.addAttribute("lastname", oldInfo.getLastName());
+            model.addAttribute("email", oldInfo.getEmail());
             return null;
         }
     }

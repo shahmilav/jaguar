@@ -87,7 +87,7 @@ public class LoginController {
 
         LOGGER.info("Entering validateUser method");
 
-        if (session != null) {
+        if (session != null && user != null) {
 
             User user = (User) session.getAttribute("user");
 
