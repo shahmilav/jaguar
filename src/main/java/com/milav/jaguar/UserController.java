@@ -7,6 +7,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.apache.logging.log4j.Logger;
@@ -16,6 +17,8 @@ import org.apache.logging.log4j.LogManager;
 public class UserController {
 
     private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    @Autowired
+    private JaguarUtils jaguarUtils;
 
     /**
      * <p>
@@ -53,7 +56,7 @@ public class UserController {
         document.put("createDateTime", date);
         document.put("updateDateTime", date);
         document.put("lastLoginDateTime", date);
- 
+
         collection.insertOne(document);
         collection.createIndex(new BasicDBObject("email", 1));
         LOGGER.info("User created in DB: " + email);
@@ -123,12 +126,37 @@ public class UserController {
      * </p>
      * 
      * @param email
+     * @return User
      * @throws DBException
      */
-    public User editUser(String email) throws DBException {
-        User user = findUser(email);
+    public User updateUserInDB(User oldInfo, String firstname, String lastname, String email, String password)
+            throws DBException {
 
-        return user;
+        MongoDatabase db = DBManager.getMongoDB();
+        MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
+
+        BasicDBObject searchQuery = new BasicDBObject().append("email", oldInfo.getEmail());
+        BasicDBObject newDocument = new BasicDBObject();
+
+        newDocument.append("$set", new BasicDBObject().append("firstName", firstname));
+        collection.updateOne(searchQuery, newDocument);
+        LOGGER.info(newDocument);
+
+        newDocument.append("$set", new BasicDBObject().append("lastName", lastname));
+        collection.updateOne(searchQuery, newDocument);
+        LOGGER.info(newDocument);
+
+        newDocument.append("$set", new BasicDBObject().append("password", password));
+        collection.updateOne(searchQuery, newDocument);
+        LOGGER.info(newDocument);
+
+        newDocument.append("$set", new BasicDBObject().append("email", email));
+        collection.updateOne(searchQuery, newDocument);
+        LOGGER.info(newDocument);
+
+        collection.updateOne(searchQuery, newDocument);
+
+        return jaguarUtils.fillUpUser(firstname, lastname, email, password);
 
     }
 }
