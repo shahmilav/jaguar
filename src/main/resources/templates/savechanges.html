@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+  <hzead>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -41,15 +41,18 @@
           </li>
         </ul>
       </div>
-    </nav>  
+    </nav>
 
     <div class="col-lg-8 mx-auto p-3 py-md-5">
       <main
         class="form-signin w-100"
         style="width: 100%; max-width: 330px; padding: 15px; margin: auto"
-      >
+      > 
         <form action="/savechanges">
-          <h1 class="w-100">Edit Profile</h1>
+          <h1>Edit Profile</h1>
+          <div class="alert alert-warning w-100" role="alert">
+            <p class="mb-0" th:text="${error}"></p>
+          </div>
           <br />
           <h4>First Name:</h4>
           <input class="w-100" th:value="${firstname}" name="firstname" />
@@ -77,3 +80,4 @@
     </div>
   </body>
 </html>
+

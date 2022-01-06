@@ -38,13 +38,16 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/">Log Out</a>
+            <a class="nav-link" href="/logout">Log Out</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="col-lg-8 mx-auto p-3 py-md-5">
-      <main class="form-signin">
+      <main
+        class="form-signin"
+        style="width: 100%; max-width: 330px; padding: 15px; margin: auto"
+      >
         <h1>Your Profile</h1>
         <br />
         <h3>Name:</h3>
@@ -55,9 +58,7 @@
         <br />
 
         <form action="/editprofile">
-          <button class="btn w-25 btn-warning">
-            Edit Profile
-          </button>
+          <button class="btn w-100 btn-warning">Edit Profile</button>
         </form>
       </main>
     </div>
