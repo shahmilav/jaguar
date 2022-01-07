@@ -2,11 +2,15 @@ package com.milav.jaguar;
 
 import java.util.Date;
 
+import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
+
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -157,6 +161,18 @@ public class UserController {
         collection.updateOne(searchQuery, newDocument);
 
         return jaguarUtils.fillUpUser(firstname, lastname, email, password);
+
+    }
+
+    public void deleteUserFromDB(String email) throws DBException {
+
+        LOGGER.info("Entering deleteUserFromDB");
+        MongoDatabase db = DBManager.getMongoDB();
+        MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
+
+        Bson query = eq("email", email);
+        collection.deleteOne(query);
+        LOGGER.info("User deleted: " + email);
 
     }
 }
