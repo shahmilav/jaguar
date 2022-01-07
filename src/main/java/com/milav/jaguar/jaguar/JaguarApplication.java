@@ -1,6 +1,9 @@
-package com.milav.jaguar;
+package com.milav.jaguar.jaguar;
 
 import org.apache.logging.log4j.Logger;
+
+import com.milav.jaguar.database.DBException;
+
 import org.apache.logging.log4j.LogManager;
 
 import org.springframework.beans.factory.annotation.Autowired;

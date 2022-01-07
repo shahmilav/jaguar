@@ -1,9 +1,14 @@
-package com.milav.jaguar;
+package com.milav.jaguar.login;
 
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.milav.jaguar.database.DBException;
+import com.milav.jaguar.jaguar.JaguarApplication;
+import com.milav.jaguar.user.User;
+import com.milav.jaguar.user.UserController;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
