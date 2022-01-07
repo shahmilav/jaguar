@@ -1,4 +1,4 @@
-package com.milav.jaguar;
+package com.milav.jaguar.jaguar;
 
 import javax.servlet.http.HttpSession;
 

@@ -1,29 +1,27 @@
-package com.milav.jaguar;
+package com.milav.jaguar.account;
 
 import javax.servlet.http.HttpSession;
 
+import com.milav.jaguar.database.DBException;
+import com.milav.jaguar.jaguar.JaguarApplication;
+import com.milav.jaguar.user.User;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProfileController {
 
-    @Autowired
-    private UserController userController;
-    @Autowired
-    private JaguarUtils jaguarUtils;
     private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
      * <h3>The method gets the current user from the session.</h3>
      * <p>
      * If the user is null (has not signed in), we redirect them to the login page.
-     * Otherwis e, we fill in their information on the page.
+     * Otherwise, we fill in their information on the page.
      * </p>
      * 
      * @param model
@@ -38,6 +36,7 @@ public class ProfileController {
         LOGGER.info("Entering fillUpProfile method");
         LOGGER.info("User wants to see profile.");
         User user = (User) session.getAttribute("user");
+
         if (user != null) {
 
             String fullName = user.getFirstName() + " " + user.getLastName();

@@ -1,9 +1,12 @@
-package com.milav.jaguar;
+package com.milav.jaguar.login;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpSession;
+
+import com.milav.jaguar.jaguar.JaguarApplication;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 

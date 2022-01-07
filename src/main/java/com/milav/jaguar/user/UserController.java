@@ -1,16 +1,20 @@
-package com.milav.jaguar;
+package com.milav.jaguar.user;
 
 import java.util.Date;
 
 import static com.mongodb.client.model.Filters.eq;
+
+import com.milav.jaguar.database.DBException;
+import com.milav.jaguar.database.DBManager;
+import com.milav.jaguar.jaguar.JaguarApplication;
+import com.milav.jaguar.utils.JaguarUtils;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.result.DeleteResult;
-
 import org.bson.Document;
 import org.bson.conversions.Bson;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
