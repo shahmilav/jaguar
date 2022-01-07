@@ -1,4 +1,4 @@
-package com.milav.jaguar.authenticate;
+package com.milav.jaguar.login;
 
 import javax.servlet.http.HttpSession;
 

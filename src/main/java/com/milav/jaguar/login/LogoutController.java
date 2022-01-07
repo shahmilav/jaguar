@@ -1,4 +1,4 @@
-package com.milav.jaguar.authenticate;
+package com.milav.jaguar.login;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
