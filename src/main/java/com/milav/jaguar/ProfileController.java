@@ -23,7 +23,7 @@ public class ProfileController {
      * <h3>The method gets the current user from the session.</h3>
      * <p>
      * If the user is null (has not signed in), we redirect them to the login page.
-     * Otherwise, we fill in their information on the page.
+     * Otherwis e, we fill in their information on the page.
      * </p>
      * 
      * @param model
@@ -80,63 +80,4 @@ public class ProfileController {
         }
     }
 
-    /**
-     * <h3>
-     * Saves the changes the user made to their profile.</h3>
-     * <p>
-     * Pretty much the most complicated method.
-     * </p>
-     * 
-     * @param firstname
-     * @param lastname
-     * @param currentPassword
-     * @param newEmail
-     * @param newPassword
-     * @param model
-     * @param session
-     * @return
-     * @throws DBException
-     */
-    @GetMapping("/savechanges")
-    public String saveChanges(
-            @RequestParam("firstname") String firstname,
-            @RequestParam("lastname") String lastname,
-            @RequestParam("currentPassword") String currentPassword,
-            @RequestParam("email") String newEmail,
-            @RequestParam("newPassword") String newPassword, Model model, HttpSession session)
-            throws DBException {
-
-        User oldInfo = (User) session.getAttribute("user");
-        LOGGER.info("Entering saveChanges method");
-        LOGGER.info("Name: " + firstname + " " + lastname + ", Current Password: "
-                + currentPassword + ", New email: " + newEmail + ", new Password: " + newPassword);
-
-        if (jaguarUtils.passwordCheck(currentPassword, oldInfo.getPassword())) {
-
-            User user = userController.updateUserInDB(oldInfo, firstname, lastname, newEmail, newPassword);
-
-            session.removeAttribute("user");
-            session.setAttribute("user", user);
-
-            LOGGER.info("Profile saved: NEW INFO ==> Name: " + user.getFirstName() + " " + user.getLastName()
-                    + ", New email: "
-                    + user.getEmail() + ", new Password: " + user.getPassword());
-
-            return "redirect:/profile";
-
-        } else if (currentPassword.isEmpty()) {
-            LOGGER.info("User did not fill out current password.");
-            model.addAttribute("error", "Please fill out current password.");
-            model.addAttribute("firstname", oldInfo.getFirstName());
-            model.addAttribute("lastname", oldInfo.getLastName());
-            model.addAttribute("email", oldInfo.getEmail());
-            return null;
-        } else {
-            model.addAttribute("error", "Please enter correct password.");
-            model.addAttribute("firstname", oldInfo.getFirstName());
-            model.addAttribute("lastname", oldInfo.getLastName());
-            model.addAttribute("email", oldInfo.getEmail());
-            return null;
-        }
-    }
 }

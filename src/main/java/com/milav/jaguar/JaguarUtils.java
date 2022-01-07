@@ -1,6 +1,7 @@
 package com.milav.jaguar;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 public class JaguarUtils {
@@ -21,5 +22,11 @@ public class JaguarUtils {
         user.setEmail(email);
         user.setPassword(password);
         return user;
+    }
+
+    public void fillUpInfo(Model model, String firstname, String lastname, String email) {
+        model.addAttribute("firstname", firstname);
+        model.addAttribute("lastname", lastname);
+        model.addAttribute("email", email);
     }
 }
