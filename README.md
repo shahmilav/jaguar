@@ -14,6 +14,8 @@ It has a login and sign up page to access the dashboard.
 ## Installation
 To install, clone the git repo.
 ```git clone https://github.com/shahmilav/jaguar```
+
+## Running the Program
 To run the program, type ```mvn springboot:run``` in the command line and go to _localhost:8080_ in a browser. The app should be running.
 
 ## Frameworks Used
