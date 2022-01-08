@@ -9,10 +9,12 @@ import org.springframework.ui.Model;
 public class JaguarUtils {
 
     public boolean passwordCheck(String password1, String password2) {
+
         if (password1.equals(password2))
             return true;
         else
             return false;
+
     }
 
     public User fillUpUser(String firstName, String lastName, String email, String password) {
@@ -24,7 +26,7 @@ public class JaguarUtils {
         return user;
     }
 
-    public void fillUpInfoOnPage(Model model, String firstname, String lastname, String email) {
+    public void fillUpInfo(Model model, String firstname, String lastname, String email) {
         model.addAttribute("firstname", firstname);
         model.addAttribute("lastname", lastname);
         model.addAttribute("email", email);

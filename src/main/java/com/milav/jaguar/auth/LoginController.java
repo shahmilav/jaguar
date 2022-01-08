@@ -1,12 +1,12 @@
-package com.milav.jaguar.login;
+package com.milav.jaguar.auth;
 
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.milav.jaguar.application.JaguarApplication;
 import com.milav.jaguar.database.DBException;
-import com.milav.jaguar.jaguar.JaguarApplication;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
 
@@ -92,7 +92,7 @@ public class LoginController {
 
         LOGGER.info("Entering validateUser method");
 
-        if (session != null && user != null) {
+        if (session != null) {
 
             User user = (User) session.getAttribute("user");
 

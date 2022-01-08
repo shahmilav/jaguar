@@ -1,0 +1,12 @@
+com/milav/jaguar/User.class
+com/milav/jaguar/LogoutController.class
+com/milav/jaguar/SignupController.class
+com/milav/jaguar/ProfileController.class
+com/milav/jaguar/UserController.class
+com/milav/jaguar/JaguarApplication.class
+com/milav/jaguar/JaguarUtils.class
+com/milav/jaguar/DBManager.class
+com/milav/jaguar/JaguarController.class
+com/milav/jaguar/DBException.class
+com/milav/jaguar/AccountController.class
+com/milav/jaguar/LoginController.class

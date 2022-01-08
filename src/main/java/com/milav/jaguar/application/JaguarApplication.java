@@ -1,4 +1,4 @@
-package com.milav.jaguar.jaguar;
+package com.milav.jaguar.application;
 
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class JaguarApplication {
