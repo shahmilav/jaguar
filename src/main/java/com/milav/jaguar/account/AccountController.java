@@ -2,8 +2,8 @@ package com.milav.jaguar.account;
 
 import javax.servlet.http.HttpSession;
 
+import com.milav.jaguar.application.JaguarApplication;
 import com.milav.jaguar.database.DBException;
-import com.milav.jaguar.jaguar.JaguarApplication;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
 import com.milav.jaguar.utils.JaguarUtils;
@@ -35,7 +35,7 @@ public class AccountController {
      * 
      * @param firstname
      * @param lastname
-     * @param currentPasswordInput
+     * @param currentPassword
      * @param newEmail
      * @param newPassword
      * @param model
@@ -47,59 +47,41 @@ public class AccountController {
     public String saveChanges(
             @RequestParam("firstname") String firstname,
             @RequestParam("lastname") String lastname,
-            @RequestParam("currentPassword") String currentPasswordInput,
+            @RequestParam("currentPassword") String currentPassword,
             @RequestParam("email") String newEmail,
             @RequestParam("newPassword") String newPassword, Model model, HttpSession session)
             throws DBException {
 
         User oldInfo = (User) session.getAttribute("user");
         LOGGER.info("Entering saveChanges method");
-        LOGGER.info("Name: " + firstname + " " + lastname + ", Current Password (that user entered): "
-                + currentPasswordInput + ", New email: " + newEmail + ", new Password: " + newPassword);
+        LOGGER.info("Name: " + firstname + " " + lastname + ", Current Password: "
+                + currentPassword + ", New email: " + newEmail + ", new Password: " + newPassword);
 
-        if (utils.passwordCheck(currentPasswordInput, oldInfo.getPassword())) {
+        if (utils.passwordCheck(currentPassword, oldInfo.getPassword())) {
 
             User user = userController.updateUserInDB(oldInfo, firstname, lastname, newEmail, newPassword);
 
+            session.removeAttribute("user");
             session.setAttribute("user", user);
 
             LOGGER.info("Profile saved: NEW INFO ==> Name: " + user.getFirstName() + " " + user.getLastName()
-                    + ", Email: "
-                    + user.getEmail() + ", Password: " + user.getPassword());
+                    + ", New email: "
+                    + user.getEmail() + ", new Password: " + user.getPassword());
 
             return "redirect:/profile";
 
-        } else if (currentPasswordInput.isBlank()) {
+        } else if (currentPassword.isBlank()) {
             LOGGER.info("User did not fill out current password.");
             model.addAttribute("error", "Please fill out current password.");
-            utils.fillUpInfoOnPage(model, oldInfo.getFirstName(), oldInfo.getLastName(), oldInfo.getEmail());
+            utils.fillUpInfo(model, oldInfo.getFirstName(), oldInfo.getLastName(), oldInfo.getEmail());
             return null;
         } else {
             model.addAttribute("error", "Please enter correct password.");
-            utils.fillUpInfoOnPage(model, oldInfo.getFirstName(), oldInfo.getLastName(), oldInfo.getEmail());
+            utils.fillUpInfo(model, oldInfo.getFirstName(), oldInfo.getLastName(), oldInfo.getEmail());
             return null;
         }
     }
 
-    /**
-     * <h3>
-     * Deletes a user's account.
-     * </h3>
-     * <p>
-     * <ul>
-     * <li>If user is null, go to login page. <i>This should not
-     * happen, and means that something is wrong.</i></li>
-     * <li>If user enters the correct password, delete account.</li>
-     * <li>If user enters no password, show an error messsage.</li>
-     * <li>If user enters an incorrect password, show an error messsage.</li>
-     * </ul>
-     * 
-     * @param password
-     * @param model
-     * @param session
-     * @return String
-     * @throws DBException
-     */
     @GetMapping("/removeaccount")
     public String deleteAccount(
             @RequestParam("password") String password,
@@ -108,8 +90,8 @@ public class AccountController {
         User user = (User) session.getAttribute("user");
 
         if (user == null) {
-            LOGGER.warn("In deleteAccount: user is null!");
-            return "/login";
+            LOGGER.warn("User is null!");
+            return "/error";
         }
 
         if (utils.passwordCheck(password, user.getPassword())) {
@@ -122,18 +104,13 @@ public class AccountController {
         } else {
             model.addAttribute("error", "Incorrect password, please try again.");
             return null;
+
         }
     }
 
-    /**
-     * <p>
-     * Takes you to the delete account page.
-     * </p>
-     * 
-     * @return String
-     */
     @GetMapping("/deleteaccount")
     public String goToDeleteAccount() {
         return null;
     }
+
 }

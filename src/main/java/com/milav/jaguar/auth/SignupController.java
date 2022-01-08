@@ -1,9 +1,9 @@
-package com.milav.jaguar.login;
+package com.milav.jaguar.auth;
 
 import javax.servlet.http.HttpSession;
 
+import com.milav.jaguar.application.JaguarApplication;
 import com.milav.jaguar.database.DBException;
-import com.milav.jaguar.jaguar.JaguarApplication;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
 
