@@ -11,8 +11,14 @@ It has a login and sign up page to access the dashboard.
   - Captcha
   - Forgot password functionallity
 
+## Installation
+To install, clone the git repo.
+```git clone https://github.com/shahmilav/jaguar```
+To run the program, type ```mvn springboot:run``` in the command line and go to _localhost:8080_. The app should be running.
+
 ## Frameworks Used
 This project uses
+- [Apache Maven](https://maven.apache.org/)
 - [Spring](https://spring.io/)
 - [Thymeleaf](https://www.thymeleaf.org/)
 - [MongoDB](https://www.mongodb.com/)
