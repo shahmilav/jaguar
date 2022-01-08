@@ -17,6 +17,6 @@ This project uses
 - [Thymeleaf](https://www.thymeleaf.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Apache Log4j 2](https://logging.apache.org/log4j/2.x/)
-All dependencies are in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file.
+- __All dependencies are in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file.__
 
 
