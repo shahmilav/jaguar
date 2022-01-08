@@ -99,8 +99,8 @@ public class UserController {
     /**
      * <h3>The method finds a user given an email address.</h3>
      * <p>
-     * It returns a User object with
-     * prefilled data retrieved from the database. The user can be null if the user
+     * It returns a User object with prefilled data retrieved
+     * from the database. The user can be null if the user
      * does not exist in the database.
      * </p>
      * 

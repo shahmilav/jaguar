@@ -65,7 +65,7 @@ public class SignupController {
             Model model, HttpSession session) throws DBException {
 
         User user = (User) session.getAttribute("user");
-        LOGGER.info("Entering register method: " + user.getEmail());
+        LOGGER.info("Entering register method: " + email);
 
         if (session.getAttribute("user") != null)
             return "redirect:/dashboard";
