@@ -26,5 +26,3 @@ This project uses
 - [MongoDB](https://www.mongodb.com/)
 - [Apache Log4j 2](https://logging.apache.org/log4j/2.x/)
 - _All dependencies are in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file._
-
-A
