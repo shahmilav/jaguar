@@ -1,4 +1,4 @@
-# <img src="https://github.com/shahmilav/jaguar/blob/main/src/main/resources/static/logo.png" width="75" height="75" /> Jaguar
+# <img src="https://github.com/shahmilav/jaguar/blob/master/src/main/resources/static/logo.png" width="75" height="75" /> Jaguar
 Jaguar is an open source Java project that aims to be a fully funtioning web app.
 It has a login and sign up page to access the dashboard.
 
