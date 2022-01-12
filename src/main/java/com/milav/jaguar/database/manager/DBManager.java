@@ -1,20 +1,23 @@
-package com.milav.jaguar.database;
+package com.milav.jaguar.database.manager;
 
+import com.milav.jaguar.application.app.JaguarApplication;
+import com.milav.jaguar.database.errors.DBException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+import org.apache.logging.log4j.LogManager;
 
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author jigarshah
  */
 public class DBManager {
 
+    private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
     private static MongoDatabase mongoDB = null;
     private static DBManager dbManager = null;
+
 
     private DBManager() throws UnknownHostException {
         init();
@@ -25,9 +28,8 @@ public class DBManager {
             try {
                 dbManager = new DBManager();
             } catch (UnknownHostException ex) {
-                Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
-                throw new DBException(ex.getMessage(),
-                        ex.fillInStackTrace());
+                LOGGER.error(ex);
+                throw new DBException(ex.getMessage(), ex.fillInStackTrace());
             }
         }
 

@@ -1,4 +1,4 @@
-package com.milav.jaguar.database;
+package com.milav.jaguar.database.errors;
 
 public class DBException extends Exception {
 

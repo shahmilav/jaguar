@@ -1,45 +1,40 @@
 package com.milav.jaguar.account;
 
-import javax.servlet.http.HttpSession;
-
-import com.milav.jaguar.application.JaguarApplication;
-import com.milav.jaguar.database.DBException;
+import com.milav.jaguar.application.app.JaguarApplication;
+import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
 import com.milav.jaguar.utils.JaguarUtils;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class ProfileController {
 
-    @Autowired
-    private UserController userController;
-    @Autowired
-    private JaguarUtils jaguarUtils;
-    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    private final UserController userController = new UserController();
+    private final JaguarUtils jaguarUtils = new JaguarUtils();
 
     /**
      * <h3>The method gets the current user from the session.</h3>
      * <p>
      * If the ser is null (has not signed in), we redirect them to the login page.
-     * Otherwis e, we fill in their information on the page.
+     * Otherwise, we fill in their information on the page.
      * </p>
-     * 
-     * @param model
-     * @param session
+     *
+     * @param model   mode
+     * @param session HttpSession
      * @return String
-     * @throws DBException
+     * @throws DBException since we are connecting to the database
      */
     @GetMapping("/profile")
-    public String fillUpProfile(
-            Model model, HttpSession session) throws DBException {
+    public String fillUpProfile(Model model, @NotNull HttpSession session) throws DBException {
 
         LOGGER.info("Entering fillUpProfile method");
         LOGGER.info("User wants to see profile.");
@@ -62,15 +57,12 @@ public class ProfileController {
      * <p>
      * Takes you to the edit profile page.
      * </p>
-     * 
-     * @param model
-     * @param session
-     * @return
-     * @throws DBException
+     *
+     * @param model   model
+     * @param session HttpSession
      */
     @GetMapping("/editprofile")
-    public String goToEditProfile(
-            Model model, HttpSession session) throws DBException {
+    public String goToEditProfile(Model model, @NotNull HttpSession session) {
 
         LOGGER.info("Entering goToEditProfile method");
         User user = (User) session.getAttribute("user");
