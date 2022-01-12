@@ -1,7 +1,6 @@
 package com.milav.jaguar.user;
 
 /**
- *
  * @author milavshah
  */
 
@@ -32,7 +31,7 @@ public class User {
 
     /**
      * The method returns the user's email.
-     * 
+     *
      * @return String
      */
     public String getEmail() {
@@ -41,8 +40,6 @@ public class User {
 
     /**
      * The method sets the user's email.
-     * 
-     * @return void
      */
     public void setEmail(String email) {
         this.email = email;
@@ -50,7 +47,7 @@ public class User {
 
     /**
      * The method returns the user's password.
-     * 
+     *
      * @return String
      */
     public String getPassword() {
@@ -59,8 +56,6 @@ public class User {
 
     /**
      * The method sets the user's password.
-     * 
-     * @return void
      */
     public void setPassword(String password) {
         this.password = password;
@@ -68,7 +63,7 @@ public class User {
 
     /**
      * The method returns the user's first name.
-     * 
+     *
      * @return String
      */
     public String getFirstName() {
@@ -77,8 +72,6 @@ public class User {
 
     /**
      * The method sets the user's first name.
-     * 
-     * @return void
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -86,7 +79,7 @@ public class User {
 
     /**
      * The method returns the user's last name.
-     * 
+     *
      * @return String
      */
     public String getLastName() {
@@ -95,8 +88,6 @@ public class User {
 
     /**
      * The method sets the user's last name.
-     * 
-     * @return void
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -104,13 +95,11 @@ public class User {
 
     /**
      * The method prints the user's data.
-     * 
+     *
      * @return String
      */
     @Override
     public String toString() {
-        return String.format(
-                "User[email=%s, firstName='%s', lastName='%s']",
-                email, firstName, lastName);
+        return String.format("User[email=%s, firstName='%s', lastName='%s']", email, firstName, lastName);
     }
 }

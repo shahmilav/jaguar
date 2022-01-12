@@ -1,36 +1,29 @@
-package com.milav.jaguar.auth;
+package com.milav.jaguar.auth.login;
 
-import org.springframework.stereotype.Controller;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.milav.jaguar.application.JaguarApplication;
-import com.milav.jaguar.database.DBException;
+import com.milav.jaguar.application.app.JaguarApplication;
+import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
-    @Autowired
-    private UserController userController;
-    private User user;
-    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    private final UserController userController = new UserController();
+
 
     /**
-     * 
      * The method decides what to do when the login form is submitted.
      * If the method returns null, the page does not change.
-     * 
      * If the user is already logged in, redirect them to dashboard.
      * If the user does not exist, it sends an error message and returns null.
      * If any fields are blank, it sends an error message and returns null.
@@ -38,22 +31,18 @@ public class LoginController {
      * dashboard and starts their session.
      * If the user enters the wrong password, an error message is shown and the
      * method returns null.
-     * 
-     * @param email
-     * @param password
-     * @param model
-     * @param session
-     * @param request
+     *
+     * @param email    the email entered
+     * @param password the password entered
+     * @param model    model
+     * @param session  HttpSession
      * @return String
-     * @throws DBException
+     * @throws DBException since we are connecting to the database to authenticate user
      */
     @PostMapping("/login")
-    public String authenticate(
-            @RequestParam(name = "email") String email,
-            @RequestParam(name = "password") String password,
-            Model model, HttpSession session, HttpServletRequest request) throws DBException {
+    public String authenticate(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, Model model, HttpSession session) throws DBException {
 
-        user = userController.findUser(email);
+        User user = userController.findUser(email);
         LOGGER.info("Entering authenticate method: " + email);
 
         if (email.isBlank() || password.isBlank()) {
@@ -83,8 +72,8 @@ public class LoginController {
      * in, the method redirects them to the login page. Otherwise, we ensure the
      * user exists. If they exist, we show a welcome message on the
      * dashboard. If they are null, we redirect them to the login page.
-     * 
-     * @param model
+     *
+     * @param model model
      * @return String
      */
     @GetMapping("/dashboard")
@@ -99,9 +88,7 @@ public class LoginController {
             model.addAttribute("name", ("Welcome to Jaguar Dashboard, " + user.getFirstName() + "."));
             return "dashboard";
 
-        } else {
-            return "redirect:/login";
-        }
+        } else return "redirect:/login";
     }
 
 }
