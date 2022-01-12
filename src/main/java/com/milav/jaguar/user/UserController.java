@@ -1,56 +1,49 @@
 package com.milav.jaguar.user;
 
-import java.util.Date;
-
-import static com.mongodb.client.model.Filters.eq;
-
-import com.milav.jaguar.application.JaguarApplication;
-import com.milav.jaguar.database.DBException;
-import com.milav.jaguar.database.DBManager;
+import com.milav.jaguar.application.app.JaguarApplication;
+import com.milav.jaguar.database.errors.DBException;
+import com.milav.jaguar.database.manager.DBManager;
+import com.milav.jaguar.user.util.UserUtil;
 import com.milav.jaguar.utils.JaguarUtils;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import java.util.Date;
+
+import static com.mongodb.client.model.Filters.eq;
 
 @Service
 public class UserController {
 
-    private static Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
-    @Autowired
-    private JaguarUtils jaguarUtils;
+    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    private final JaguarUtils jaguarUtils = new JaguarUtils();
+    private final UserUtil userUtil = new UserUtil();
+
 
     /**
      * <p>
      * The method creates an entry in the database with the given
      * information.
      * </p>
-     * 
-     * @param firstName
-     * @param lastName
-     * @param email
-     * @param password
-     * @return void
-     * @throws DBException
+     *
+     * @param firstName first name of the user
+     * @param lastName  last name of the user
+     * @param email     email of the user
+     * @param password  user's password
+     * @throws DBException since we are dealing with the database
      */
-    public void createUserInDB(String firstName, String lastName, String email, String password)
-            throws DBException {
+    public void createUserInDB(String firstName, String lastName, @NotNull String email, @NotNull String password) throws DBException {
 
         LOGGER.info("Entering createUserInDB method: " + email);
         MongoDatabase db = DBManager.getMongoDB();
-
-        if (db.getCollection("USER_PROFILE") == null) {
-            db.createCollection("USER_PROFILE");
-        }
 
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
 
@@ -68,7 +61,7 @@ public class UserController {
 
         collection.insertOne(document);
         collection.createIndex(new BasicDBObject("email", 1));
-        LOGGER.info("User created in DB: " + email);
+        LOGGER.info("User created in DB: " + firstName + " " + lastName + ": " + email);
     }
 
     /**
@@ -78,22 +71,19 @@ public class UserController {
      * multiple users with the same email
      * address.
      * </p>
-     * 
-     * @param email
+     *
+     * @param email the search query
      * @return boolean
-     * @throws DBException
+     * @throws DBException since we are dealing with the database
      */
-    public boolean doesUserExist(String email) throws DBException {
+    public boolean doesUserExist(@NotNull String email) throws DBException {
 
         MongoDatabase db = DBManager.getMongoDB();
         Document document = new Document();
         document.put("email", email.toLowerCase());
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
 
-        if (collection.find(document).first() != null)
-            return true;
-        else
-            return false;
+        return collection.find(document).first() != null;
     }
 
     /**
@@ -103,14 +93,13 @@ public class UserController {
      * from the database. The user can be null if the user
      * does not exist in the database.
      * </p>
-     * 
-     * @param email
+     *
+     * @param email the search query to match against the database.
      * @return User
-     * @throws DBException
+     * @throws DBException we have to connect to db to find the user
      */
-    public User findUser(String email) throws DBException {
+    public User findUser(@NotNull String email) throws DBException {
 
-        User user = null;
 
         MongoDatabase db = DBManager.getMongoDB();
         Document document = new Document();
@@ -119,27 +108,25 @@ public class UserController {
         FindIterable<Document> findIterable = collection.find(document);
 
         Document result = findIterable.first();
-        if (result != null) {
-            user = new User();
-            user.setEmail(result.getString("email"));
-            user.setFirstName(result.getString("firstName"));
-            user.setLastName(result.getString("lastName"));
-            user.setPassword(result.getString("password"));
-        }
-        return user;
+        if (result != null)
+            return new User(result.getString("email"), result.getString("password"), result.getString("firstName"), result.getString("lastName"));
+        else return null;
+
     }
 
     /**
      * <p>
      * The method finds a user in the database and edits the entry.
      * </p>
-     * 
-     * @param email
-     * @return User
-     * @throws DBException
+     *
+     * @param oldInfo   the user's old information
+     * @param firstname the user's new first name
+     * @param lastname  the user's new last name
+     * @param email     the user's new email
+     * @param password  the user's new password
+     * @throws DBException since we are dealing with the database
      */
-    public User updateUserInDB(User oldInfo, String firstname, String lastname, String email, String password)
-            throws DBException {
+    public User updateUserInDB(@NotNull User oldInfo, String firstname, String lastname, String email, String password) throws DBException {
 
         MongoDatabase db = DBManager.getMongoDB();
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
@@ -165,8 +152,7 @@ public class UserController {
 
         collection.updateOne(searchQuery, newDocument);
 
-        return jaguarUtils.fillUpUser(firstname, lastname, email, password);
-
+        return userUtil.fillUpUser(firstname, lastname, email, password);
     }
 
     public void deleteUserFromDB(String email) throws DBException {
@@ -178,6 +164,5 @@ public class UserController {
         Bson query = eq("email", email);
         collection.deleteOne(query);
         LOGGER.info("User deleted: " + email);
-
     }
 }
