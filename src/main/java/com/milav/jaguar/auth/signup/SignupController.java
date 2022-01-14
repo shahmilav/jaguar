@@ -6,6 +6,7 @@ import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,28 +22,18 @@ public class SignupController {
     private final UserController userController = new UserController();
 
     /**
-     * <h3>The method shows the register page.</h3>
+     * The method shows the register page.
      *
-     * @param model model
      * @return String
      */
     @GetMapping("/sign-up")
-    public String signup(Model model) {
+    public String signup() {
         LOGGER.info("Entering signup method");
         return "register";
     }
 
     /**
-     * <h3>The method creates an account for the user.</h3>
-     *
-     * <ol>
-     * <li>If the user already has an account, we display an error message and
-     * return null.</li>
-     * <li>If the user did not fill out all fields, we display an error message
-     * and return null.</li>
-     * <li>Otherwise, we create an account for the user, add them to the database,
-     * start their session, and redirect them to the dashboard.</li>
-     * </ol>
+     * The method checks the user's signup credentials and creates a user if they are valid.
      *
      * @param firstName first name
      * @param lastName  last name
@@ -54,14 +45,14 @@ public class SignupController {
      * @throws DBException since we are connecting to the database
      */
     @PostMapping("/register")
-    public String register(@RequestParam(name = "fname") String firstName, @RequestParam(name = "lname") String lastName, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, Model model, HttpSession session) throws DBException {
+    public String register(@RequestParam(name = "fname") String firstName, @RequestParam(name = "lname") String lastName, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, Model model, @NotNull HttpSession session) throws DBException {
 
-        User user = (User) session.getAttribute("user");
         LOGGER.info("Entering register method: " + email);
 
-        if (session.getAttribute("user") != null) return "redirect:/dashboard";
+        if (session.getAttribute("user") != null) {
+            return "redirect:/dashboard";
 
-        else if (userController.doesUserExist(email)) {
+        } else if (userController.doesUserExist(email)) {
             model.addAttribute("error", "We already have an account for that email. Please login.");
             return null;
 
@@ -71,11 +62,10 @@ public class SignupController {
 
         } else {
             userController.createUserInDB(firstName, lastName, email, password);
-            user = userController.findUser(email);
+            User user = userController.findUser(email);
 
             session.setAttribute("user", user);
             return "redirect:/dashboard";
-
         }
     }
 }

@@ -24,8 +24,11 @@ public class JaguarController {
     public String login(HttpSession session) {
         LOGGER.info("Entering login method");
 
-        if (session.getAttribute("user") != null) return "redirect:/dashboard";
-        else return "login";
+        if (session.getAttribute("user") != null) {
+            return "redirect:/dashboard";
+        } else {
+            return "login";
+        }
     }
 
     /**

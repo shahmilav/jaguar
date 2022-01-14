@@ -31,7 +31,7 @@ public class AccountController {
      *
      * @param firstname       the new firstname
      * @param lastname        the new lastname
-     * @param currentPassword current password
+     * @param currentPassword the current password
      * @param newEmail        the new email
      * @param newPassword     the new password
      * @param model           mode
@@ -62,6 +62,7 @@ public class AccountController {
             model.addAttribute("error", "Please fill out all fields.");
             utils.fillUpInfoOnPage(model, oldInfo.getFirstName(), oldInfo.getLastName(), oldInfo.getEmail());
             return null;
+
         } else {
             model.addAttribute("error", "Please enter correct password.");
             utils.fillUpInfoOnPage(model, oldInfo.getFirstName(), oldInfo.getLastName(), oldInfo.getEmail());
@@ -83,12 +84,15 @@ public class AccountController {
             userController.deleteUserFromDB(user.getEmail());
             session.invalidate();
             return "redirect:/login";
+
         } else if (password.isBlank()) {
             model.addAttribute("error", "Please enter your password.");
             return null;
+
         } else if (!utils.passwordCheck(password, user.getPassword())) {
             model.addAttribute("error", "Incorrect password, please try again.");
             return null;
+
         } else {
             LOGGER.error("deleteAccount: something went wrong.");
             model.addAttribute("error", "Something went very wrong. Please try again.");
