@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -20,42 +20,41 @@
 <main class="form-signin">
     <br/>
     <form action="/login" method="post">
-        <form>
-            <img alt="Jaguar Logo" class="mb-4" height="120" src="logo.png" width="120"/>
-            <h1 class="h2 mb-3 fw-normal">
-                Welcome to <strong><i>JAGUAR</i></strong
-            >.
-            </h1>
-            <p class="error" th:text=${error}></p>
-            <br/>
-            <div class="form-floating center">
-                <input
-                        class="form-control"
-                        name="email"
-                        placeholder="Email"
-                        type="email"
-                />
-                <label for="floatingInput">Email</label>
-            </div>
-
-            <div class="form-floating">
-                <input
-                        class="form-control"
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                />
-                <label for="floatingPassword">Password</label>
-            </div>
-            <br>
-
-            <button class="w-100 btn btn-lg btn-warning" type="submit">
-                Log in
-            </button>
-            <br/>
-        </form>
+        <img alt="Jaguar Logo" class="mb-4" height="120" src="logo.png" width="120"/>
+        <h1 class="h2 mb-3 fw-normal">
+            Welcome to <strong><i>JAGUAR</i></strong
+        >.
+        </h1>
+        <p class="error" th:text=${error}></p>
         <br/>
-        <p>Don't have an account? <a href="/sign-up">Sign up now.</a></p>
+        <div class="form-floating center">
+            <input
+                    class="form-control"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+            />
+            <label for="floatingInput">Email</label>
+        </div>
+
+        <div class="form-floating">
+            <input
+                    class="form-control"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+            />
+            <label for="floatingPassword">Password</label>
+        </div>
+        <br>
+
+        <button class="w-100 btn btn-lg btn-warning" type="submit">
+            Log in
+        </button>
+        <br/>
+    </form>
+    <br/>
+    <p>Don't have an account? <a href="/sign-up">Sign up now.</a></p>
 </main>
 </body>
 </html>

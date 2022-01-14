@@ -36,7 +36,7 @@ public class DBManager {
         return mongoDB;
     }
 
-    private void init() throws UnknownHostException {
+    private void init() {
 
         String uri = "mongodb+srv://milav:pulsar66@cluster0.jnvid.mongodb.net/jaguar?retryWrites=true&w=majority";
 

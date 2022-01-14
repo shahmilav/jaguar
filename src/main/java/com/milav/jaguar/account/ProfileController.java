@@ -1,10 +1,7 @@
 package com.milav.jaguar.account;
 
 import com.milav.jaguar.application.app.JaguarApplication;
-import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
-import com.milav.jaguar.user.UserController;
-import com.milav.jaguar.utils.JaguarUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -18,8 +15,8 @@ import javax.servlet.http.HttpSession;
 public class ProfileController {
 
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
-    private final UserController userController = new UserController();
-    private final JaguarUtils jaguarUtils = new JaguarUtils();
+    // --Commented out by Inspection (1/12/22, 6:35 PM):private final UserController userController = new UserController();
+    // --Commented out by Inspection (1/12/22, 6:35 PM):private final JaguarUtils jaguarUtils = new JaguarUtils();
 
     /**
      * <h3>The method gets the current user from the session.</h3>
@@ -31,10 +28,9 @@ public class ProfileController {
      * @param model   mode
      * @param session HttpSession
      * @return String
-     * @throws DBException since we are connecting to the database
      */
     @GetMapping("/profile")
-    public String fillUpProfile(Model model, @NotNull HttpSession session) throws DBException {
+    public String fillUpProfile(Model model, @NotNull HttpSession session) {
 
         LOGGER.info("Entering fillUpProfile method");
         LOGGER.info("User wants to see profile.");

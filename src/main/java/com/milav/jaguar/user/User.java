@@ -1,9 +1,5 @@
 package com.milav.jaguar.user;
 
-/**
- * @author milavshah
- */
-
 import org.springframework.data.annotation.Id;
 
 public class User {

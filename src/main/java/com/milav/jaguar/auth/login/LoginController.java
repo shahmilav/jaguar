@@ -22,15 +22,17 @@ public class LoginController {
 
 
     /**
-     * The method decides what to do when the login form is submitted.
-     * If the method returns null, the page does not change.
-     * If the user is already logged in, redirect them to dashboard.
-     * If the user does not exist, it sends an error message and returns null.
-     * If any fields are blank, it sends an error message and returns null.
-     * If the user enters the right password, the method redirects the user to their
-     * dashboard and starts their session.
-     * If the user enters the wrong password, an error message is shown and the
-     * method returns null.
+     * <h3>The method decides what to do when the login form is submitted.</h3>
+     * <ul>
+     * <li>If the method returns null, the page does not change.</li>
+     * <li>If the user is already logged in, redirect them to dashboard.</li>
+     * <li>If the user does not exist, it sends an error message and returns null.</li>
+     * <li>If any fields are blank, it sends an error message and returns null.</li>
+     * <li>If the user enters the right password, the method redirects the user to their
+     * dashboard and starts their session.</li>
+     * <li>If the user enters the wrong password, an error message is shown and the
+     * method returns null.</li>
+     * </ul>
      *
      * @param email    the email entered
      * @param password the password entered
@@ -64,7 +66,6 @@ public class LoginController {
             session.invalidate();
             return null;
         }
-
     }
 
     /**
@@ -84,11 +85,11 @@ public class LoginController {
         if (session != null) {
 
             User user = (User) session.getAttribute("user");
-
             model.addAttribute("name", ("Welcome to Jaguar Dashboard, " + user.getFirstName() + "."));
             return "dashboard";
 
-        } else return "redirect:/login";
+        } else {
+            return "redirect:/login";
+        }
     }
-
 }

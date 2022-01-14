@@ -4,7 +4,6 @@ import com.milav.jaguar.application.app.JaguarApplication;
 import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.database.manager.DBManager;
 import com.milav.jaguar.user.util.UserUtil;
-import com.milav.jaguar.utils.JaguarUtils;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -20,13 +19,12 @@ import java.util.Date;
 
 import static com.mongodb.client.model.Filters.eq;
 
+
 @Service
 public class UserController {
 
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
-    private final JaguarUtils jaguarUtils = new JaguarUtils();
     private final UserUtil userUtil = new UserUtil();
-
 
     /**
      * <p>
@@ -48,7 +46,6 @@ public class UserController {
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
 
         Document document = new Document();
-
         document.put("firstName", firstName);
         document.put("lastName", lastName);
         document.put("email", email.toLowerCase());
@@ -65,12 +62,10 @@ public class UserController {
     }
 
     /**
-     * <h3>The method finds a user given an email.</h3>
-     * <p>
+     * The method finds a user given an email.
      * It is assumed that each user has a unique email address. You cannot have
      * multiple users with the same email
      * address.
-     * </p>
      *
      * @param email the search query
      * @return boolean
@@ -96,10 +91,9 @@ public class UserController {
      *
      * @param email the search query to match against the database.
      * @return User
-     * @throws DBException we have to connect to db to find the user
+     * @throws DBException we have to connect to the database to find the user
      */
     public User findUser(@NotNull String email) throws DBException {
-
 
         MongoDatabase db = DBManager.getMongoDB();
         Document document = new Document();
@@ -108,10 +102,13 @@ public class UserController {
         FindIterable<Document> findIterable = collection.find(document);
 
         Document result = findIterable.first();
-        if (result != null)
-            return new User(result.getString("email"), result.getString("password"), result.getString("firstName"), result.getString("lastName"));
-        else return null;
-
+        if (result != null) {
+            LOGGER.info(email + " found in database.");
+            return new User(email, result.getString("password"), result.getString("firstName"), result.getString("lastName"));
+        } else {
+            LOGGER.info(email + " not found in database.");
+            return null;
+        }
     }
 
     /**
