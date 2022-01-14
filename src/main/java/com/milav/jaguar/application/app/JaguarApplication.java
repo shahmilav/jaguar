@@ -17,8 +17,8 @@ public class JaguarApplication {
     public static void main(String[] args) {
 
         LOGGER.info("Entering main method -->");
+        seleniumTest.runSelenium();
         SpringApplication.run(JaguarApplication.class, args);
         LOGGER.info("App Started");
-        seleniumTest.runSelenium();
     }
 }
