@@ -51,10 +51,12 @@
         <h1>Your Profile</h1>
         <br/>
         <h3>Name:</h3>
-        <i><h4 th:text="${name}"></h4></i>
+        <i><!--/*@thymesVar id="name" type=""*/-->
+            <h4 th:text="${name}"></h4></i>
         <br/>
         <h3>Email:</h3>
-        <i><h4 th:text="${email}"></h4></i>
+        <i><!--/*@thymesVar id="email" type=""*/-->
+            <h4 th:text="${email}"></h4></i>
         <br/>
 
         <form action="/editprofile">

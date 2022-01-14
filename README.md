@@ -1,6 +1,6 @@
 # <img src="https://github.com/shahmilav/jaguar/blob/master/src/main/resources/static/logo.png" width="75" height="75" /> Jaguar
 
-Jaguar is an open source Java project that aims to be a fully funtioning web app. It has a login and sign up page to
+Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
 access the dashboard.
 
 ## Features
@@ -11,11 +11,11 @@ access the dashboard.
 - and more to come, such as
     - Sign in with Google
     - Captcha
-    - Forgot password functionallity
+    - Forgot password functionality
 
 ## Installation
 
-To install, clone the git repo.
+To install, clone the git repo:
 ```git clone https://github.com/shahmilav/jaguar```
 
 ## Running the Program
