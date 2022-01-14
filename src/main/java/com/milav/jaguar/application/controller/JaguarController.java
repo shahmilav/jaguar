@@ -14,8 +14,7 @@ public class JaguarController {
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
-     * The method gets any mapping for either {@code"/"}, {@code"/index"}, or
-     * {@code"/login"} and shows the login page.
+     * The method shows the login page.
      *
      * @param session session
      * @return String
