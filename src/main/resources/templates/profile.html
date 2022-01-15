@@ -38,7 +38,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Log Out</a>
+                <a class="nav-link" href="/logout" id="logout">Log Out</a>
             </li>
         </ul>
     </div>
@@ -51,20 +51,20 @@
         <h1>Your Profile</h1>
         <br/>
         <h3>Name:</h3>
-        <i><!--/*@thymesVar id="name" type=""*/-->
+        <i>
             <h4 th:text="${name}"></h4></i>
         <br/>
         <h3>Email:</h3>
-        <i><!--/*@thymesVar id="email" type=""*/-->
+        <i>
             <h4 th:text="${email}"></h4></i>
         <br/>
 
         <form action="/editprofile">
-            <button class="btn w-100 btn-warning">Edit Profile</button>
+            <button class="btn w-100 btn-warning" id="edit-profile">Edit Profile</button>
         </form>
         <br/>
         <form action="/deleteaccount">
-            <button class="btn w-100 btn-warning">Delete Account</button>
+            <button class="btn w-100 btn-warning" id="del-account" >Delete Account</button>
         </form>
     </main>
 </div>
