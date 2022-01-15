@@ -15,8 +15,6 @@ import javax.servlet.http.HttpSession;
 public class ProfileController {
 
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
-    // --Commented out by Inspection (1/12/22, 6:35 PM):private final UserController userController = new UserController();
-    // --Commented out by Inspection (1/12/22, 6:35 PM):private final JaguarUtils jaguarUtils = new JaguarUtils();
 
     /**
      * <h3>The method gets the current user from the session.</h3>

@@ -3,6 +3,7 @@ package com.milav.jaguar.application.selenium;
 import com.milav.jaguar.application.app.JaguarApplication;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class SeleniumTest {
      * The method runs the Selenium web driver on Firefox.
      */
     public void runSelenium() {
+
         LOGGER.info("Entering runSelenium method");
         WebDriver driver = new FirefoxDriver();
         LOGGER.info("Running selenium.");
@@ -24,7 +26,6 @@ public class SeleniumTest {
         makeAndDeleteAccount(driver);
         driver.quit();
 
-
     }
 
     /**
@@ -32,7 +33,7 @@ public class SeleniumTest {
      *
      * @param driver WebDriver to run the method.
      */
-    public void simpleSignIn(WebDriver driver) {
+    public void simpleSignIn(@NotNull WebDriver driver) {
 
         WebElement emailBox = driver.findElement(By.name("email"));
         emailBox.sendKeys("me@milav.com");
@@ -51,9 +52,9 @@ public class SeleniumTest {
     /**
      * The method makes a new account for "cooljaguar@jaguarlogin.com".
      *
-     * @param driver
+     * @param driver web driver
      */
-    public void makeANewAccount(WebDriver driver) {
+    public void makeANewAccount(@NotNull WebDriver driver) {
 
         WebElement signupLink = driver.findElement(By.id("signup-link"));
         signupLink.click();
@@ -73,8 +74,18 @@ public class SeleniumTest {
         WebElement signupButton = driver.findElement(By.id("signup-btn"));
         signupButton.click();
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Edits Cool Jaguar's profile.
+     *
+     * @param driver web driver
+     */
     public void editProfile(WebDriver driver) {
 
         WebElement profileLink = driver.findElement(By.id("profile"));
@@ -95,8 +106,18 @@ public class SeleniumTest {
         WebElement saveChangesButton = driver.findElement(By.name("savechanges"));
         saveChangesButton.click();
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Deletes Cool Jaguar's profile
+     *
+     * @param driver web driver
+     */
     public void deleteProfile(WebDriver driver) {
 
         WebElement deleteAccountLink = driver.findElement(By.id("del-account"));
@@ -108,13 +129,21 @@ public class SeleniumTest {
         WebElement deleteAccountButton = driver.findElement(By.id("del-acc"));
         deleteAccountButton.click();
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Makes and deletes Cool Jaguar's account.
+     *
+     * @param driver web driver.
+     */
     public void makeAndDeleteAccount(WebDriver driver) {
         makeANewAccount(driver);
         editProfile(driver);
         deleteProfile(driver);
     }
 }
-
-
