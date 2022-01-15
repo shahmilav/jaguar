@@ -52,10 +52,12 @@
         <br/>
         <h3>Name:</h3>
         <i>
+            <!--/*@thymesVar id="name" type=""*/-->
             <h4 th:text="${name}"></h4></i>
         <br/>
         <h3>Email:</h3>
         <i>
+            <!--/*@thymesVar id="email" type=""*/-->
             <h4 th:text="${email}"></h4></i>
         <br/>
 
@@ -64,7 +66,7 @@
         </form>
         <br/>
         <form action="/deleteaccount">
-            <button class="btn w-100 btn-warning" id="del-account" >Delete Account</button>
+            <button class="btn w-100 btn-warning" id="del-account">Delete Account</button>
         </form>
     </main>
 </div>
