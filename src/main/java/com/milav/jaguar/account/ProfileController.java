@@ -73,5 +73,4 @@ public class ProfileController {
             return "redirect:/login";
         }
     }
-
 }
