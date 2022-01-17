@@ -1,9 +1,7 @@
 .DS_Store
-
-logs/app.log
+docs/
 logs/
-
 nbactions.xml
-
+.idea/
 target/
 .mvn/

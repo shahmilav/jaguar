@@ -67,7 +67,7 @@ public class ProfileController {
             model.addAttribute("email", user.getEmail());
             return null;
         } else {
-            LOGGER.info("\nUser not logged in, back to login.");
+            LOGGER.info("User not logged in, back to login.");
             return "redirect:/login";
         }
     }

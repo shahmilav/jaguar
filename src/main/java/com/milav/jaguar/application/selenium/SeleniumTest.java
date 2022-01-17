@@ -137,7 +137,7 @@ public class SeleniumTest {
     }
 
     /**
-     * Makes and deletes Cool Jaguar's account.
+     * Makes, edits, and deletes Cool Jaguar's account.
      *
      * @param driver web driver.
      */
