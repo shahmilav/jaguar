@@ -23,18 +23,16 @@ public class AccountController {
     private final JaguarUtils utils = new JaguarUtils();
 
     /**
-     * <h3>
-     * Saves the changes the user made to their profile.</h3>
+     * Saves the changes the user made to their profile.
      * <p>
      * Pretty much the most complicated method.
-     * </p>
      *
      * @param firstname       the new firstname
      * @param lastname        the new lastname
      * @param currentPassword the current password
      * @param newEmail        the new email
      * @param newPassword     the new password
-     * @param model           mode
+     * @param model           model
      * @param session         HttpSession
      * @return String
      * @throws DBException since we are connecting to the database
@@ -70,6 +68,15 @@ public class AccountController {
         }
     }
 
+    /**
+     * Deletes the users account.
+     *
+     * @param password the user's password confirmation.
+     * @param model    model
+     * @param session  HttpSession
+     * @return String
+     * @throws DBException we are connecting to the database to delete the account.
+     */
     @GetMapping("/removeaccount")
     public String deleteAccount(@RequestParam("password") String password, Model model, @NotNull HttpSession session) throws DBException {
 
@@ -100,9 +107,13 @@ public class AccountController {
         }
     }
 
+    /**
+     * Takes you to the deleteaccount page.
+     *
+     * @return String
+     */
     @GetMapping("/deleteaccount")
     public String goToDeleteAccount() {
         return null;
     }
-
 }
