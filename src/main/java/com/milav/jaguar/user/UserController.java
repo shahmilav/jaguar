@@ -27,10 +27,7 @@ public class UserController {
     private final UserUtil userUtil = new UserUtil();
 
     /**
-     * <p>
-     * The method creates an entry in the database with the given
-     * information.
-     * </p>
+     * The method creates an entry in the database with the given information.
      *
      * @param firstName first name of the user
      * @param lastName  last name of the user

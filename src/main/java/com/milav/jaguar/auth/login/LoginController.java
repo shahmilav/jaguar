@@ -22,7 +22,7 @@ public class LoginController {
 
 
     /**
-     * <h3>The method decides what to do when the login form is submitted.</h3>
+     * The method decides what to do when the login form is submitted.
      * <ul>
      * <li>If the method returns null, the page does not change.</li>
      * <li>If the user is already logged in, redirect them to dashboard.</li>

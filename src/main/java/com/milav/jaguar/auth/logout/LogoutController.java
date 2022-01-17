@@ -16,8 +16,9 @@ public class LogoutController {
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
     /**
-     * The method logs out the user. The method invalidates the user's session and
-     * redirects to the login page.
+     * The method logs out the user.
+     * <p>
+     * The method invalidates the user's session and redirects to the login page.
      *
      * @param model   model
      * @param session HttpSession

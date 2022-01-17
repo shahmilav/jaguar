@@ -1,0 +1,12 @@
+com.milav.jaguar.account
+com.milav.jaguar.application.app
+com.milav.jaguar.application.controller
+com.milav.jaguar.application.selenium
+com.milav.jaguar.auth.login
+com.milav.jaguar.auth.logout
+com.milav.jaguar.auth.signup
+com.milav.jaguar.database.errors
+com.milav.jaguar.database.manager
+com.milav.jaguar.user
+com.milav.jaguar.user.util
+com.milav.jaguar.utils
