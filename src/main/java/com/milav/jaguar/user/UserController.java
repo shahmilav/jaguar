@@ -19,7 +19,12 @@ import java.util.Date;
 
 import static com.mongodb.client.model.Filters.eq;
 
-
+/**
+ * The class is the controller that manages methods that have to do with users.
+ *
+ * @author Milav Shah
+ * @author Jigar Shah
+ */
 @Service
 public class UserController {
 
@@ -29,11 +34,11 @@ public class UserController {
     /**
      * The method creates an entry in the database with the given information.
      *
-     * @param firstName first name of the user
-     * @param lastName  last name of the user
-     * @param email     email of the user
-     * @param password  user's password
-     * @throws DBException since we are dealing with the database
+     * @param firstName first name of the user.
+     * @param lastName  last name of the user.
+     * @param email     email of the user.
+     * @param password  user's password.
+     * @throws DBException since we are dealing with the database.
      */
     public void createUserInDB(String firstName, String lastName, @NotNull String email, @NotNull String password) throws DBException {
 
@@ -79,12 +84,11 @@ public class UserController {
     }
 
     /**
-     * <h3>The method finds a user given an email address.</h3>
+     * The method finds a user given an email address.
      * <p>
      * It returns a User object with prefilled data retrieved
      * from the database. The user can be null if the user
      * does not exist in the database.
-     * </p>
      *
      * @param email the search query to match against the database.
      * @return User
@@ -118,6 +122,7 @@ public class UserController {
      * @param lastname  the user's new last name
      * @param email     the user's new email
      * @param password  the user's new password
+     * @return User
      * @throws DBException since we are dealing with the database
      */
     public User updateUserInDB(@NotNull User oldInfo, String firstname, String lastname, String email, String password) throws DBException {
@@ -149,6 +154,12 @@ public class UserController {
         return userUtil.fillUpUser(firstname, lastname, email, password);
     }
 
+    /**
+     * Deletes the user from the database.
+     *
+     * @param email the search query.
+     * @throws DBException since we are dealing with the database.
+     */
     public void deleteUserFromDB(String email) throws DBException {
 
         LOGGER.info("Entering deleteUserFromDB");

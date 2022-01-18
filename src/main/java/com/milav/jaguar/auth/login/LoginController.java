@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * The class serves as the controller for login related processes.
+ *
+ * @author Milav Shah
+ * @author Jigar Shah
+ */
 @Controller
 public class LoginController {
 
@@ -74,7 +80,8 @@ public class LoginController {
      * user exists. If they exist, we show a welcome message on the
      * dashboard. If they are null, we redirect them to the login page.
      *
-     * @param model model
+     * @param model   model
+     * @param session HttpSession
      * @return String
      */
     @GetMapping("/dashboard")

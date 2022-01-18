@@ -2,6 +2,12 @@ package com.milav.jaguar.user;
 
 import org.springframework.data.annotation.Id;
 
+/**
+ * A user object.
+ *
+ * @author Milav Shah
+ * @author Jigar Shah
+ */
 public class User {
 
     @Id
@@ -10,6 +16,9 @@ public class User {
     private String firstName;
     private String lastName;
 
+    /**
+     * The constructor creates an empty user object.
+     */
     public User() {
     }
 
@@ -50,6 +59,8 @@ public class User {
 
     /**
      * The method sets the user's email.
+     *
+     * @param email the user's email
      */
     public void setEmail(String email) {
         this.email = email;
@@ -66,6 +77,8 @@ public class User {
 
     /**
      * The method sets the user's password.
+     *
+     * @param password the user's password.
      */
     public void setPassword(String password) {
         this.password = password;
@@ -82,6 +95,8 @@ public class User {
 
     /**
      * The method sets the user's first name.
+     *
+     * @param firstName the user's first name.
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -98,6 +113,8 @@ public class User {
 
     /**
      * The method sets the user's last name.
+     *
+     * @param lastName the user's last name.
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
