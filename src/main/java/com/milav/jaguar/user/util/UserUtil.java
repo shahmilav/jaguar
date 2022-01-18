@@ -4,6 +4,11 @@ import com.milav.jaguar.user.User;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * Utilities related to users.
+ *
+ * @author Milav Shah
+ */
 @Service
 public class UserUtil {
 

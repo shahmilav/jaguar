@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * The class deals with methods that have to do with user's accounts.
+ *
+ * @author Milav Shah
+ */
 @Controller
 public class AccountController {
 
@@ -26,6 +31,8 @@ public class AccountController {
      * Saves the changes the user made to their profile.
      * <p>
      * Pretty much the most complicated method.
+     * The method checks the user's password; and if it matches with the one in the database,
+     * we accept any account information changes.
      *
      * @param firstname       the new firstname
      * @param lastname        the new lastname
@@ -41,6 +48,7 @@ public class AccountController {
     public String saveChanges(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("currentPassword") String currentPassword, @RequestParam("email") String newEmail, @RequestParam("newPassword") String newPassword, Model model, @NotNull HttpSession session) throws DBException {
 
         User oldInfo = (User) session.getAttribute("user");
+
         LOGGER.info("Entering saveChanges method: " + oldInfo.getEmail());
         LOGGER.info("Name: " + firstname + " " + lastname + ", Current Password: " + currentPassword + ", New email: " + newEmail + ", new Password: " + newPassword);
 

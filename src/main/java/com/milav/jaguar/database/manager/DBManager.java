@@ -10,7 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import java.net.UnknownHostException;
 
 /**
- * @author jigarshah
+ * @author Jigar Shah
  */
 public class DBManager {
 
@@ -23,6 +23,12 @@ public class DBManager {
         init();
     }
 
+    /**
+     * Gets the database.
+     *
+     * @return MongoDatabase
+     * @throws DBException since we are dealing with the database.
+     */
     public static MongoDatabase getMongoDB() throws DBException {
         if (dbManager == null) {
             try {
