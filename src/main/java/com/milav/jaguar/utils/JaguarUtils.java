@@ -4,6 +4,11 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+/**
+ * Basic utilities.
+ *
+ * @author Milav Shah
+ */
 @Service
 public class JaguarUtils {
 

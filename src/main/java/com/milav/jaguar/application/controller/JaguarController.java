@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * General controller for basic startup pages.
+ *
+ * @author Milav Shah
+ * @author Jigar Shah
+ */
 @Controller
 public class JaguarController {
 
@@ -32,6 +38,8 @@ public class JaguarController {
 
     /**
      * No one likes "/index" in their url: this avoids that.
+     *
+     * @return String
      */
     @GetMapping(value = {"/index"})
     public String index() {

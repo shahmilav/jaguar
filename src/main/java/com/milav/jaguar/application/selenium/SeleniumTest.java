@@ -9,6 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+/**
+ * The class has Selenium related methods.
+ *
+ * @author Milav Shah
+ */
 public class SeleniumTest {
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 

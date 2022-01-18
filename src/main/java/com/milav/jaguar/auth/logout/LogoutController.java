@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * The class serves as a controller for logout related methods.
+ *
+ * @author Milav Shah
+ * @author Jigar Shah
+ */
 @Controller
 public class LogoutController {
 

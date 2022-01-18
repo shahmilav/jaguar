@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * The class serves as a controller for signup related methods.
+ *
+ * @author Milav Shah
+ * @author Jigar Shah
+ */
 @Controller
 public class SignupController {
 
