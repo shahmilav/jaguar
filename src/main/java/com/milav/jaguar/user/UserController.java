@@ -81,10 +81,8 @@ public class UserController {
 
         MongoDatabase db = DBManager.getMongoDB();
         Document document = new Document();
-        // put search query in the document.
         document.put("email", email.toLowerCase());
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
-        // search for document in the database.
         return (collection.find(document).first() != null);
     }
 
@@ -105,16 +103,13 @@ public class UserController {
         Document document = new Document();
         document.put("email", email.toLowerCase());
         MongoCollection<Document> collection = db.getCollection("USER_PROFILE");
-        // search for the search query in the database.
         FindIterable<Document> findIterable = collection.find(document);
 
         Document result = findIterable.first();
         if (result != null) {
-            // if the user is found, return a user object with user info filled in.
             LOGGER.info(email + " found in database.");
             return new User(email, result.getString("password"), result.getString("firstName"), result.getString("lastName"));
         } else {
-            // otherwise, return null.
             LOGGER.info(email + " not found in database.");
             return null;
         }
@@ -139,17 +134,14 @@ public class UserController {
         BasicDBObject searchQuery = new BasicDBObject().append("email", oldInfo.getEmail());
         BasicDBObject newDocument = new BasicDBObject();
 
-        // update first name
         newDocument.append("$set", new BasicDBObject().append("firstName", firstname));
         collection.updateOne(searchQuery, newDocument);
         LOGGER.info(newDocument);
 
-        // update last name
         newDocument.append("$set", new BasicDBObject().append("lastName", lastname));
         collection.updateOne(searchQuery, newDocument);
         LOGGER.info(newDocument);
 
-        // update password
         newDocument.append("$set", new BasicDBObject().append("password", password));
         collection.updateOne(searchQuery, newDocument);
         LOGGER.info(newDocument);
@@ -159,10 +151,8 @@ public class UserController {
         collection.updateOne(searchQuery, newDocument);
         LOGGER.info(newDocument);
 
-        // push changes to database.
         collection.updateOne(searchQuery, newDocument);
 
-        // return an updated user object
         return userUtil.fillUpUser(firstname, lastname, email, password);
     }
 

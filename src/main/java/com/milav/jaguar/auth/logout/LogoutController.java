@@ -32,7 +32,6 @@ public class LogoutController {
     public String logoutUser(@NotNull HttpSession session) {
         LOGGER.info("Entering logoutUser method: user logged out");
 
-        // invalidate the session, and remove "user" attribute from session.
         session.removeAttribute("user");
         session.invalidate();
         return "redirect:/login";

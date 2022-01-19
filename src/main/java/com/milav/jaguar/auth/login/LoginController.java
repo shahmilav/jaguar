@@ -58,33 +58,37 @@ public class LoginController {
         String errorMessage = "There is an error processing your request, please try again.";
 
         /* We want to check if any fields are blank before we check if
-        passwords match to prevent a valid email or password being "".
+        passwords match in order to prevent a valid email or password being "".
         That is the main reason for the select ordering of the following if statements. */
 
         if (email.isBlank() || password.isBlank()) {
-            // if any fields are blank, return an error message.
+
             errorMessage = "Please fill out all fields.";
             model.addAttribute("error", errorMessage);
             session.invalidate();
             return null;
+
         } else if (user == null) {
-            // if user does not exist, return an error message.
+
             errorMessage = "This account does not exist. Please sign up.";
             model.addAttribute("error", errorMessage);
             session.invalidate();
             return null;
+
         } else if (utils.arePasswordsEqual(user.getPassword(), password)) {
-            // if passwords match, redirect user to dashboard.
+
             session.setAttribute("user", user);
             return "redirect:/dashboard";
+
         } else if (!utils.arePasswordsEqual(user.getPassword(), password)) {
-            // if passwords do not match, return an error.
+
             errorMessage = "Incorrect password, please try again.";
             model.addAttribute("error", errorMessage);
             session.invalidate();
             return null;
+
         } else {
-            // in the event of any other error, send the error message.
+
             LOGGER.error("Trouble processing login request --> com.milav.jaguar.auth.LoginController.authenticate");
             model.addAttribute("error", errorMessage);
             session.invalidate();
@@ -108,13 +112,11 @@ public class LoginController {
         LOGGER.info("Entering validateUser method");
 
         if (session != null) {
-            // if user is already logged in, send them to the dashboard.
             User user = (User) session.getAttribute("user");
             String welcomeMessage = ("Welcome to Jaguar Dashboard, " + user.getFirstName() + ".");
             model.addAttribute("name", welcomeMessage);
             return "dashboard";
         } else {
-            // if user has not logged in, redirect them to login page.
             return "redirect:/login";
         }
     }
