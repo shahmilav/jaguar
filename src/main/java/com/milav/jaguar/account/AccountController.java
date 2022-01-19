@@ -92,13 +92,10 @@ public class AccountController {
         if (user == null) {
             LOGGER.error("User is null!");
             return "/error";
-        }
-
-        if (utils.arePasswordsEqual(password, user.getPassword())) {
+        } else if (utils.arePasswordsEqual(password, user.getPassword())) {
             userController.deleteUserFromDB(user.getEmail());
             session.invalidate();
             return "redirect:/login";
-
         } else if (password.isBlank()) {
             model.addAttribute("error", "Please enter your password.");
             return null;
