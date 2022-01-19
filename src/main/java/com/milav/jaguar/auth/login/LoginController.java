@@ -4,6 +4,7 @@ import com.milav.jaguar.application.app.JaguarApplication;
 import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
+import com.milav.jaguar.utils.JaguarUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 
 /**
- * The class serves as the controller for login related processes.
+ * The class serves as the controller for login related methods.
  *
  * @author Milav Shah
  * @author Jigar Shah
@@ -25,10 +26,12 @@ public class LoginController {
 
     private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
     private final UserController userController = new UserController();
+    private final JaguarUtils utils = new JaguarUtils();
 
 
     /**
      * The method decides what to do when the login form is submitted.
+     * <p>
      * <ul>
      * <li>If the method returns null, the page does not change.</li>
      * <li>If the user is already logged in, redirect them to dashboard.</li>
@@ -40,35 +43,50 @@ public class LoginController {
      * method returns null.</li>
      * </ul>
      *
-     * @param email    the email entered
-     * @param password the password entered
-     * @param model    model
-     * @param session  HttpSession
+     * @param email    the email entered.
+     * @param password the password entered.
+     * @param model    model.
+     * @param session  HttpSession.
      * @return String
-     * @throws DBException since we are connecting to the database to authenticate user
+     * @throws DBException since we are connecting to the database in order to authenticate user.
      */
     @PostMapping("/login")
     public String authenticate(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, Model model, HttpSession session) throws DBException {
 
-        User user = userController.findUser(email);
+        User user = userController.findUser(email); // find user from email given
         LOGGER.info("Entering authenticate method: " + email);
+        String errorMessage = "There is an error processing your request, please try again.";
+
+        /* We want to check if any fields are blank before we check if
+        passwords match to prevent a valid email or password being "".
+        That is the main reason for the select ordering of the following if statements. */
 
         if (email.isBlank() || password.isBlank()) {
-            model.addAttribute("error", "Please fill out all fields.");
+            // if any fields are blank, return an error message.
+            errorMessage = "Please fill out all fields.";
+            model.addAttribute("error", errorMessage);
+            session.invalidate();
             return null;
-        }
-
-        if (user == null) {
-            model.addAttribute("error", "This account does not exist. Please sign up.");
+        } else if (user == null) {
+            // if user does not exist, return an error message.
+            errorMessage = "This account does not exist. Please sign up.";
+            model.addAttribute("error", errorMessage);
+            session.invalidate();
             return null;
-        }
-
-        if (user.getPassword().equals(password)) {
+        } else if (utils.arePasswordsEqual(user.getPassword(), password)) {
+            // if passwords match, redirect user to dashboard.
             session.setAttribute("user", user);
             return "redirect:/dashboard";
-
+        } else if (!utils.arePasswordsEqual(user.getPassword(), password)) {
+            // if passwords do not match, return an error.
+            errorMessage = "Incorrect password, please try again.";
+            model.addAttribute("error", errorMessage);
+            session.invalidate();
+            return null;
         } else {
-            model.addAttribute("error", "Incorrect password, please try again.");
+            // in the event of any other error, send the error message.
+            LOGGER.error("Trouble processing login request --> com.milav.jaguar.auth.LoginController.authenticate");
+            model.addAttribute("error", errorMessage);
             session.invalidate();
             return null;
         }
@@ -78,7 +96,7 @@ public class LoginController {
      * The method validates the user that is logging in. If the user is not logged
      * in, the method redirects them to the login page. Otherwise, we ensure the
      * user exists. If they exist, we show a welcome message on the
-     * dashboard. If they are null, we redirect them to the login page.
+     * dashboard. If they do not exist, we redirect them to the login page.
      *
      * @param model   model
      * @param session HttpSession
@@ -90,12 +108,13 @@ public class LoginController {
         LOGGER.info("Entering validateUser method");
 
         if (session != null) {
-
+            // if user is already logged in, send them to the dashboard.
             User user = (User) session.getAttribute("user");
-            model.addAttribute("name", ("Welcome to Jaguar Dashboard, " + user.getFirstName() + "."));
+            String welcomeMessage = ("Welcome to Jaguar Dashboard, " + user.getFirstName() + ".");
+            model.addAttribute("name", welcomeMessage);
             return "dashboard";
-
         } else {
+            // if user has not logged in, redirect them to login page.
             return "redirect:/login";
         }
     }

@@ -13,13 +13,13 @@ import org.springframework.ui.Model;
 public class JaguarUtils {
 
     /**
-     * Checks if two passwords are equal.
+     * Checks if two passwords are the equivalent.
      *
      * @param password1 a password
      * @param password2 another password
      * @return boolean
      */
-    public boolean passwordCheck(@NotNull String password1, String password2) {
+    public boolean arePasswordsEqual(@NotNull String password1, String password2) {
         return password1.equals(password2);
     }
 

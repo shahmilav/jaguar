@@ -34,7 +34,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public String fillUpProfile(Model model, @NotNull HttpSession session) {
 
-        LOGGER.info("Entering fillUpProfile method");
+        LOGGER.info("Entering fillUpProfile method --> ");
         LOGGER.info("User wants to see profile.");
         User user = (User) session.getAttribute("user");
         if (user != null) {

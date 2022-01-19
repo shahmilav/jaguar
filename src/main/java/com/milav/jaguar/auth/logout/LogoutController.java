@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
@@ -26,18 +25,16 @@ public class LogoutController {
      * <p>
      * The method invalidates the user's session and redirects to the login page.
      *
-     * @param model   model
      * @param session HttpSession
      * @return String
      */
     @GetMapping("/logout")
-    public String logoutUser(Model model, @NotNull HttpSession session) {
+    public String logoutUser(@NotNull HttpSession session) {
         LOGGER.info("Entering logoutUser method: user logged out");
 
+        // invalidate the session, and remove "user" attribute from session.
         session.removeAttribute("user");
         session.invalidate();
         return "redirect:/login";
-
     }
-
 }
