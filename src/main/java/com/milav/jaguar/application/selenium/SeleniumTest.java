@@ -91,7 +91,7 @@ public class SeleniumTest {
      *
      * @param driver web driver
      */
-    public void editProfile(WebDriver driver) {
+    public void editProfile(@NotNull WebDriver driver) {
 
         WebElement profileLink = driver.findElement(By.id("profile"));
         profileLink.click();
@@ -123,7 +123,7 @@ public class SeleniumTest {
      *
      * @param driver web driver
      */
-    public void deleteProfile(WebDriver driver) {
+    public void deleteProfile(@NotNull WebDriver driver) {
 
         WebElement deleteAccountLink = driver.findElement(By.id("del-account"));
         deleteAccountLink.click();
