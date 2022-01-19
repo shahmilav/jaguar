@@ -30,8 +30,10 @@ public class JaguarController {
         LOGGER.info("Entering login method");
 
         if (session.getAttribute("user") != null) {
+            // if user is already signed in, redirect them to dashboard.
             return "redirect:/dashboard";
         } else {
+            // otherwise, let them log in.
             return "login";
         }
     }

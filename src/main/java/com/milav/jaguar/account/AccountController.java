@@ -32,7 +32,7 @@ public class AccountController {
      * <p>
      * Pretty much the most complicated method.
      * The method checks the user's password; and if it matches with the one in the database,
-     * we accept any account information changes.
+     * we accept any incoming account information changes.
      *
      * @param firstname       the new firstname
      * @param lastname        the new lastname
@@ -48,11 +48,10 @@ public class AccountController {
     public String saveChanges(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname, @RequestParam("currentPassword") String currentPassword, @RequestParam("email") String newEmail, @RequestParam("newPassword") String newPassword, Model model, @NotNull HttpSession session) throws DBException {
 
         User oldInfo = (User) session.getAttribute("user");
-
         LOGGER.info("Entering saveChanges method: " + oldInfo.getEmail());
         LOGGER.info("Name: " + firstname + " " + lastname + ", Current Password: " + currentPassword + ", New email: " + newEmail + ", new Password: " + newPassword);
 
-        if (utils.passwordCheck(currentPassword, oldInfo.getPassword())) {
+        if (utils.arePasswordsEqual(currentPassword, oldInfo.getPassword())) {
 
             User user = userController.updateUserInDB(oldInfo, firstname, lastname, newEmail, newPassword);
 
@@ -95,7 +94,7 @@ public class AccountController {
             return "/error";
         }
 
-        if (utils.passwordCheck(password, user.getPassword())) {
+        if (utils.arePasswordsEqual(password, user.getPassword())) {
             userController.deleteUserFromDB(user.getEmail());
             session.invalidate();
             return "redirect:/login";
@@ -104,7 +103,7 @@ public class AccountController {
             model.addAttribute("error", "Please enter your password.");
             return null;
 
-        } else if (!utils.passwordCheck(password, user.getPassword())) {
+        } else if (!utils.arePasswordsEqual(password, user.getPassword())) {
             model.addAttribute("error", "Incorrect password, please try again.");
             return null;
 
@@ -116,7 +115,7 @@ public class AccountController {
     }
 
     /**
-     * Takes you to the deleteaccount page.
+     * Takes the user to the deleteaccount page.
      *
      * @return String
      */
