@@ -112,7 +112,7 @@ public class AccountController {
     }
 
     /**
-     * Takes the user to the deleteaccount page.
+     * As expected, the method takes the user to the deleteaccount page.
      *
      * @return String
      */

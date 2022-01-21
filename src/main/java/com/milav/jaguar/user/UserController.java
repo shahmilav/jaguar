@@ -146,7 +146,6 @@ public class UserController {
         collection.updateOne(searchQuery, newDocument);
         LOGGER.info(newDocument);
 
-        // update email: we do this last as then the query messes up.
         newDocument.append("$set", new BasicDBObject().append("email", email));
         collection.updateOne(searchQuery, newDocument);
         LOGGER.info(newDocument);

@@ -28,10 +28,8 @@ public class LoginController {
     private final UserController userController = new UserController();
     private final JaguarUtils utils = new JaguarUtils();
 
-
     /**
      * The method decides what to do when the login form is submitted.
-     * <p>
      * <ul>
      * <li>If the method returns null, the page does not change.</li>
      * <li>If the user is already logged in, redirect them to dashboard.</li>
@@ -53,12 +51,12 @@ public class LoginController {
     @PostMapping("/login")
     public String authenticate(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, Model model, HttpSession session) throws DBException {
 
-        User user = userController.findUser(email); // find user from email given
+        User user = userController.findUser(email);
         LOGGER.info("Entering authenticate method: " + email);
         String errorMessage = "There is an error processing your request, please try again.";
 
         /* We want to check if any fields are blank before we check if
-        passwords match in order to prevent a valid email or password being "".
+        passwords match in order to prevent a valid email or password being "" (blank).
         That is the main reason for the select ordering of the following if statements. */
 
         if (email.isBlank() || password.isBlank()) {
@@ -89,7 +87,7 @@ public class LoginController {
 
         } else {
 
-            LOGGER.error("Trouble processing login request --> com.milav.jaguar.auth.LoginController.authenticate");
+            LOGGER.error("Trouble processing login request at com.milav.jaguar.auth.LoginController.authenticate");
             model.addAttribute("error", errorMessage);
             session.invalidate();
             return null;
@@ -97,10 +95,12 @@ public class LoginController {
     }
 
     /**
-     * The method validates the user that is logging in. If the user is not logged
-     * in, the method redirects them to the login page. Otherwise, we ensure the
-     * user exists. If they exist, we show a welcome message on the
-     * dashboard. If they do not exist, we redirect them to the login page.
+     * The method validates the user that is logging in.
+     * <p>
+     * If the user is not logged in, the method redirects them to the login page.
+     * Otherwise, we ensure the user exists.
+     * If they exist, we show a welcome message on the dashboard.
+     * If they do not exist, we redirect them to the login page.
      *
      * @param model   model
      * @param session HttpSession
