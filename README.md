@@ -10,7 +10,7 @@
 * [Project features and functionality](#features)
 * [Installation](#installation)
 * [How to run the program](#running-the-program)
-* [Frameworks used](#frameworks-used)
+* [Frameworks used](#frameworks-and-technologies-used)
 
 
 ## Features
@@ -32,7 +32,7 @@ To run the program, type ```mvn springboot:run``` in the command line and go to 
 should be running. Make sure you have maven installed on your machine. Alternatively, run it using your favorite code
 editor.
 
-## Frameworks Used
+## Frameworks and Technologies used
 This project uses
 
 - [Apache Maven](https://maven.apache.org/) - framework for project structure.
