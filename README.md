@@ -1,4 +1,6 @@
-# Jaguar
+<p align="center">
+    # Jaguar
+</p>
 
 ### Table of Contents
 * [General information about the project](#general-info)
