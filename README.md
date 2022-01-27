@@ -1,17 +1,14 @@
-<p align="center">
-    # Jaguar
-</p>
+<h1 align="center">Jaguar</h1>
+<p align="center">Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
+access the dashboard.</p>
 
-### Table of Contents
-* [General information about the project](#general-info)
+## Table of Contents
+
 * [Project features and functionality](#features)
 * [Installation](#installation)
 * [How to run the program](#running-the-program)
 * [Frameworks used](#frameworks-used)
 
-## General Info
-Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
-access the dashboard.
 
 ## Features
 - Edit profile functionality
