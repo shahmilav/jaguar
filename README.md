@@ -15,6 +15,7 @@ access the dashboard.
 - Edit profile functionality
 - A cool dashboard
 - Delete account functionality
+- Extremely secure password hashing (new hash each time!)
 - and more to come, such as
     - Sign in with Google
     - Captcha
