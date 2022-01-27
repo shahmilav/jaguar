@@ -19,7 +19,7 @@
 - [X] Delete account functionality
 - [X] Extremely secure password hashing (new hash each time!)
 - and more to come, such as
-    - [ ] Sign in with Google
+    - [ ] Sign in with Google and GitHub
     - [ ] Captcha
     - [ ] Forgot password functionality
 
