@@ -1,4 +1,4 @@
-<h1 align="center">Jaguar</h1>
+<h1 align="center"><i>Jaguar</i></h1>
 <p align="center">
     <img src="https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png">
     <i>Jaguar</i> is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
@@ -35,9 +35,9 @@ editor.
 ## Frameworks Used
 This project uses
 
-- [Apache Maven](https://maven.apache.org/) - framework for project structure
-- [Spring](https://spring.io/) - a useful framework for web apps
-- [Thymeleaf](https://www.thymeleaf.org/) - convenient way to make a web app
-- [MongoDB](https://www.mongodb.com/) for all our database needs
-- [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) - for logging
-- _All dependencies are in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file._
+- [Apache Maven](https://maven.apache.org/) - framework for project structure.
+- [Spring](https://spring.io/) - a useful framework for web apps.
+- [Thymeleaf](https://www.thymeleaf.org/) - convenient way to make a web app.
+- [MongoDB](https://www.mongodb.com/) for all our database needs.
+- [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) - for logging.
+- _All dependencies can be found in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file._
