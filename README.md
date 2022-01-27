@@ -1,9 +1,9 @@
-<h1 align="center"><i>Jaguar</i></h1>
+<h1 align="center">Jaguar</h1>
 <p align="center">
-    <img src="https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png">
     <i>Jaguar</i> is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
     access the dashboard.
 </p>
+<img src="https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png">
 
 ## Table of Contents
 
