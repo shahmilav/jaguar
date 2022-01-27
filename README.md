@@ -1,10 +1,17 @@
 # Jaguar
 
+### Table of Contents
+* [General information about the project](#general-info)
+* [Project features and functionality](#features)
+* [Installation](#installation)
+* [How to run the program](#running-the-program)
+* [Frameworks used](#frameworks-used)
+
+## General Info
 Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
 access the dashboard.
 
 ## Features
-
 - Edit profile functionality
 - A cool dashboard
 - Delete account functionality
@@ -14,19 +21,15 @@ access the dashboard.
     - Forgot password functionality
 
 ## Installation
-
-To install, clone the git repo:
-
+To install, clone the git repo: 
 ```git clone https://github.com/shahmilav/jaguar```
 
 ## Running the Program
-
 To run the program, type ```mvn springboot:run``` in the command line and go to _localhost:8080_ in a browser. The app
 should be running. Make sure you have maven installed on your machine. Alternatively, run it using your favorite code
 editor.
 
 ## Frameworks Used
-
 This project uses
 
 - [Apache Maven](https://maven.apache.org/) - framework for project structure
