@@ -39,5 +39,6 @@ This project uses
 - [Spring](https://spring.io/) - a useful framework for web apps.
 - [Thymeleaf](https://www.thymeleaf.org/) - convenient way to make a web app.
 - [MongoDB](https://www.mongodb.com/) for all our database needs.
+- [Bootstrap v5.1](https://getbootstrap.com/) for web design.
 - [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) - for logging.
 - _All dependencies can be found in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file._
