@@ -3,6 +3,8 @@
     <i>Jaguar</i> is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
     access the dashboard.
 </p>
+
+<!-- TODO: Turn image to a link to the website, and make it transparent (dynamic). -->
 <img src="https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png">
 
 ## Table of Contents
@@ -14,14 +16,14 @@
 
 
 ## Features
-- [X] Edit profile functionality
-- [X] A cool dashboard
-- [X] Delete account functionality
-- [X] Extremely secure password hashing (new hash each time!)
-- and more to come, such as
-    - [ ] Sign in with Google and GitHub
-    - [ ] Captcha
-    - [ ] Forgot password functionality
+* [X] Edit profile functionality
+* [X] A cool dashboard
+* [X] Delete account functionality
+* [X] Extremely secure password hashing (new hash each time!)
+* and more to come, such as
+    * [ ] Sign in with Google and GitHub
+    * [ ] Captcha
+    * [ ] Forgot password functionality
 
 ## Installation
 To install, clone the git repo: 
