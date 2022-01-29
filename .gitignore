@@ -1,0 +1,20 @@
+# Mac Specific
+.DS_Store
+
+# JavaDoc
+docs/
+
+# Logs
+logs/
+
+# NetBeans
+nbactions.xml
+
+# IntelliJ IDEA
+.idea/
+
+# Classfiles
+target/
+
+# Maven
+.mvn/
