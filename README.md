@@ -1,6 +1,6 @@
 <h1 align="center">Jaguar</h1>
 <p align="center">
-    <i>Jaguar</i> is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
+    Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
     access the dashboard.
 </p>
 
