@@ -19,4 +19,4 @@ target/
 # Maven
 .mvn/
 
-.properties
+application.properties
