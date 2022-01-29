@@ -14,8 +14,8 @@
 * [How to run the program](#running-the-program)
 * [Frameworks used](#frameworks-and-technologies-used)
 
-
 ## Features
+
 * [X] Edit profile functionality
 * [X] A cool dashboard
 * [X] Delete account functionality
@@ -26,15 +26,18 @@
     * [ ] Forgot password functionality
 
 ## Installation
-To install, clone the git repo: 
+
+To install, clone the git repo:
 ```git clone https://github.com/shahmilav/jaguar```
 
 ## Running the Program
+
 To run the program, type ```mvn springboot:run``` in the command line and go to _localhost:8080_ in a browser. The app
 should be running. Make sure you have maven installed on your machine. Alternatively, run it using your favorite code
 editor.
 
 ## Frameworks and Technologies used
+
 This project uses
 
 - [Apache Maven 3.6.3](https://maven.apache.org/) - framework for project structure.

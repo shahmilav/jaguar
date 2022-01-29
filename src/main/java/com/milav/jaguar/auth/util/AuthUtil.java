@@ -1,23 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.pebblenotes.auth.util;
+package com.milav.jaguar.auth.util;
 
-import com.pebblenotes.auth.errors.PasswordGenException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import com.milav.jaguar.auth.errors.PasswordGenException;
+
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.Base64;
 
 
 /**
- *
  * @author jigarshah
  */
 public class AuthUtil {
@@ -31,15 +26,12 @@ public class AuthUtil {
      * authentication, it can be hashed again and compared with this generated
      * secured password.
      *
-     * @param password
-     * @param salt salt to be used to generate secure password. If salt is null,
-     * then it generates a salt
-     *
-     * @return
-     * @throws Exception
+     * @param password the password to hash
+     * @return HashMap
+     * @throws PasswordGenException error generating the password.
      */
-    public static HashMap createSecurePassword(String password) throws PasswordGenException {
-        HashMap map = new HashMap();
+    public static HashMap<String, String> createSecurePassword(String password) throws PasswordGenException {
+        HashMap<String, String> map = new HashMap<>();
 
         byte[] bSalt = createSecureSalt();
         // Digest computation
@@ -71,22 +63,22 @@ public class AuthUtil {
      * 1000 iterations of hash.
      *
      * @param password String The password to encrypt
-     * @param salt byte[] The salt
+     * @param salt     byte[] The salt
      * @return byte[] The digested password
-     * @throws NoSuchAlgorithmException If the algorithm doesn't exist
+     * @throws PasswordGenException If the algorithm doesn't exist
      */
     public static byte[] getHash(String password, byte[] salt) throws PasswordGenException {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-1");
             digest.reset();
             digest.update(salt);
-            byte[] input = digest.digest(password.getBytes("UTF-8"));
+            byte[] input = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             for (int i = 0; i < ITERATION_NUMBER; i++) {
                 digest.reset();
                 input = digest.digest(input);
             }
             return input;
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(AuthUtil.class.getName()).log(Level.SEVERE, null, ex);
             throw new PasswordGenException(ex.getLocalizedMessage(), ex.fillInStackTrace());
         }
@@ -97,9 +89,8 @@ public class AuthUtil {
      *
      * @param data String The base64 representation
      * @return byte[]
-     * @throws IOException
      */
-    public static byte[] base64ToByte(String data) throws IOException {
+    public static byte[] base64ToByte(String data) {
         return Base64.getDecoder().decode(data);
     }
 
@@ -108,7 +99,6 @@ public class AuthUtil {
      *
      * @param data byte[]
      * @return String
-     * @throws IOException
      */
     public static String byteToBase64(byte[] data) {
         return Base64.getEncoder().encodeToString(data);
