@@ -19,4 +19,4 @@ target/
 # Maven
 .mvn/
 
-src/main/resources/application.properties
+application.properties
