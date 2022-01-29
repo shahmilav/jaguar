@@ -44,8 +44,7 @@ public class DBManager {
 
     private void init() {
 
-        String uri = "mongodb+srv://milav:pulsar66@cluster0.jnvid.mongodb.net/jaguar?retryWrites=true&w=majority";
-        MongoClient mongoClient = MongoClients.create(uri);
+        MongoClient mongoClient = MongoClients.create("mongodb+srv://milav:pulsar66@cluster0.jnvid.mongodb.net/jaguar?retryWrites=true&w=majority");
         mongoDB = mongoClient.getDatabase("jaguar");
 
     }
