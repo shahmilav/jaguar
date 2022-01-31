@@ -46,4 +46,4 @@ This project uses
 - [MongoDB](https://www.mongodb.com/) for all our database needs.
 - [Bootstrap v5](https://getbootstrap.com/) for web design.
 - [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) - for logging.
-- _All dependencies can be found in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file._
+- *All dependencies can be found in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file.*
