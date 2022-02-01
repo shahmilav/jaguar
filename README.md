@@ -32,7 +32,7 @@ To install, clone the git repo:
 
 ## Running the Program
 
-To run the program, type ```mvn springboot:run``` in the command line and go to _localhost:8080_ in a browser. The app
+To run the program, type ```mvn spring-boot:run``` in the command line and go to _localhost:8080_ in a browser. The app
 should be running. Make sure you have maven installed on your machine. Alternatively, run it using your favorite code
 editor.
 
