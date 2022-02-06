@@ -9,10 +9,11 @@
 
 ## Table of Contents
 
-* [Project features and functionality](#features)
-* [Installation](#installation)
-* [How to run the program](#running-the-program)
-* [Frameworks used](#frameworks-and-technologies-used)
+* [Features](#features)
+* [Install](#installation)
+* [Dependencies](#dependencies)
+* [Usage](#running-the-program)
+* [Frameworks](#frameworks-and-technologies-used)
 
 ## Features
 
@@ -30,11 +31,13 @@
 To install, clone the git repo:
 ```git clone https://github.com/shahmilav/jaguar```
 
+## Dependencies
+The project requires the lastest version of [Apache Maven](https://maven.apache.org/) and [Java](https://adoptopenjdk.net/releases.html). Furthermore, to contribute, make sure you have [geckodriver](https://github.com/mozilla/geckodriver) and [Firefox](https://www.mozilla.org/en-US/firefox/new/) installed as Selenium runs on Firefox.
+
 ## Running the Program
 
 To run the program, type ```mvn spring-boot:run``` in the command line and go to _localhost:8080_ in a browser. The app
-should be running. Make sure you have maven installed on your machine. Alternatively, run it using your favorite code
-editor.
+should be running.
 
 ## Frameworks and Technologies used
 
