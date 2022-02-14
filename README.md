@@ -4,7 +4,8 @@
     access the dashboard.
 </p>
 
-<!-- TODO: Turn image to a link to the website, and make it transparent (dynamic). -->
+[//]: # ([//]: # TODO: Turn image to a link to the website, and make it transparent &#40;dynamic&#41;)
+
 ![login_screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)
 
 ## Table of Contents
@@ -33,7 +34,7 @@ To install, clone the git repo:
 
 ## Dependencies
 
-The project requires the lastest version of [Apache Maven](https://maven.apache.org/)
+The project requires the latest version of [Apache Maven](https://maven.apache.org/)
 and [Java](https://adoptopenjdk.net/releases.html). Furthermore, to contribute, make sure you
 have [geckodriver](https://github.com/mozilla/geckodriver) and [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 installed as Selenium runs on Firefox.
