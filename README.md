@@ -32,7 +32,11 @@ To install, clone the git repo:
 ```git clone https://github.com/shahmilav/jaguar```
 
 ## Dependencies
-The project requires the lastest version of [Apache Maven](https://maven.apache.org/) and [Java](https://adoptopenjdk.net/releases.html). Furthermore, to contribute, make sure you have [geckodriver](https://github.com/mozilla/geckodriver) and [Firefox](https://www.mozilla.org/en-US/firefox/new/) installed as Selenium runs on Firefox.
+
+The project requires the lastest version of [Apache Maven](https://maven.apache.org/)
+and [Java](https://adoptopenjdk.net/releases.html). Furthermore, to contribute, make sure you
+have [geckodriver](https://github.com/mozilla/geckodriver) and [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+installed as Selenium runs on Firefox.
 
 ## Running the Program
 
