@@ -5,7 +5,7 @@
 </p>
 
 <!-- TODO: Turn image to a link to the website, and make it transparent (dynamic). -->
-![Screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)
+![login_screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)
 
 ## Table of Contents
 
