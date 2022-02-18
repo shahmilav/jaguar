@@ -1,12 +1,14 @@
 <h1 align="center">Jaguar</h1>
+
 <p align="center">
     Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
     access the dashboard.
 </p>
 
-[//]: # ([//]: # TODO: Turn image to a link to the website, and make it transparent &#40;dynamic&#41;)
+<!-- TODO: Turn image to a link to the website, and make it transparent.) -->
 
 ![login_screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)
+
 
 ## Table of Contents
 
