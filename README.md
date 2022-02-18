@@ -9,7 +9,6 @@
 
 ![login_screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)
 
-
 ## Table of Contents
 
 * [Features](#features)
