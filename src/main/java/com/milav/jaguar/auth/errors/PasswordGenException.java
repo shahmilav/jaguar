@@ -4,12 +4,10 @@
  */
 package com.milav.jaguar.auth.errors;
 
-/**
- * @author jigarshah
- */
+/** @author jigarshah */
 public class PasswordGenException extends Exception {
 
-    public PasswordGenException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public PasswordGenException(String message, Throwable cause) {
+    super(message, cause);
+  }
 }

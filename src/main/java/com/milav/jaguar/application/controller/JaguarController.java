@@ -17,34 +17,34 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class JaguarController {
 
-    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+  private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
-    /**
-     * The method shows the login page.
-     *
-     * @param session session
-     * @return String
-     */
-    @GetMapping(value = {"/", "/login"})
-    public String login(HttpSession session) {
-        LOGGER.info("Entering login method");
+  /**
+   * The method shows the login page.
+   *
+   * @param session session
+   * @return String
+   */
+  @GetMapping(value = {"/", "/login"})
+  public String login(HttpSession session) {
+    LOGGER.info("Entering login method");
 
-        if (session.getAttribute("user") != null) {
-            // if user is already signed in, redirect them to dashboard.
-            return "redirect:/dashboard";
-        } else {
-            // otherwise, let them log in.
-            return "login";
-        }
+    if (session.getAttribute("user") != null) {
+      // if user is already signed in, redirect them to dashboard.
+      return "redirect:/dashboard";
+    } else {
+      // otherwise, let them log in.
+      return "login";
     }
+  }
 
-    /**
-     * No one likes "/index" in their url: this avoids that.
-     *
-     * @return String
-     */
-    @GetMapping(value = {"/index"})
-    public String index() {
-        return "redirect:/login";
-    }
+  /**
+   * No one likes "/index" in their url: this avoids that.
+   *
+   * @return String
+   */
+  @GetMapping(value = {"/index"})
+  public String index() {
+    return "redirect:/login";
+  }
 }
