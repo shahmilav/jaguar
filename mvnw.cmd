@@ -11,7 +11,7 @@
 @REM
 @REM Unless required by applicable law or agreed to in writing,
 @REM software distributed under the License is distributed on an
-@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONSOF ANY
 @REM KIND, either express or implied.  See the License for the
 @REM specific language governing permissions and limitations
 @REM under the License.
@@ -179,4 +179,4 @@ if "%MAVEN_BATCH_PAUSE%" == "on" pause
 
 if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
 
-exit /B %ERROR_CODE%
+exit /B %ERROR_CODE% 
