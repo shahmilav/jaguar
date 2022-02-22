@@ -10,9 +10,13 @@ import org.springframework.data.annotation.Id;
  */
 public class User {
 
+  /** User's email. Considered their id: must be unique. */
   @Id private String email;
+  /** The user's password. */
   private String password;
+  /** The user's first name. */
   private String firstName;
+  /** The user's last name. */
   private String lastName;
 
   /** The constructor creates an empty user object. */

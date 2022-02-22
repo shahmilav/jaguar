@@ -1,6 +1,5 @@
 package com.milav.jaguar.auth.signup;
 
-import com.milav.jaguar.application.app.JaguarApplication;
 import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
@@ -24,7 +23,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class SignupController {
 
-  private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+  /** Logger. */
+  private static final Logger LOGGER = LogManager.getLogger(SignupController.class);
+  /** User controller. */
   private final UserController userController = new UserController();
 
   /**

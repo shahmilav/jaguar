@@ -22,8 +22,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class AccountController {
 
+  /** Logger. */
   private static final Logger LOGGER = LogManager.getLogger(AccountController.class);
+  /** User controller class. */
   private final UserController userController = new UserController();
+  /** Generic utilities. */
   private final JaguarUtils utils = new JaguarUtils();
 
   /**

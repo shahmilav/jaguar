@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 /**
- * Basic utilities.
+ * Basic and generic utilities.
  *
  * @author Milav Shah
  */
@@ -26,7 +26,7 @@ public class JaguarUtils {
   /**
    * Fills up the information on the page.
    *
-   * @param model model
+   * @param mod¬el model
    * @param firstname first name of the user
    * @param lastname last name of the user
    * @param email user's email

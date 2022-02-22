@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ProfileController {
 
+  /** The logger. */
   private static final Logger LOGGER = LogManager.getLogger(ProfileController.class);
 
   /**
@@ -44,7 +45,6 @@ public class ProfileController {
       model.addAttribute("email", user.getEmail());
       LOGGER.info(user.getEmail() + "'s profile is shown.");
       return null;
-
     } else {
       LOGGER.info("User is not logged in: redirect to login page.");
       return "redirect:/login";

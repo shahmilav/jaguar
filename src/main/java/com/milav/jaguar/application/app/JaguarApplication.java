@@ -17,7 +17,9 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("com.milav.jaguar")
 public class JaguarApplication {
 
+  /** The logger. */
   private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+  /** The <a href="https://selenium.dev">Selenium</a> test class. */
   private static final SeleniumTest seleniumTest = new SeleniumTest();
 
   /**
@@ -29,6 +31,7 @@ public class JaguarApplication {
 
     LOGGER.info("Entering main method:");
     SpringApplication.run(JaguarApplication.class, args);
+    // TODO: get selenium working by fixing db issue.
     // seleniumTest.runSelenium();
     LOGGER.info("App Started");
   }
