@@ -29,7 +29,7 @@ public class JaguarApplication {
 
     LOGGER.info("Entering main method:");
     SpringApplication.run(JaguarApplication.class, args);
-    seleniumTest.runSelenium();
+    // seleniumTest.runSelenium();
     LOGGER.info("App Started");
   }
 }

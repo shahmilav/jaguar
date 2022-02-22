@@ -1,6 +1,5 @@
 package com.milav.jaguar.account;
 
-import com.milav.jaguar.application.app.JaguarApplication;
 import com.milav.jaguar.user.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,22 +18,22 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ProfileController {
 
-  private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+  private static final Logger LOGGER = LogManager.getLogger(ProfileController.class);
 
   /**
    * The method gets the current user from the session.
    *
-   * <p>If the ser is null (has not signed in), we redirect them to the login page. Otherwise, we
+   * <p>If the user is null (has not signed in), we redirect them to the login page. Otherwise, we
    * fill in their information on the page.
    *
-   * @param model mode
+   * @param model model
    * @param session HttpSession
    * @return String
    */
   @GetMapping("/profile")
   public String fillUpProfile(Model model, @NotNull HttpSession session) {
 
-    LOGGER.info("Entering fillUpProfile method. ");
+    LOGGER.info("Entering fillUpProfile method.");
     LOGGER.info("User wants to see profile.");
 
     User user = (User) session.getAttribute("user");
@@ -53,7 +52,9 @@ public class ProfileController {
   }
 
   /**
-   * Takes you to the edit profile page.
+   * The method takes you to the edit profile page.
+   *
+   * <p>If the user is not logged in, they are redirected to the login screen.
    *
    * @param model model
    * @param session HttpSession
