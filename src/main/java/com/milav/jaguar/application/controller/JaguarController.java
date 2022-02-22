@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class JaguarController {
 
+  /** The logger. */
   private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
   /**

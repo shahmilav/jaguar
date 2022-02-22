@@ -28,9 +28,13 @@ import static com.mongodb.client.model.Filters.eq;
 @Service
 public class UserController {
 
+  /** Logger. */
   private static final Logger LOGGER = LogManager.getLogger(UserController.class);
+  /** User related utilities. */
   private final UserUtil userUtil = new UserUtil();
+  /** Generic database connection error. */
   String dbError = "Error accessing the database.";
+  /** The name of the MongoDB collection in the database. */
   String collectionName = "USER_PROFILE";
 
   // Field Names

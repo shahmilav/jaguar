@@ -1,6 +1,5 @@
 package com.milav.jaguar.application.selenium;
 
-import com.milav.jaguar.application.app.JaguarApplication;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +14,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  * @author Milav Shah
  */
 public class SeleniumTest {
-  private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+
+  /** The logger. */
+  private static final Logger LOGGER = LogManager.getLogger(SeleniumTest.class);
 
   /** The method runs the Selenium web driver on Firefox. */
   public void runSelenium() {
@@ -26,7 +27,7 @@ public class SeleniumTest {
     driver.get("http://localhost:8080");
 
     simpleSignIn(driver);
-    makeAndDeleteAccount(driver);
+    makeEditDelete(driver);
     driver.quit();
   }
 
@@ -142,7 +143,7 @@ public class SeleniumTest {
    *
    * @param driver web driver.
    */
-  public void makeAndDeleteAccount(WebDriver driver) {
+  public void makeEditDelete(WebDriver driver) {
     makeANewAccount(driver);
     editProfile(driver);
     deleteProfile(driver);

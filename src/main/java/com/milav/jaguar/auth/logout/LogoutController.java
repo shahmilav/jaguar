@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LogoutController {
 
+  /** Logger */
   private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
 
   /**
