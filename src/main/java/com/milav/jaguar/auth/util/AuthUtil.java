@@ -11,9 +11,17 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/** @author jigarshah */
+/** @author Jigar Shah */
 public class AuthUtil {
 
+  /**
+   * Number of iterations we do the hash.
+   *
+   * <p>The longer the stronger (against <a
+   * href="https://www.kaspersky.com/resource-center/definitions/brute-force-attack">brute-force
+   * attacks</a>), however if it is too high, the process becomes very slow and an unpleasant
+   * experience as this happens <strong>every time passwords are entered.</strong>
+   */
   private static final int ITERATION_NUMBER = 1000;
 
   /**
