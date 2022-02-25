@@ -47,16 +47,15 @@ public class DBManager {
         throw new DBException(ex.getMessage(), ex.fillInStackTrace());
       }
     }
-
     return mongoDB;
   }
 
   private void init() {
 
-    MongoClient mongoClient =
+    try (MongoClient mongoClient =
         MongoClients.create(
-            "mongodb+srv://milav:pulsar66@cluster0.jnvid.mongodb.net/jaguar?retryWrites=true&w=majority");
-
-    mongoDB = mongoClient.getDatabase("jaguar");
+            "mongodb+srv://milav:pulsar66@cluster0.jnvid.mongodb.net/jaguar?retryWrites=true&w=majority")) {
+      mongoDB = mongoClient.getDatabase("jaguar");
+    }
   }
 }
