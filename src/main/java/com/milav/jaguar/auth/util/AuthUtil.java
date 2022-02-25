@@ -11,7 +11,9 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/** @author Jigar Shah */
+/**
+ * @author Jigar Shah
+ */
 public class AuthUtil {
 
   /**
