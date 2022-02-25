@@ -1,7 +1,7 @@
 <h1 align="center">Jaguar</h1>
 
 <p align="center">
-Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to access the dashboard.
+Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to access the dashboard. Furthermore, users can edit and delete their account.
 </p>
 
 <!-- TODO: Turn image to a link to the website, and make it transparent.) -->
