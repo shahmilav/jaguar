@@ -29,10 +29,9 @@ public class JaguarApplication {
    */
   public static void main(String[] args) {
 
-    LOGGER.info("Entering main method:");
+    LOGGER.info("Entering main method.");
     SpringApplication.run(JaguarApplication.class, args);
-    // TODO: get selenium working by fixing db issue.
-    // seleniumTest.runSelenium();
-    LOGGER.info("App Started");
+    seleniumTest.runSelenium();
+    LOGGER.info("App Started.");
   }
 }
