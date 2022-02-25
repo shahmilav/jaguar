@@ -56,7 +56,7 @@ public class SeleniumTest {
    *
    * @param driver web driver
    */
-  public void makeANewAccount(@NotNull WebDriver driver) {
+  public void makeAccount(@NotNull WebDriver driver) {
 
     WebElement signupLink = driver.findElement(By.id("signup-link"));
     signupLink.click();
@@ -144,7 +144,7 @@ public class SeleniumTest {
    * @param driver web driver.
    */
   public void makeEditDelete(WebDriver driver) {
-    makeANewAccount(driver);
+    makeAccount(driver);
     editProfile(driver);
     deleteProfile(driver);
   }
