@@ -38,9 +38,14 @@ public class UserController {
   String collectionName = "USER_PROFILE";
 
   // Field Names
+
+  /** First name field. */
   String firstNameField = "firstName";
+  /** Last name field. */
   String lastNameField = "lastName";
+  /** Email field. */
   String emailField = "email";
+  /** Password field. */
   String passwordField = "password";
 
   /**
@@ -108,7 +113,7 @@ public class UserController {
    *
    * @param email the search query to match against the database.
    * @return User
-   * @throws DBException we have to connect to the database to find the user
+   * @throws DBException we have to connect to the database to find the user.
    */
   public User findUser(@NotNull String email) throws DBException {
 
@@ -127,8 +132,8 @@ public class UserController {
 
     try {
       result = findIterable.first();
-    } catch (MongoTimeoutException e) {
-      throw new DBException(dbError, e);
+    } catch (MongoTimeoutException timeoutException) {
+      throw new DBException(dbError, timeoutException);
     }
 
     if (result != null) {
