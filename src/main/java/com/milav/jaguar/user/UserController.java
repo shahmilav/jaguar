@@ -61,8 +61,7 @@ public class UserController {
       String firstName, String lastName, @NotNull String email, @NotNull String password)
       throws DBException {
 
-    String info = "Entering createUserInDB method: " + email;
-    LOGGER.info(info);
+    LOGGER.info("Entering createUserInDB method");
     MongoDatabase db = DBManager.getMongoDB();
 
     // get database collection.
@@ -84,8 +83,7 @@ public class UserController {
     // insert documents into the database.
     collection.insertOne(document);
     collection.createIndex(new BasicDBObject(emailField, 1));
-    info = "User created in DB: " + firstName + " " + lastName + ": " + email;
-    LOGGER.info(info);
+    LOGGER.info("User created in DB");
   }
 
   /**
