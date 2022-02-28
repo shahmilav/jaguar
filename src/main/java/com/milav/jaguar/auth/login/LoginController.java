@@ -117,8 +117,7 @@ public class LoginController {
 
     if (session != null) {
       User user = (User) session.getAttribute("user");
-      String welcomeMessage = ("Welcome to Jaguar Dashboard, " + user.getFirstName() + ".");
-      model.addAttribute("name", welcomeMessage);
+      model.addAttribute("greeting", "How are you doing today, " + user.getFirstName() + "?");
       return "dashboard";
     } else {
       return "redirect:/login";
