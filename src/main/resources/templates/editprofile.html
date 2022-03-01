@@ -14,7 +14,7 @@
   <link href="logo.png" rel="apple-touch-icon" sizes="57x57">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Fira Sans', sans-serif;">
   <p>
     &emsp;
   </p><img alt="" class="d-inline-block align-top" height="50"
@@ -34,7 +34,7 @@
     </ul>
   </div>
 </nav>
-<div class="col-lg-8 mx-auto p-3 py-md-5">
+<div class="col-lg-8 mx-auto p-3 py-md-5" style="font-family: 'Fira Sans', sans-serif;">
   <main class="form-signin w-100" style=
     "width: 100%; max-width: 330px; padding: 15px; margin: auto">
     <form action="/savechanges">
@@ -44,27 +44,27 @@
       <h4>
         First Name:
       </h4><!--/*@thymesVar id="firstname" type=""*/-->
-      <input class="w-100" name="firstname" th:value=
+      <input class="w-100" name="firstname" style="font-family: 'Fira Code', monospace;" th:value=
         "${firstname}"><br>
       <h4>
         Last Name:
       </h4><!--/*@thymesVar id="lastname" type=""*/-->
-      <input class="w-100" name="lastname" th:value=
+      <input class="w-100" name="lastname" style="font-family: 'Fira Code', monospace;" th:value=
         "${lastname}"><br>
       <br>
       <h4>
         Email:
       </h4><!--/*@thymesVar id="email" type=""*/-->
-      <input class="w-100" name="email" th:value="${email}"
+      <input class="w-100" name="email" style="font-family: 'Fira Code', monospace;" th:value="${email}"
              type="email"><br>
       <h4>
         Password:
-      </h4><i><input class="w-100" name="newPassword" type=
+      </h4><i><input class="w-100" name="newPassword" style="font-family: 'Fira Code', monospace;" type=
       "password"></i><br>
       <br>
       <h5>
         Enter current password to save changes.
-      </h5><input class="w-100" name="currentPassword" type=
+      </h5><input class="w-100" name="currentPassword" style="font-family: 'Fira Code', monospace;" type=
       "password"><br>
       <br>
       <button class="btn w-100 btn-warning" name="savechanges"

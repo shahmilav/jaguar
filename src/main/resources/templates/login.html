@@ -17,9 +17,10 @@
         rel="stylesheet">
 </head>
 <body class="text-center">
-<main class="form-signin">
+<main class="form-signin" style="font-family: Fira Sans, sans-serif;">
   <br>
-  <form action="/login" method="post">
+  <form action="
+/login" method="post">
     <img alt="Jaguar Logo" class="mb-4" height="120" src=
       "logo.png" width="120">
     <h1 class="h2 mb-3 fw-normal">
@@ -28,11 +29,11 @@
     <p class="error" th:text="${error}"></p><br>
     <div class="form-floating center">
       <input class="form-control" name="email" placeholder=
-        "Email" type="email"> <label>Email</label>
+        "Email" style="font-family: 'Fira Code', monospace;" type="email"> <label>Email</label>
     </div>
     <div class="form-floating">
       <input class="form-control" name="password" placeholder=
-        "Password" type="password"> <label>Password</label>
+        "Password" style="font-family: 'Fira Code', monospace;" type="password"> <label>Password</label>
     </div>
     <br>
     <button class="w-100 btn btn-lg btn-warning" name=
