@@ -27,8 +27,8 @@ public class ProfileController {
    * <p>If the user is null (has not signed in), we redirect them to the login page. Otherwise, we
    * fill in their information on the page.
    *
-   * @param model model
-   * @param session HttpSession
+   * @param model Spring model.
+   * @param session the session we use to store user data.
    * @return String
    */
   @GetMapping("/profile")
@@ -67,6 +67,7 @@ public class ProfileController {
     User user = (User) session.getAttribute("user");
 
     if (user != null) {
+
       model.addAttribute("firstname", user.getFirstName());
       model.addAttribute("lastname", user.getLastName());
       model.addAttribute("email", user.getEmail());
