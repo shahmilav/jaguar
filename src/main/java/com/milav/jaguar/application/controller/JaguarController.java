@@ -1,6 +1,5 @@
 package com.milav.jaguar.application.controller;
 
-import com.milav.jaguar.application.app.JaguarApplication;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class JaguarController {
 
   /** The logger. */
-  private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+  private static final Logger LOGGER = LogManager.getLogger(JaguarController.class);
 
   /**
    * The method shows the login page.
