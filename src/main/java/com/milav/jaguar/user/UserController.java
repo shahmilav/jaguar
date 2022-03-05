@@ -47,6 +47,9 @@ public class UserController {
   String emailField = "email";
   /** Password field. */
   String passwordField = "password";
+  /** Salt field. */
+  String saltField = "salt";
+  
 
   /**
    * The method creates an entry in the database with the given information.
@@ -55,10 +58,11 @@ public class UserController {
    * @param lastName last name of the user.
    * @param email email of the user.
    * @param password user's password.
+   * @param salt sprinkle the salt to make password guessing hard
    * @throws DBException since we are dealing with the database.
    */
   public void createUserInDB(
-      String firstName, String lastName, @NotNull String email, @NotNull String password)
+      String firstName, String lastName, @NotNull String email, @NotNull String password, @NotNull String salt)
       throws DBException {
 
     LOGGER.info("Entering createUserInDB method");
@@ -73,6 +77,7 @@ public class UserController {
     document.put(lastNameField, lastName);
     document.put(emailField, email.toLowerCase());
     document.put(passwordField, password);
+    document.put(saltField, salt);
 
     // place the date in the document.
     Date date = new Date();
@@ -140,8 +145,10 @@ public class UserController {
       return new User(
           email,
           result.getString(passwordField),
+          result.getString(saltField),
           result.getString(firstNameField),
           result.getString(lastNameField));
+          
     } else {
       LOGGER.info("User not found");
       return null;
