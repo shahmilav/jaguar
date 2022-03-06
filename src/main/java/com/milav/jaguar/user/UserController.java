@@ -49,7 +49,6 @@ public class UserController {
   String passwordField = "password";
   /** Salt field. */
   String saltField = "salt";
-  
 
   /**
    * The method creates an entry in the database with the given information.
@@ -62,7 +61,11 @@ public class UserController {
    * @throws DBException since we are dealing with the database.
    */
   public void createUserInDB(
-      String firstName, String lastName, @NotNull String email, @NotNull String password, @NotNull String salt)
+      String firstName,
+      String lastName,
+      @NotNull String email,
+      @NotNull String password,
+      @NotNull String salt)
       throws DBException {
 
     LOGGER.info("Entering createUserInDB method");
@@ -148,7 +151,7 @@ public class UserController {
           result.getString(saltField),
           result.getString(firstNameField),
           result.getString(lastNameField));
-          
+
     } else {
       LOGGER.info("User not found");
       return null;
@@ -167,7 +170,12 @@ public class UserController {
    * @throws DBException since we are dealing with the database
    */
   public User updateUserInDB(
-      @NotNull User oldInfo, String firstname, String lastname, String email, String password)
+      @NotNull User oldInfo,
+      String firstname,
+      String lastname,
+      String email,
+      String password,
+      String salt)
       throws DBException {
 
     MongoDatabase db;
@@ -195,12 +203,12 @@ public class UserController {
 
     userUtil.appendDoc("$set", newDocument, passwordField, password);
     collection.updateOne(searchQuery, newDocument);
-    LOGGER.info(newDocument);
+
+    userUtil.appendDoc("$set", newDocument, saltField, salt);
+    collection.updateOne(searchQuery, newDocument);
 
     userUtil.appendDoc("$set", newDocument, emailField, email);
-
     collection.updateOne(searchQuery, newDocument);
-    LOGGER.info(newDocument);
 
     return userUtil.fillUpUser(firstname, lastname, email, password);
   }
