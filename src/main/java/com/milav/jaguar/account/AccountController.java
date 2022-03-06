@@ -1,5 +1,8 @@
 package com.milav.jaguar.account;
 
+import com.milav.jaguar.auth.errors.PasswordGenException;
+import com.milav.jaguar.auth.login.LoginController;
+import com.milav.jaguar.auth.util.AuthUtil;
 import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.logging.Level;
 
 /**
  * The class deals with methods that have to do with user's accounts.
@@ -56,18 +61,44 @@ public class AccountController {
       @NotNull HttpSession session)
       throws DBException {
 
-    User oldInfo = (User) session.getAttribute("user");
+    String oldEmail = ((User) session.getAttribute("user")).getEmail();
+    User oldInfo = userController.findUser(oldEmail);
+
+    String salt = oldInfo.getSalt();
+    String hashedPassword;
+
+    try {
+      hashedPassword = AuthUtil.createSecurePasswordGivenSalt(currentPassword, salt);
+    } catch (PasswordGenException ex) {
+      java.util.logging.Logger.getLogger(LoginController.class.getName())
+          .log(Level.SEVERE, null, ex);
+      model.addAttribute("error", "There is a problem authenticating. Please try again.");
+      session.invalidate();
+      return null;
+    }
+
     LOGGER.info("Entering saveChanges method");
 
-    if (utils.arePasswordsEqual(currentPassword, oldInfo.getPassword())) {
+    if (utils.arePasswordsEqual(hashedPassword, oldInfo.getPassword())) {
 
-      User user =
-          userController.updateUserInDB(oldInfo, firstname, lastname, newEmail, newPassword);
+      try {
+        HashMap map = AuthUtil.createSecurePasswordWithSalt(newPassword);
 
-      session.removeAttribute("user");
-      session.setAttribute("user", user);
+        String securedPasswd = (String) map.get("password");
+        String newSalt = (String) map.get("salt");
 
-      LOGGER.info("Profile saved");
+        User user =
+            userController.updateUserInDB(
+                oldInfo, firstname, lastname, newEmail, securedPasswd, newSalt);
+
+        session.removeAttribute("user");
+        session.setAttribute("user", user);
+
+        LOGGER.info("Profile saved");
+
+      } catch (PasswordGenException pge) {
+        return "redirect:/error";
+      }
 
       return "redirect:/profile";
 
@@ -104,7 +135,8 @@ public class AccountController {
       @RequestParam("password") String password, Model model, @NotNull HttpSession session)
       throws DBException {
 
-    User user = (User) session.getAttribute("user");
+    String email = ((User) session.getAttribute("user")).getEmail();
+    User user = userController.findUser(email);
 
     if (user == null) {
       LOGGER.error("User is null!");
@@ -116,7 +148,19 @@ public class AccountController {
       return null;
     }
 
-    if (utils.arePasswordsEqual(password, user.getPassword())) {
+    String salt = user.getSalt();
+    String hashedPassword;
+
+    try {
+      hashedPassword = AuthUtil.createSecurePasswordGivenSalt(password, salt);
+    } catch (PasswordGenException ex) {
+      LOGGER.error("Err @ AccountController.deleteAccount", ex);
+      model.addAttribute("error", "There is a problem authenticating. Please try again.");
+      session.invalidate();
+      return null;
+    }
+
+    if (utils.arePasswordsEqual(hashedPassword, user.getPassword())) {
       userController.deleteUserFromDB(user.getEmail());
       session.invalidate();
       return "redirect:/login";

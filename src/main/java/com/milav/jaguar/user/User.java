@@ -14,6 +14,7 @@ public class User {
   @Id private String email;
   /** The user's password. */
   private String password;
+
   private String salt;
   /** The user's first name. */
   private String firstName;
@@ -56,7 +57,7 @@ public class User {
     this.lastName = lastName;
     this.salt = salt;
   }
-  
+
   /**
    * The method returns the user's email.
    *
@@ -128,9 +129,9 @@ public class User {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
-  
+
   public String getSalt() {
-      return salt;
+    return salt;
   }
 
   /**
