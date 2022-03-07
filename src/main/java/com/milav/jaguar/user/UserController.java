@@ -1,7 +1,7 @@
 package com.milav.jaguar.user;
 
 import com.milav.jaguar.database.errors.DBException;
-import com.milav.jaguar.database.manager.DBManager;
+import com.milav.jaguar.database.errors.manager.DBManager;
 import com.milav.jaguar.user.util.UserUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoTimeoutException;
