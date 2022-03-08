@@ -8,8 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author Jigar Shah
@@ -19,10 +17,9 @@ public class AuthUtil {
   /**
    * Number of iterations we do the hash.
    *
-   * <p>The longer the stronger (against <a
-   * href="https://www.kaspersky.com/resource-center/definitions/brute-force-attack">brute-force
-   * attacks</a>), however if it is too high, the process becomes very slow and an unpleasant
-   * experience as this happens <strong>every time passwords are entered.</strong>
+   * <p>The longer the stronger (against brute-force attacks), however if it is too high, the
+   * process becomes very slow and an unpleasant experience as this happens <strong>every time
+   * passwords are entered.</strong>
    */
   private static final int ITERATION_NUMBER = 1000;
 
@@ -60,7 +57,6 @@ public class AuthUtil {
       // Salt generation 64 bits long
       random.nextBytes(bSalt);
     } catch (NoSuchAlgorithmException ex) {
-      Logger.getLogger(AuthUtil.class.getName()).log(Level.SEVERE, null, ex);
       throw new PasswordGenException(ex.getLocalizedMessage(), ex.fillInStackTrace());
     }
     return bSalt;
@@ -93,7 +89,6 @@ public class AuthUtil {
       return byteToBase64(input);
 
     } catch (NoSuchAlgorithmException ex) {
-      Logger.getLogger(AuthUtil.class.getName()).log(Level.SEVERE, null, ex);
       throw new PasswordGenException(ex.getLocalizedMessage(), ex.fillInStackTrace());
     }
   }
@@ -116,20 +111,5 @@ public class AuthUtil {
    */
   public static String byteToBase64(byte[] data) {
     return Base64.getEncoder().encodeToString(data);
-  }
-
-  //  public static String getHashedPassword(String password) throws PasswordGenException {
-  //
-  //    return createSecurePassword(password).get("password");
-  //  }
-  public static void main(String[] args) throws PasswordGenException {
-
-    HashMap<String, String> map = createSecurePasswordWithSalt("milav");
-    String salt = map.get("salt");
-    String password = map.get("password");
-    System.out.println(password);
-
-    //        byte[] hash = getHash("milav", salt.getBytes());
-    //        System.out.println(byteToBase64(hash));
   }
 }
