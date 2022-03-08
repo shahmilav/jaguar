@@ -26,7 +26,7 @@ public class JaguarUtils {
   /**
    * Fills up the information on the page.
    *
-   * @param mod¬el model
+   * @param model model
    * @param firstname first name of the user
    * @param lastname last name of the user
    * @param email user's email
