@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.logging.Level;
 
 /**
  * The class serves as the controller for login related methods.
@@ -62,7 +61,7 @@ public class LoginController {
       throws DBException {
 
     User user;
-    LOGGER.info("Entering authenticate method: " + email);
+    LOGGER.info("Entering authenticate method");
 
     /* We want to check if any fields are blank before we check if
     passwords match in order to prevent a valid email or password being "" (blank).
@@ -95,8 +94,7 @@ public class LoginController {
     try {
       hashedPassword = AuthUtil.createSecurePasswordGivenSalt(password, salt);
     } catch (PasswordGenException ex) {
-      java.util.logging.Logger.getLogger(LoginController.class.getName())
-          .log(Level.SEVERE, null, ex);
+      LOGGER.error("PasswordGenEx @ LoginController.authenticate", ex);
       model.addAttribute("error", "There is a problem authenticating. Please try again.");
       session.invalidate();
       return null;
