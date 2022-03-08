@@ -82,10 +82,10 @@ public class AccountController {
     if (utils.arePasswordsEqual(hashedPassword, oldInfo.getPassword())) {
 
       try {
-        HashMap map = AuthUtil.createSecurePasswordWithSalt(newPassword);
+        HashMap<String, String> map = AuthUtil.createSecurePasswordWithSalt(newPassword);
 
-        String securedPasswd = (String) map.get("password");
-        String newSalt = (String) map.get("salt");
+        String securedPasswd = map.get("password");
+        String newSalt = map.get("salt");
 
         User user =
             userController.updateUserInDB(
@@ -154,7 +154,7 @@ public class AccountController {
     try {
       hashedPassword = AuthUtil.createSecurePasswordGivenSalt(password, salt);
     } catch (PasswordGenException ex) {
-      LOGGER.error("Err @ AccountController.deleteAccount", ex);
+      LOGGER.error("PasswordGenEx @ AccountController.deleteAccount", ex);
       model.addAttribute("error", "There is a problem authenticating. Please try again.");
       session.invalidate();
       return null;
