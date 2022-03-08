@@ -64,7 +64,7 @@ public class SignupController {
       @NotNull HttpSession session)
       throws DBException {
 
-    LOGGER.info("Entering register method: " + email);
+    LOGGER.info("Entering register method");
 
     if (session.getAttribute("user") != null) {
       return "redirect:/dashboard";
@@ -80,10 +80,10 @@ public class SignupController {
     } else {
 
       try {
-        HashMap map = AuthUtil.createSecurePasswordWithSalt(password);
+        HashMap<String, String> map = AuthUtil.createSecurePasswordWithSalt(password);
 
-        String securedPasswd = (String) map.get("password");
-        String salt = (String) map.get("salt");
+        String securedPasswd = map.get("password");
+        String salt = map.get("salt");
 
         userController.createUserInDB(firstName, lastName, email, securedPasswd, salt);
         User user = userController.findUser(email);
