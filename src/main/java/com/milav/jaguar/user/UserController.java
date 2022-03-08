@@ -1,7 +1,7 @@
 package com.milav.jaguar.user;
 
 import com.milav.jaguar.database.errors.DBException;
-import com.milav.jaguar.database.errors.manager.DBManager;
+import com.milav.jaguar.database.manager.DBManager;
 import com.milav.jaguar.user.util.UserUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoTimeoutException;
@@ -58,15 +58,13 @@ public class UserController {
    * @param email email of the user.
    * @param password user's password.
    * @param salt sprinkle the salt to make password guessing hard
-   * @throws DBException since we are dealing with the database.
    */
   public void createUserInDB(
       String firstName,
       String lastName,
       @NotNull String email,
       @NotNull String password,
-      @NotNull String salt)
-      throws DBException {
+      @NotNull String salt) {
 
     LOGGER.info("Entering createUserInDB method");
     MongoDatabase db = DBManager.getMongoDB();
@@ -100,9 +98,8 @@ public class UserController {
    *
    * @param email the search query
    * @return boolean
-   * @throws DBException since we are dealing with the database
    */
-  public boolean doesUserExist(@NotNull String email) throws DBException {
+  public boolean doesUserExist(@NotNull String email) {
 
     MongoDatabase db = DBManager.getMongoDB();
     Document document = new Document();
@@ -125,11 +122,8 @@ public class UserController {
 
     MongoDatabase db;
 
-    try {
-      db = DBManager.getMongoDB();
-    } catch (DBException dbe) {
-      throw new DBException(dbError, dbe);
-    }
+    db = DBManager.getMongoDB();
+
     Document document = new Document();
     document.put(emailField, email.toLowerCase());
     MongoCollection<Document> collection = db.getCollection(collectionName);
@@ -167,7 +161,6 @@ public class UserController {
    * @param email the user's new email
    * @param password the user's new password
    * @return User
-   * @throws DBException since we are dealing with the database
    */
   public User updateUserInDB(
       @NotNull User oldInfo,
@@ -175,16 +168,10 @@ public class UserController {
       String lastname,
       String email,
       String password,
-      String salt)
-      throws DBException {
-
+      String salt) {
     MongoDatabase db;
 
-    try {
-      db = DBManager.getMongoDB();
-    } catch (DBException dbe) {
-      throw new DBException(dbError, dbe);
-    }
+    db = DBManager.getMongoDB();
 
     MongoCollection<Document> collection = db.getCollection(collectionName);
 
@@ -217,18 +204,13 @@ public class UserController {
    * Deletes the user from the database.
    *
    * @param email the search query.
-   * @throws DBException since we are dealing with the database.
    */
-  public void deleteUserFromDB(String email) throws DBException {
+  public void deleteUserFromDB(String email) {
 
     LOGGER.info("Entering deleteUserFromDB");
     MongoDatabase db;
 
-    try {
-      db = DBManager.getMongoDB();
-    } catch (DBException dbe) {
-      throw new DBException(dbError, dbe);
-    }
+    db = DBManager.getMongoDB();
 
     MongoCollection<Document> collection = db.getCollection(collectionName);
 
