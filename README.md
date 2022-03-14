@@ -21,9 +21,8 @@ access the dashboard. Furthermore, users can edit and delete their account.
 * [X] Edit profile functionality
 * [X] A cool dashboard
 * [X] Delete account functionality
-
+* [X] Extremely secure password hashing (new hash each time!)
 * and more to come, such as
-    * [ ] Extremely secure password hashing (new hash each time!)
     * [ ] Sign in with Google and GitHub
     * [ ] Captcha
     * [ ] Forgot password functionality
