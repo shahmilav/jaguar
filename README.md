@@ -1,5 +1,7 @@
 # Jaguar
 
+Try it [here.](http://104.238.134.163:8080/)
+
 Jaguar is an open source Java project that aims to be a fully functioning web app. It has a login and sign up page to
 access the dashboard. Furthermore, users can edit and delete their account.
 
