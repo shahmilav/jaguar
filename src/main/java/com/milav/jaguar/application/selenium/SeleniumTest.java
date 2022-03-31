@@ -47,6 +47,12 @@ public class SeleniumTest {
     WebElement loginButton = driver.findElement(By.name("login-btn"));
     loginButton.click();
 
+    try {
+      Thread.sleep(100);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
     WebElement logoutLink = driver.findElement(By.id("logout"));
     logoutLink.click();
   }
