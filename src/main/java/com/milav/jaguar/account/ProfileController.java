@@ -52,9 +52,7 @@ public class ProfileController {
   }
 
   /**
-   * The method takes you to the edit profile page.
-   *
-   * <p>If the user is not logged in, they are redirected to the login screen.
+   * The method takes a logged-in user to the edit profile page.
    *
    * @param model model
    * @param session HttpSession
