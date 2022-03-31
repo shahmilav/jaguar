@@ -1,7 +1,6 @@
 package com.milav.jaguar.account;
 
 import com.milav.jaguar.auth.errors.PasswordGenException;
-import com.milav.jaguar.auth.login.LoginController;
 import com.milav.jaguar.auth.util.AuthUtil;
 import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
@@ -17,19 +16,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.logging.Level;
 
 /**
  * The class deals with methods that have to do with user's accounts.
  *
  * @author Milav Shah
+ * @author Jigar Shah
  */
 @Controller
 public class AccountController {
 
   /** Logger. */
   private static final Logger LOGGER = LogManager.getLogger(AccountController.class);
-  /** User controller class. */
+  /** User controller instance. */
   private final UserController userController = new UserController();
   /** Generic utilities. */
   private final JaguarUtils utils = new JaguarUtils();
@@ -70,8 +69,7 @@ public class AccountController {
     try {
       hashedPassword = AuthUtil.createSecurePasswordGivenSalt(currentPassword, salt);
     } catch (PasswordGenException ex) {
-      java.util.logging.Logger.getLogger(LoginController.class.getName())
-          .log(Level.SEVERE, null, ex);
+      LOGGER.error("PasswordGenEx @ AccountController.saveChanges", ex);
       model.addAttribute("error", "There is a problem authenticating. Please try again.");
       session.invalidate();
       return null;
@@ -84,18 +82,17 @@ public class AccountController {
       try {
         HashMap<String, String> map = AuthUtil.createSecurePasswordWithSalt(newPassword);
 
-        String securedPasswd = map.get("password");
+        String securedPassword = map.get("password");
         String newSalt = map.get("salt");
 
         User user =
             userController.updateUserInDB(
-                oldInfo, firstname, lastname, newEmail, securedPasswd, newSalt);
+                oldInfo, firstname, lastname, newEmail, securedPassword, newSalt);
 
         session.removeAttribute("user");
         session.setAttribute("user", user);
 
         LOGGER.info("Profile saved");
-
       } catch (PasswordGenException pge) {
         return "redirect:/error";
       }
@@ -126,7 +123,7 @@ public class AccountController {
    *
    * @param password the user's password confirmation.
    * @param model model
-   * @param session HttpSession
+   * @param session the session in which the user's information is stored.
    * @return String
    * @throws DBException we are connecting to the database to delete the account.
    */
@@ -142,7 +139,6 @@ public class AccountController {
       LOGGER.error("User is null!");
       return "/error";
     }
-
     if (password.isBlank()) {
       model.addAttribute("error", "Please enter your password.");
       return null;
@@ -164,11 +160,10 @@ public class AccountController {
       userController.deleteUserFromDB(user.getEmail());
       session.invalidate();
       return "redirect:/login";
-
-    } else {
-      model.addAttribute("error", "Incorrect password, please try again.");
-      return null;
     }
+
+    model.addAttribute("error", "Incorrect password, please try again.");
+    return null;
   }
 
   /**
