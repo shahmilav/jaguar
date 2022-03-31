@@ -37,8 +37,8 @@ public class AuthUtil {
    */
   public static HashMap<String, String> createSecurePasswordWithSalt(String password)
       throws PasswordGenException {
-    HashMap<String, String> map = new HashMap<>();
 
+    HashMap<String, String> map = new HashMap<>();
     byte[] bSalt = createSecureSalt();
     String salt = byteToBase64(bSalt);
 
@@ -76,6 +76,7 @@ public class AuthUtil {
    */
   public static String createSecurePasswordGivenSalt(String password, String salt)
       throws PasswordGenException {
+
     try {
       MessageDigest digest = MessageDigest.getInstance("SHA-1");
       digest.reset();
