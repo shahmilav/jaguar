@@ -32,7 +32,10 @@ access the dashboard. Furthermore, users can edit and delete their account.
 ## installation
 
 To install, clone the git repo:
-```git clone https://github.com/shahmilav/jaguar```
+
+```shell
+git clone https://github.com/shahmilav/jaguar
+```
 
 ## dependencies
 
@@ -43,8 +46,13 @@ installed as Selenium runs on Firefox.
 
 ## running the program
 
-To run the program, type ```mvn spring-boot:run``` in the command line and go to _localhost:8080_ in a browser. The app
-should be running.
+To run the program, type
+
+```shell
+mvn spring-boot:run
+``` 
+
+in the command line and go to _localhost:8080_ in a browser. The app should be running.
 
 ## frameworks used
 
