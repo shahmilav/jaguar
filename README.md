@@ -8,7 +8,7 @@ access the dashboard. Furthermore, users can edit and delete their account.
 
 <!-- TODO: Turn image to a link to the website, and make it transparent.) -->
 
-![login_screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)
+[![login_screenshot](https://github.com/shahmilav/jaguar/blob/master/images/login-screenshot.png)](http://104.238.134.163:8080/)
 
 ## table of contents
 
