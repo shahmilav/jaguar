@@ -43,12 +43,12 @@
       <main class="form-signin w-100" style=
       "width: 100%; max-width: 330px; padding: 15px; margin: auto">
         <form action="/removeaccount">
-          <h1 class="w-100">
+          <h1 class="w-100" style="font-weight: 300">
             Delete Account
           </h1><!--/*@thymesVar id="error" type=""*/-->
           <p class="mb-0" style="color: #1c4a78" th:text=
           "${error}"></p><br>
-          <h4>
+          <h4 style="font-weight: 300">
             Are you sure?
           </h4><br>
           <h5>
@@ -58,12 +58,13 @@
           <br>
           <a href="/profile">
             <button class="btn w-100 btn-warning"
-                    style="border-radius: 1px" type="button">Cancel
+                    style="border-radius: 1px" type=
+                    "button">Cancel
             </button>
           </a><br>
           <br>
-          <button class="btn w-100 btn-danger" style="border-radius: 1px" type=
-          "submit">Delete
+          <button class="btn w-100 btn-danger" style=
+          "border-radius: 1px" type="submit">Delete
           </button>
         </form>
       </main>

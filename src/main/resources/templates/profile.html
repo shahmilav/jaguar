@@ -13,6 +13,11 @@
           rel="stylesheet">
     <link href="logo.png" rel="shortcut icon" type="image/jpg">
     <link href="logo.png" rel="apple-touch-icon" sizes="57x57">
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
+      @import url('https://rsms.me/inter/inter.css');
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light"
@@ -42,26 +47,27 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
       <main class="form-signin" style=
       "width: 100%; max-width: 330px; padding: 15px; margin: auto; font-family: -apple-system-tall-body, -apple-system, BlinkMacSystemFont, Inter, sans-serif;">
-        <h1>
+        <h1 style="font-weight: 300">
           Your Profile
         </h1><br>
-        <h3>
+        <h3 style="font-weight: 300">
           Name:
         </h3><i><!--/*@thymesVar id="name" type=""*/--></i>
-        <h4 th:text="${name}"></h4><br>
-        <h3>
+        <em><h4 style="font-family: Fira Mono, monospace;" th:text="${name}"></h4></em><br>
+        <h3 style="font-weight: 300">
           Email:
         </h3><i><!--/*@thymesVar id="email" type=""*/--></i>
-        <h4 th:text="${email}"></h4><br>
+        <em><h4 style="font-family: Fira Mono, monospace;" th:text="${email}"></h4></em><br>
         <form action="/editprofile">
-          <button class="btn w-100 btn-warning" id=
-          "edit-profile" style="border-radius: 1px">Edit Profile
+          <button class="btn w-100 btn-warning" id="edit-profile"
+                  style="border-radius: 1px">Edit Profile
           </button>
         </form>
         <br>
         <form action="/deleteaccount">
-          <button class="btn w-100 btn-warning" id=
-          "del-account" style="border-radius: 1px; color: red">Delete Account
+          <button class="btn w-100 btn-warning" id="del-account"
+                  style="border-radius: 1px; color: red">Delete
+            Account
           </button>
         </form>
       </main>

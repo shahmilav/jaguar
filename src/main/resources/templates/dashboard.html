@@ -13,6 +13,15 @@
           rel="stylesheet">
     <link href="logo.png" rel="shortcut icon" type="image/jpg">
     <link href="logo.png" rel="apple-touch-icon" sizes="57x57">
+    <style>
+      a {
+        color: #4b393a;
+      }
+
+      a:hover {
+        color: #ffc107;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light"
@@ -40,19 +49,19 @@
       </div>
     </nav>
     <div class="col-lg-8 mx-auto p-3 py-md-5" style=
-    "font-family: -apple-system-tall-body, -apple-system, BlinkMacSystemFont, Inter, sans-serif;">
-      <h1>
+    "font-family: -apple-system-short-tall, -apple-system, BlinkMacSystemFont, Inter, sans-serif;">
+      <h1 style="font-weight: 300">
         Welcome to your Dashboard.
       </h1>
       <hr>
       <br>
       <div style=
            "border:1px solid #c6c7c8; padding: 15px; border-radius: 1px;">
-        <h2 th:text="${greeting}"></h2><br>
-        <h4>
+        <h2 style="font-weight: 300" th:text="${greeting}"></h2><br>
+        <h4 style="font-weight: 400">
           Would you like to
         </h4>
-        <ul>
+        <ul style="font-weight: 400;">
           <li>
             <h5>
               <a href="/editprofile">edit your profile?</a>
