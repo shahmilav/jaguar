@@ -82,6 +82,7 @@ public class AuthUtil {
       digest.reset();
       digest.update(salt.getBytes());
       byte[] input = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
       for (int i = 0; i < ITERATION_NUMBER; i++) {
         digest.reset();
         input = digest.digest(input);
