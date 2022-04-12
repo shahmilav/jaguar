@@ -63,13 +63,14 @@ public class AccountController {
     String oldEmail = ((User) session.getAttribute("user")).getEmail();
     User oldInfo = userController.findUser(oldEmail);
 
+    // Hashing the password.
     String salt = oldInfo.getSalt();
     String hashedPassword;
 
     try {
       hashedPassword = AuthUtil.createSecurePasswordGivenSalt(currentPassword, salt);
     } catch (PasswordGenException ex) {
-      LOGGER.error("PasswordGenEx @ AccountController.saveChanges", ex);
+      LOGGER.error("PasswordGenEx @ AccountController.saveChanges()", ex);
       model.addAttribute("error", "There is a problem authenticating. Please try again.");
       session.invalidate();
       return null;
@@ -94,6 +95,7 @@ public class AccountController {
 
         LOGGER.info("Profile saved");
       } catch (PasswordGenException pge) {
+        LOGGER.error("PassGenEx @ AccountController.saveChanges()", pge);
         return "redirect:/error";
       }
 
@@ -150,7 +152,7 @@ public class AccountController {
     try {
       hashedPassword = AuthUtil.createSecurePasswordGivenSalt(password, salt);
     } catch (PasswordGenException ex) {
-      LOGGER.error("PasswordGenEx @ AccountController.deleteAccount", ex);
+      LOGGER.error("PasswordGenEx @ AccountController.deleteAccount()", ex);
       model.addAttribute("error", "There is a problem authenticating. Please try again.");
       session.invalidate();
       return null;
