@@ -57,8 +57,7 @@ public class LoginController {
       @RequestParam(name = "email") String email,
       @RequestParam(name = "password") String password,
       Model model,
-      HttpSession session)
-      throws DBException {
+      HttpSession session) {
 
     User user;
     LOGGER.info("Entering authenticate method");
@@ -101,12 +100,9 @@ public class LoginController {
     }
 
     if (utils.arePasswordsEqual(user.getPassword(), hashedPassword)) {
-
       session.setAttribute("user", user);
       return "redirect:/dashboard";
-
     } else {
-
       model.addAttribute("error", "Incorrect password, please try again.");
       session.invalidate();
       return null;
