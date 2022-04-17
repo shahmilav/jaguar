@@ -36,7 +36,7 @@ public class LoginController {
    * The method decides what to do when the login form is submitted.
    *
    * <ul>
-   *   <li>If the method returns null, the page does not change.
+   *   <li><strong>If the method returns null, the page does not change.</strong>
    *   <li>If the user is already logged in, redirect them to dashboard.
    *   <li>If the user does not exist, it sends an error message and returns null.
    *   <li>If any fields are blank, it sends an error message and returns null.
@@ -66,7 +66,6 @@ public class LoginController {
     passwords match in order to prevent a valid email or password being "" (blank).
     That is the main reason for the select ordering of the following if statements. */
     if (email.isBlank() || password.isBlank()) {
-
       model.addAttribute("error", "Please fill out all fields.");
       session.invalidate();
       return null;
@@ -81,7 +80,6 @@ public class LoginController {
     }
 
     if (user == null) {
-
       model.addAttribute("error", "This account does not exist. Please sign up.");
       session.invalidate();
       return null;
