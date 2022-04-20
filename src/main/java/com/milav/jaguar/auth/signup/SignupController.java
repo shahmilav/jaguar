@@ -80,7 +80,7 @@ public class SignupController {
     } else {
 
       try {
-        HashMap<String, String> map = AuthUtil.createSecurePasswordWithSalt(password);
+        HashMap<String, String> map = AuthUtil.createSecurePasswordAndSalt(password);
 
         String securedPasswd = map.get("password");
         String salt = map.get("salt");

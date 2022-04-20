@@ -81,7 +81,7 @@ public class AccountController {
     if (utils.arePasswordsEqual(hashedPassword, oldInfo.getPassword())) {
 
       try {
-        HashMap<String, String> map = AuthUtil.createSecurePasswordWithSalt(newPassword);
+        HashMap<String, String> map = AuthUtil.createSecurePasswordAndSalt(newPassword);
 
         String securedPassword = map.get("password");
         String newSalt = map.get("salt");
@@ -142,10 +142,9 @@ public class AccountController {
       return "/error";
     }
     if (password.isBlank()) {
-      model.addAttribute("error", "Please enter your password.");
+      model.addAttribute("error","Please enter your password.");
       return null;
     }
-
     String salt = user.getSalt();
     String hashedPassword;
 

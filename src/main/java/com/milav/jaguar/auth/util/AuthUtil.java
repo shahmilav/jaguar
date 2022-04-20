@@ -1,6 +1,7 @@
 package com.milav.jaguar.auth.util;
 
 import com.milav.jaguar.auth.errors.PasswordGenException;
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -35,7 +36,7 @@ public class AuthUtil {
    * @return HashMap
    * @throws PasswordGenException error generating the password.
    */
-  public static HashMap<String, String> createSecurePasswordWithSalt(String password)
+  public static HashMap<String, String> createSecurePasswordAndSalt(String password)
       throws PasswordGenException {
 
     HashMap<String, String> map = new HashMap<>();
@@ -74,7 +75,7 @@ public class AuthUtil {
    * @return byte[] The digested password
    * @throws PasswordGenException If the algorithm doesn't exist
    */
-  public static String createSecurePasswordGivenSalt(String password, String salt)
+  public static String createSecurePasswordGivenSalt(@NotNull String password, @NotNull String salt)
       throws PasswordGenException {
 
     try {
