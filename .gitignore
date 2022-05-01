@@ -16,7 +16,5 @@ target/
 # Maven
 .mvn/
 
-application.properties
 src/main/resources/application.properties
-
 src/main/java/com/milav/jaguar/database/manager/DBManager.java
