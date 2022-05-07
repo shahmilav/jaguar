@@ -10,6 +10,9 @@ nbactions.xml
 # IntelliJ IDEA
 .idea/
 
+# Nova
+.nova/
+
 # Classfiles
 target/
 
