@@ -142,7 +142,7 @@ public class AccountController {
       return "/error";
     }
     if (password.isBlank()) {
-      model.addAttribute("error","Please enter your password.");
+      model.addAttribute("error", "Please enter your password.");
       return null;
     }
     String salt = user.getSalt();
