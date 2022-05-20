@@ -28,4 +28,5 @@ src/main/java/com/milav/jaguar/database/manager/DBManager.java
 # Emacs
 .classpath
 .settings/
+.project
 .factorypath
