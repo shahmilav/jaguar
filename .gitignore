@@ -23,3 +23,9 @@ target/
 src/main/resources/banner.txt
 src/main/resources/application.properties
 src/main/java/com/milav/jaguar/database/manager/DBManager.java
+
+
+# Emacs
+.classpath
+.settings
+.factorypath
