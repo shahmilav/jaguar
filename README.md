@@ -52,16 +52,15 @@ To run the program, type
 mvn spring-boot:run
 ``` 
 
-in the command line and go to _localhost:8080_ in a browser. The app should be running.
+in the command line and go to `http://localhost:8080/` in a browser. The app should be running.
 
 ## Frameworks Used
 
 This project uses
 
-- [Apache Maven 3.6.3](https://maven.apache.org/) build tool.
-- [SpringBoot 5](https://spring.io/), a useful framework for web apps.
-- [Thymeleaf 3](https://www.thymeleaf.org/), convenient way to make a web app.
-- [MongoDB](https://www.mongodb.com/) for all our database needs.
-- [Bootstrap v5](https://getbootstrap.com/) for web design.
-- [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) for logging.
-- *All dependencies can be found in the [pom.xml](https://github.com/shahmilav/jaguar/blob/main/pom.xml) file.*
+- [Apache Maven 3.6.3](https://maven.apache.org/)
+- [SpringBoot 5](https://spring.io/)
+- [Thymeleaf 3](https://www.thymeleaf.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Bootstrap v5](https://getbootstrap.com/)
+- [Apache Log4j 2](https://logging.apache.org/log4j/2.x/)
