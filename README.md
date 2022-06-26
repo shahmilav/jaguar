@@ -52,7 +52,7 @@ To run the program, type
 mvn spring-boot:run
 ``` 
 
-in the command line and go to `http://localhost:8080/` in a browser. The app should be running.
+in the command line and go to [localhost:8080](http://localhost:8080) in a browser. The app should be running.
 
 ## Frameworks Used
 
