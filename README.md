@@ -10,7 +10,7 @@ access the dashboard. Furthermore, users can edit and delete their account.
 
 ![A screenshot demonstrating the login page.](images/login-screenshot.png)
 
-## table of contents
+## Table of Contents
 
 * [features](#features)
 * [installation](#installation)
@@ -18,7 +18,7 @@ access the dashboard. Furthermore, users can edit and delete their account.
 * [usage](#running-the-program)
 * [frameworks](#frameworks-used)
 
-## features
+## Features
 
 * [X] Edit profile functionality
 * [X] A cool dashboard
@@ -29,7 +29,7 @@ access the dashboard. Furthermore, users can edit and delete their account.
     * [ ] Captcha
     * [ ] Forgot password functionality
 
-## installation
+## Installation
 
 To install, clone the git repo:
 
@@ -37,14 +37,14 @@ To install, clone the git repo:
 git clone https://github.com/shahmilav/jaguar
 ```
 
-## dependencies
+## Dependencies
 
 The project requires the latest version of [Apache Maven](https://maven.apache.org/)
 and [Java](https://adoptopenjdk.net/releases.html). Furthermore, to contribute, make sure you
 have [geckodriver](https://github.com/mozilla/geckodriver) and [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 installed as Selenium runs on Firefox.
 
-## running the program
+## Running the Program
 
 To run the program, type
 
@@ -54,7 +54,7 @@ mvn spring-boot:run
 
 in the command line and go to [localhost:8080](http://localhost:8080) in a browser. The app should be running.
 
-## frameworks used
+## Technologies Used
 
 This project uses
 
