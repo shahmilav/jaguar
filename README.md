@@ -16,7 +16,7 @@ access the dashboard. Furthermore, users can edit and delete their account.
 * [installation](#installation)
 * [dependencies](#dependencies)
 * [usage](#running-the-program)
-* [frameworks](#frameworks-used)
+* [technologies](#technologies-used)
 
 ## Features
 
