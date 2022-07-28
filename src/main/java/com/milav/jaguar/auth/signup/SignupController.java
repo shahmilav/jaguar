@@ -5,6 +5,8 @@ import com.milav.jaguar.auth.util.AuthUtil;
 import com.milav.jaguar.database.errors.DBException;
 import com.milav.jaguar.user.User;
 import com.milav.jaguar.user.UserController;
+import java.util.HashMap;
+import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -13,9 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 
 /**
  * The class serves as a controller for signup related methods.
@@ -75,6 +74,10 @@ public class SignupController {
 
     } else if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
       model.addAttribute("error", "Please fill out all fields.");
+      return null;
+
+    } else if (!AuthUtil.validate(email)) {
+      model.addAttribute("error", "Please enter a valid email.");
       return null;
 
     } else {

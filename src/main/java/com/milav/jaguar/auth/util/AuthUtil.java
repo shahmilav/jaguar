@@ -1,20 +1,24 @@
 package com.milav.jaguar.auth.util;
 
 import com.milav.jaguar.auth.errors.PasswordGenException;
-import org.jetbrains.annotations.NotNull;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Jigar Shah
  */
 public class AuthUtil {
 
+  /** Pattern for a valid email address. username@domain.com */
+  public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+      Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
   /**
    * Number of iterations we do the hash.
    *
@@ -114,5 +118,10 @@ public class AuthUtil {
    */
   public static String byteToBase64(byte[] data) {
     return Base64.getEncoder().encodeToString(data);
+  }
+
+  public static boolean validate(String emailStr) {
+    Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+    return matcher.find();
   }
 }
