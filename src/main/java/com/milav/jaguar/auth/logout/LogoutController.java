@@ -1,13 +1,12 @@
 package com.milav.jaguar.auth.logout;
 
 import com.milav.jaguar.application.app.JaguarApplication;
+import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * The class serves as a controller for logout related methods.

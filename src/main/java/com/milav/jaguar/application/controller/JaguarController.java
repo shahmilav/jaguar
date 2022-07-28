@@ -1,11 +1,10 @@
 package com.milav.jaguar.application.controller;
 
+import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * General controller for basic startup pages.
