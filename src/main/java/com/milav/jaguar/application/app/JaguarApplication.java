@@ -17,21 +17,25 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("com.milav.jaguar")
 public class JaguarApplication {
 
-  /** The logger. */
-  private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
-  /** The <a href="https://selenium.dev">Selenium</a> test class. */
-  private static final SeleniumTest seleniumTest = new SeleniumTest();
+    /**
+     * The logger.
+     */
+    private static final Logger LOGGER = LogManager.getLogger(JaguarApplication.class);
+    /**
+     * The <a href="https://selenium.dev">Selenium</a> test class.
+     */
+    private static final SeleniumTest seleniumTest = new SeleniumTest();
 
-  /**
-   * Main method, runs the application.
-   *
-   * @param args arguments to pass
-   */
-  public static void main(String[] args) {
+    /**
+     * Main method, runs the application.
+     *
+     * @param args arguments to pass
+     */
+    public static void main(String[] args) {
 
-    LOGGER.info("Entering main method.");
-    SpringApplication.run(JaguarApplication.class, args);
-    seleniumTest.runSelenium();
-    LOGGER.info("App Started.");
-  }
+        LOGGER.info("Entering main method.");
+        SpringApplication.run(JaguarApplication.class, args);
+        seleniumTest.runSelenium();
+        LOGGER.info("App Started.");
+    }
 }

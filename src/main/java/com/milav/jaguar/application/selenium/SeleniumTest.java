@@ -15,143 +15,147 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class SeleniumTest {
 
-  /** The logger. */
-  private static final Logger LOGGER = LogManager.getLogger(SeleniumTest.class);
+    /**
+     * The logger.
+     */
+    private static final Logger LOGGER = LogManager.getLogger(SeleniumTest.class);
 
-  /** The method runs the Selenium web driver on Firefox. */
-  public void runSelenium() {
+    /**
+     * The method runs the Selenium web driver on Firefox.
+     */
+    public void runSelenium() {
 
-    LOGGER.info("Entering runSelenium method");
-    WebDriver driver = new FirefoxDriver();
-    LOGGER.info("Running selenium.");
-    driver.get("http://localhost:8080");
+        LOGGER.info("Entering runSelenium method");
+        WebDriver driver = new FirefoxDriver();
+        LOGGER.info("Running selenium.");
+        driver.get("http://localhost:8080");
 
-    simpleSignIn(driver);
-    makeEditDelete(driver);
-    driver.quit();
-  }
-
-  /**
-   * This method signs in the user and logs them out.
-   *
-   * @param driver WebDriver to run the method.
-   */
-  public void simpleSignIn(@NotNull WebDriver driver) {
-
-    WebElement emailBox = driver.findElement(By.name("email"));
-    emailBox.sendKeys("me@milav.com");
-
-    WebElement passwordBox = driver.findElement(By.name("password"));
-    passwordBox.sendKeys("milav");
-
-    WebElement loginButton = driver.findElement(By.name("login-btn"));
-    loginButton.click();
-
-    try {
-      Thread.sleep(100);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+        simpleSignIn(driver);
+        makeEditDelete(driver);
+        driver.quit();
     }
 
-    WebElement logoutLink = driver.findElement(By.id("logout"));
-    logoutLink.click();
-  }
+    /**
+     * This method signs in the user and logs them out.
+     *
+     * @param driver WebDriver to run the method.
+     */
+    public void simpleSignIn(@NotNull WebDriver driver) {
 
-  /**
-   * The method makes a new account for "cooljaguar@jaguarlogin.com".
-   *
-   * @param driver web driver
-   */
-  public void makeAccount(@NotNull WebDriver driver) {
+        WebElement emailBox = driver.findElement(By.name("email"));
+        emailBox.sendKeys("me@milav.com");
 
-    WebElement signupLink = driver.findElement(By.id("signup-link"));
-    signupLink.click();
+        WebElement passwordBox = driver.findElement(By.name("password"));
+        passwordBox.sendKeys("milav");
 
-    WebElement firstNameBox = driver.findElement(By.name("fname"));
-    firstNameBox.sendKeys("Cool");
+        WebElement loginButton = driver.findElement(By.name("login-btn"));
+        loginButton.click();
 
-    WebElement lastNameBox = driver.findElement(By.name("lname"));
-    lastNameBox.sendKeys("Jaguar");
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-    WebElement emailBox = driver.findElement(By.name("email"));
-    emailBox.sendKeys("cooljaguar@jaguarlogin.com");
-
-    WebElement passwordBox = driver.findElement(By.name("password"));
-    passwordBox.sendKeys("Jaguar123");
-
-    WebElement signupButton = driver.findElement(By.id("signup-btn"));
-    signupButton.click();
-
-    try {
-      Thread.sleep(500);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+        WebElement logoutLink = driver.findElement(By.id("logout"));
+        logoutLink.click();
     }
-  }
 
-  /**
-   * Edits Cool Jaguar's profile.
-   *
-   * @param driver web driver
-   */
-  public void editProfile(@NotNull WebDriver driver) {
+    /**
+     * The method makes a new account for "cooljaguar@jaguarlogin.com".
+     *
+     * @param driver web driver
+     */
+    public void makeAccount(@NotNull WebDriver driver) {
 
-    WebElement profileLink = driver.findElement(By.id("profile"));
-    profileLink.click();
+        WebElement signupLink = driver.findElement(By.id("signup-link"));
+        signupLink.click();
 
-    WebElement editProfileButton = driver.findElement(By.id("edit-profile"));
-    editProfileButton.click();
+        WebElement firstNameBox = driver.findElement(By.name("fname"));
+        firstNameBox.sendKeys("Cool");
 
-    WebElement firstNameBox = driver.findElement(By.name("firstname"));
-    firstNameBox.sendKeys(" :)");
+        WebElement lastNameBox = driver.findElement(By.name("lname"));
+        lastNameBox.sendKeys("Jaguar");
 
-    WebElement newPasswordBox = driver.findElement(By.name("newPassword"));
-    newPasswordBox.sendKeys("JaguarABC");
+        WebElement emailBox = driver.findElement(By.name("email"));
+        emailBox.sendKeys("cooljaguar@jaguarlogin.com");
 
-    WebElement currentPasswordBox = driver.findElement(By.name("currentPassword"));
-    currentPasswordBox.sendKeys("Jaguar123");
+        WebElement passwordBox = driver.findElement(By.name("password"));
+        passwordBox.sendKeys("Jaguar123");
 
-    WebElement saveChangesButton = driver.findElement(By.name("savechanges"));
-    saveChangesButton.click();
+        WebElement signupButton = driver.findElement(By.id("signup-btn"));
+        signupButton.click();
 
-    try {
-      Thread.sleep(500);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-  }
 
-  /**
-   * Deletes Cool Jaguar's profile
-   *
-   * @param driver web driver
-   */
-  public void deleteProfile(@NotNull WebDriver driver) {
+    /**
+     * Edits Cool Jaguar's profile.
+     *
+     * @param driver web driver
+     */
+    public void editProfile(@NotNull WebDriver driver) {
 
-    WebElement deleteAccountLink = driver.findElement(By.id("del-account"));
-    deleteAccountLink.click();
+        WebElement profileLink = driver.findElement(By.id("profile"));
+        profileLink.click();
 
-    WebElement passwordBox = driver.findElement(By.name("password"));
-    passwordBox.sendKeys("JaguarABC");
+        WebElement editProfileButton = driver.findElement(By.id("edit-profile"));
+        editProfileButton.click();
 
-    WebElement deleteAccountButton = driver.findElement(By.id("del-acc"));
-    deleteAccountButton.click();
+        WebElement firstNameBox = driver.findElement(By.name("firstname"));
+        firstNameBox.sendKeys(" :)");
 
-    try {
-      Thread.sleep(500);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+        WebElement newPasswordBox = driver.findElement(By.name("newPassword"));
+        newPasswordBox.sendKeys("JaguarABC");
+
+        WebElement currentPasswordBox = driver.findElement(By.name("currentPassword"));
+        currentPasswordBox.sendKeys("Jaguar123");
+
+        WebElement saveChangesButton = driver.findElement(By.name("savechanges"));
+        saveChangesButton.click();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-  }
 
-  /**
-   * Makes, edits, and deletes Cool Jaguar's account.
-   *
-   * @param driver web driver.
-   */
-  public void makeEditDelete(WebDriver driver) {
-    makeAccount(driver);
-    editProfile(driver);
-    deleteProfile(driver);
-  }
+    /**
+     * Deletes Cool Jaguar's profile
+     *
+     * @param driver web driver
+     */
+    public void deleteProfile(@NotNull WebDriver driver) {
+
+        WebElement deleteAccountLink = driver.findElement(By.id("del-account"));
+        deleteAccountLink.click();
+
+        WebElement passwordBox = driver.findElement(By.name("password"));
+        passwordBox.sendKeys("JaguarABC");
+
+        WebElement deleteAccountButton = driver.findElement(By.id("del-acc"));
+        deleteAccountButton.click();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Makes, edits, and deletes Cool Jaguar's account.
+     *
+     * @param driver web driver.
+     */
+    public void makeEditDelete(WebDriver driver) {
+        makeAccount(driver);
+        editProfile(driver);
+        deleteProfile(driver);
+    }
 }

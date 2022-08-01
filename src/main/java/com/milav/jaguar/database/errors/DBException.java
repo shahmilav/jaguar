@@ -7,13 +7,13 @@ package com.milav.jaguar.database.errors;
  */
 public class DBException extends Exception {
 
-  /**
-   * Custom database exception.
-   *
-   * @param message the message to send.
-   * @param cause the error to throw.
-   */
-  public DBException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    /**
+     * Custom database exception.
+     *
+     * @param message the message to send.
+     * @param cause   the error to throw.
+     */
+    public DBException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }
