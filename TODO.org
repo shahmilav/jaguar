@@ -1,0 +1,15 @@
+#+title: Todo
+
+** Incoming changes and features for Jaguar.
+Pull requests welcome.
+
+- [ ] Make site mobile responsive.
+  Currently the site is not mobile responsive. Navigation gets hidden on mobile viewports, and cannot be accessed.
+  The plan is to look at [[https://milavblog.netlfiy.app][my blog]], which has a mobile responsive navbar.
+- [ ] Read from ~application.properties~.
+  Currently sensitive information is hardcoded in ~DBManager.java~. We need to have the application instead from our ~application.properties~ file.
+  - *Blocks*
+    - Sign in with Google
+- [ ] Sign in with Google functionality.
+  To be viable in today's world, Jaguar needs to have sign-in with Google functionality for a one click login and signup. Furthermore, sign in with Github and Apple would also be appreciated but have a lower priority.
+  Blocked by *Read from application.properties*
