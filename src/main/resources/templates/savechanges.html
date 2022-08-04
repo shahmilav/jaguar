@@ -6,8 +6,8 @@
     <title>Edit profile</title>
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
     />
     <link href="logo.png" rel="shortcut icon" type="image/jpg" />
     <link href="logo.png" rel="apple-touch-icon" sizes="57x57" />
@@ -18,19 +18,19 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-light bg-light"
-      style="font-family: Inter, sans-serif"
+    class="navbar navbar-expand-lg navbar-light bg-light"
+    style="font-family: Inter, sans-serif"
     >
       <p>&emsp;</p>
       <img
-        alt=""
-        class="d-inline-block align-top"
-        height="50"
-        src="logo.png"
-        width="50"
+      alt=""
+      class="d-inline-block align-top"
+      height="50"
+      src="logo.png"
+      width="50"
       />
       <a class="navbar-brand" href="/" style="margin-right: 0.25rem"
-        >&ensp;Jaguar</a
+      >&ensp;Jaguar</a
       >
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
@@ -48,67 +48,67 @@
     </nav>
     <div class="col-lg-8 mx-auto p-3 py-md-5">
       <main
-        class="form-signin w-100"
-        style="width: 100%; max-width: 330px; padding: 15px; margin: auto"
+      class="form-signin w-100"
+      style="width: 100%; max-width: 330px; padding: 15px; margin: auto"
       >
         <form action="/savechanges">
           <h1>Edit Profile</h1>
           <div class="alert alert-warning w-100" role="alert">
             <!--/*@thymesVar id="error" type=""*/-->
             <p
-              class="mb-0"
-              style="font-family: 'Roboto Mono', monospace"
-              th:text="${error}"
+            class="mb-0"
+            style="font-family: 'Roboto Mono', monospace"
+            th:text="${error}"
             ></p>
           </div>
           <br />
           <h4>First Name:</h4>
           <!--/*@thymesVar id="firstname" type=""*/-->
           <input
-            class="w-100"
-            name="firstname"
-            style="font-family: 'Roboto Mono', monospace"
-            th:value="${firstname}"
+          class="w-100"
+          name="firstname"
+          style="font-family: 'Roboto Mono', monospace"
+          th:value="${firstname}"
           /><br />
           <h4>Last Name:</h4>
           <!--/*@thymesVar id="lastname" type=""*/-->
           <input
-            class="w-100"
-            name="lastname"
-            style="font-family: 'Roboto Mono', monospace"
-            th:value="${lastname}"
+          class="w-100"
+          name="lastname"
+          style="font-family: 'Roboto Mono', monospace"
+          th:value="${lastname}"
           /><br />
           <br />
           <h4>Email:</h4>
           <!--/*@thymesVar id="email" type=""*/-->
           <input
-            class="w-100"
-            name="email"
-            style="font-family: 'Roboto Mono', monospace"
-            th:value="${email}"
-            type="email"
+          class="w-100"
+          name="email"
+          style="font-family: 'Roboto Mono', monospace"
+          th:value="${email}"
+          type="email"
           /><br />
           <h4>Password:</h4>
           <i
-            ><input
-              class="w-100"
-              name="newPassword"
-              style="font-family: 'Roboto Mono', monospace"
-              type="password" /></i
+          ><input
+          class="w-100"
+          name="newPassword"
+          style="font-family: 'Roboto Mono', monospace"
+          type="password" /></i
           ><br />
           <br />
           <h5>Enter current password to save changes.</h5>
           <input
-            class="w-100"
-            name="currentPassword"
-            style="font-family: 'Roboto Mono', monospace"
-            type="password"
+          class="w-100"
+          name="currentPassword"
+          style="font-family: 'Roboto Mono', monospace"
+          type="password"
           /><br />
           <br />
           <button
-            class="btn w-100 btn-warning"
-            style="border-radius: 1px"
-            type="submit"
+          class="btn w-100 btn-warning"
+          style="border-radius: 1px"
+          type="submit"
           >
             Save changes
           </button>

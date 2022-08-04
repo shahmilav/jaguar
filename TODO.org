@@ -13,3 +13,7 @@ Pull requests welcome.
 - [ ] Sign in with Google functionality.
   To be viable in today's world, Jaguar needs to have sign-in with Google functionality for a one click login and signup. Furthermore, sign in with Github and Apple would also be appreciated but have a lower priority.
   Blocked by *Read from application.properties*
+
+- [ ] Dark mode
+  Dark mode would be appreciated. Low priority.
+  See DarkmodeJS.
