@@ -20,6 +20,8 @@ access the dashboard. Furthermore, users can edit and delete their account.
 
 ## Features
 
+A comprehensive list of upcoming features can be found [here](TODO.org).
+
 * [X] Edit profile functionality
 * [X] A cool dashboard
 * [X] Delete account functionality
